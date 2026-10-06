@@ -26,7 +26,7 @@ export default function TabLayout() {
         />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="favroite">
+      <NativeTabs.Trigger name="favorite">
         <NativeTabs.Trigger.Label hidden />
 
         <NativeTabs.Trigger.Icon
@@ -40,6 +40,15 @@ export default function TabLayout() {
           src={require("../../../assets/images/icons/settings.png")}
         />
       </NativeTabs.Trigger>
+
+     
+        <NativeTabs.Trigger name="search" role="search">
+          <NativeTabs.Trigger.Label hidden />
+          <NativeTabs.Trigger.Icon
+            src={require("../../../assets/images/icons/search.png")}
+          />
+        </NativeTabs.Trigger>
+   
     </NativeTabs>
   );
 }
