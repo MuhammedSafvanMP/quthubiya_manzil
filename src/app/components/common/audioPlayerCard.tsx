@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export const AudioPlayerCard = () => (
+ export default function AudioPlayerCard  ()  {(
   <View style={styles.playerCard}>
     <View style={styles.playerHeader}>
       <Image 
@@ -38,7 +38,7 @@ export const AudioPlayerCard = () => (
       </TouchableOpacity>
     </View>
   </View>
-);
+)};
 
 
 

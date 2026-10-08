@@ -1,4 +1,3 @@
-import { Ionicons } from "@expo/vector-icons";
 import { Search } from "lucide-react-native";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 

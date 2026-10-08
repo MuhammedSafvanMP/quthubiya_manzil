@@ -397,18 +397,16 @@ import React, { useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
-  SafeAreaView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
 
 import AppBar from "../../common/AppBar";
 import quranData from "../../../constants/quran.json";
-import { Search } from "lucide-react-native";
 import { SearchBar } from "../../common/searchBar";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type Ayah = {
   number: number;

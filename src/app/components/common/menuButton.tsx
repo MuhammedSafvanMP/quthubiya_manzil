@@ -26,6 +26,9 @@ export const MenuButton = ({ icon, label }: MenuButtonProps) => {
     if(label === "Asmaul Nabi"){
        router.push("../components/screen/asmaulhusna/asmaulNabiya");
     }
+    if(label === "Dikr") {
+      router.push("/components/screen/qibla/qibla")
+    }
   };
 
   return (

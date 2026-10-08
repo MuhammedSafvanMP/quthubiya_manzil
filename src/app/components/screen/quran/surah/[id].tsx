@@ -596,13 +596,13 @@ import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Pressable,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
   View,
 } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import quranData from "../../../../constants/quran.json";
 

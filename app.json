@@ -8,7 +8,11 @@
     "scheme": "quthubiyamanzil",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/expo.icon",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "We need your location to calculate the Qibla direction."
+      },
+      "bundleIdentifier": "com.safvanmp.QuthubiyaManzil"
     },
     "android": {
       "adaptiveIcon": {
@@ -17,6 +21,12 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ],
       "predictiveBackGestureEnabled": false
     },
     "web": {
@@ -25,6 +35,12 @@
     },
     "plugins": [
       "expo-router",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "We need your location to calculate the Qibla direction."
+        }
+      ],
       [
         "expo-splash-screen",
         {

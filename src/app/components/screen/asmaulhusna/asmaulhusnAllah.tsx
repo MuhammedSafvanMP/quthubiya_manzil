@@ -1,8 +1,9 @@
-import { View, Text, SafeAreaView, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
 import Asmaulhusna from './asmaulhusna'
 import  asmaulHusna  from '../../../constants/asmaul_husna.json'
 import AppBar from '../../common/AppBar'
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function asmaulhusnAllah() {
   return (

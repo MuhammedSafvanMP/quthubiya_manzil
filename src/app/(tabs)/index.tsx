@@ -3,22 +3,17 @@ import {
   View, 
   Text, 
   ScrollView, 
-  Image, 
-  TouchableOpacity, 
-  TextInput, 
-  SafeAreaView, 
+
   StatusBar, 
   StyleSheet, 
   Dimensions,
   Pressable
 } from 'react-native';
-import { Ionicons, FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
 import { MenuButton } from '../components/common/menuButton';
 import { ReminderCard } from '../components/common/remainderCard';
-import { AudioPlayerCard } from '../components/common/audioPlayerCard';
 import { ChevronRight } from 'lucide-react-native';
 import { router } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 export default function Index() {
