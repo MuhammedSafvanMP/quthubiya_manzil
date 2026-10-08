@@ -9,13 +9,16 @@ import {
   SafeAreaView, 
   StatusBar, 
   StyleSheet, 
-  Dimensions
+  Dimensions,
+  Pressable
 } from 'react-native';
 import { Ionicons, FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MenuButton } from '../components/common/menuButton';
 import { ReminderCard } from '../components/common/remainderCard';
 import { AudioPlayerCard } from '../components/common/audioPlayerCard';
+import { ChevronRight } from 'lucide-react-native';
+import { router } from 'expo-router';
 
 
 export default function Index() {
@@ -92,17 +95,37 @@ const CARD_WIDTH = (SCREEN_WIDTH - 32 - 12) / 2;
   />
 </ScrollView>
 
+<View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, marginTop: 8 }}>
+
+  <View>
+  <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Categories</Text>
+  
+</View>
+
+<Pressable style={{ flexDirection: 'row', alignItems: 'center' }}
+onPress={() => {
+   router.push('/(tabs)/search');
+}}
+>
+  <Text>See More</Text>
+  <ChevronRight width={20} />
+</Pressable>
+
+
+</View>
+
+
+
         {/* Grid Menu */}
         <View style={styles.gridContainer}>
-          <MenuButton icon="book-quran" iconLib="FontAwesome5" label="Asmaul Husna" /> 
-          <MenuButton icon="book-outline" label="Quran" />
-          <MenuButton icon="headset-outline" label="Audio" />
-          <MenuButton icon="book-open-outline" label="Adkar" />
+          <MenuButton   icon={require("../../../assets/images/icons/allah.png")} label="Asmaul Husna" /> 
+          <MenuButton icon={require("../../../assets/images/icons/quran.png")} label="Quran" />
+          <MenuButton icon={require("../../../assets/images/icons/book-text.png")} label="Adkar" />
           
-          <MenuButton icon="mosque" iconLib="MaterialCommunityIcons" label="Mould" />
-          <MenuButton icon="heart-outline" label="Swalath" />
-          <MenuButton icon="musical-notes-outline" label="Qaseeda" />
-          <MenuButton icon="swap-horizontal-outline" label="Dikr" />
+          <MenuButton icon={require("../../../assets/images/icons/masjid.png")} label="Mould" />
+          <MenuButton icon={require("../../../assets/images/icons/hand-heart.png")} label="Swalath" />
+          <MenuButton icon={require("../../../assets/images/icons/music-2.png")} label="Qaseeda" />
+          <MenuButton icon={require("../../../assets/images/icons/dikr.png")}label="Dikr" />
         </View>
 
       </ScrollView>
@@ -120,6 +143,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     padding: 20,
+    marginTop: 20,
   },
   
   // Header

@@ -1,53 +1,85 @@
-import { FontAwesome5, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { router } from "expo-router";
+import React from "react";
+import {
+  Image,
+  ImageSourcePropType,
+  PixelRatio,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
+type MenuButtonProps = {
+  icon: ImageSourcePropType;
+  label: string;
+};
 
-export const MenuButton = ({ icon, label, iconLib = "Ionicons" }: { icon: string; label: string; iconLib?: string }) => {
-  const IconComponent = 
-    iconLib === "Ionicons" ? Ionicons : 
-    iconLib === "FontAwesome5" ? FontAwesome5 : 
-    MaterialCommunityIcons;
+export const MenuButton = ({ icon, label }: MenuButtonProps) => {
+  const handlePress = () => {
+    if (label === "Quran") {
+      router.push("../components/screen/quran/quran");
+    }
+  };
 
   return (
     <View style={styles.menuButtonWrapper}>
-      <TouchableOpacity style={styles.menuButton}>
-        <IconComponent name={icon} size={28} color="white" />
+      <TouchableOpacity
+        style={styles.menuButton}
+        onPress={handlePress}
+        activeOpacity={0.7}
+      >
+        <Image
+          source={icon}
+          style={styles.menuImage}
+          resizeMode="contain"
+          fadeDuration={0}
+          tintColor="#FFFFFF"
+          accessible
+          accessibilityLabel={label}
+        />
       </TouchableOpacity>
+
       <Text style={styles.menuLabel}>{label}</Text>
     </View>
   );
 };
 
+const ICON_SIZE = PixelRatio.roundToNearestPixel(32);
 
-const styles =  StyleSheet.create({
-
-
-  // Grid Menu
-  gridContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-  },
+const styles = StyleSheet.create({
   menuButtonWrapper: {
-    alignItems: 'center',
-    width: '22%',
+    width: "22%",
+    alignItems: "center",
     marginBottom: 24,
   },
+
   menuButton: {
-    backgroundColor: '#1A1A1A',
-    width: '100%',
-    aspectRatio: 1, // Creates a perfect square
+    width: "100%",
+    aspectRatio: 1,
+    backgroundColor: "#1A1A1A",
     borderRadius: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
+
+    alignItems: "center",
+    justifyContent: "center",
+
     marginBottom: 8,
+    overflow: "hidden",
   },
+
+  menuImage: {
+    width: ICON_SIZE,
+    height: ICON_SIZE,
+
+    // Prevent unwanted stretching
+    maxWidth: ICON_SIZE,
+    maxHeight: ICON_SIZE,
+  },
+
   menuLabel: {
-    color: '#111827',
+    color: "#111827",
     fontSize: 12,
-    fontWeight: '500',
-    textAlign: 'center',
+    fontWeight: "500",
+    textAlign: "center",
   },
-
-
 });

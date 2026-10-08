@@ -26,13 +26,13 @@ export default function TabLayout() {
         />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="favorite">
+      {/* <NativeTabs.Trigger name="favorite">
         <NativeTabs.Trigger.Label hidden />
 
         <NativeTabs.Trigger.Icon
           src={require("../../../assets/images/icons/bookmark.png")}
         />
-      </NativeTabs.Trigger>
+      </NativeTabs.Trigger> */}
 
       <NativeTabs.Trigger name="settings">
         <NativeTabs.Trigger.Label hidden />

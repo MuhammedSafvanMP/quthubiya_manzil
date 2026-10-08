@@ -1,15 +1,36 @@
 import { Ionicons } from "@expo/vector-icons";
-import { StyleSheet, TextInput, View } from "react-native";
+import { Search } from "lucide-react-native";
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
-const SearchBar = () => (
-  <View style={styles.searchContainer}>
-    <Ionicons name="search-outline" size={24} color="#666" />
-    <TextInput 
-      placeholder="Search Quran, Adkar, Swalath, ..." 
-      placeholderTextColor="#999"
-      style={styles.searchInput}
-    />
-  </View>
+export const SearchBar = ({ search, setSearch }: { search: string; setSearch: (text: string) => void }) => (
+
+  
+        <View style={styles.searchContainer}>
+          <Text style={styles.searchIcon}>
+
+            <Search width={20} />
+          </Text>
+
+          <TextInput
+            value={search}
+            onChangeText={setSearch}
+            placeholder="Search Surah..."
+            placeholderTextColor="#9CA3AF"
+            style={styles.searchInput}
+            autoCorrect={false}
+            autoCapitalize="none"
+            returnKeyType="search"
+          />
+
+          {search.length > 0 && (
+            <TouchableOpacity
+              onPress={() => setSearch("")}
+              style={styles.clearButton}
+            >
+              <Text style={styles.clearText}>×</Text>
+            </TouchableOpacity>
+          )}
+        </View>
 );
 
 
@@ -17,25 +38,42 @@ const SearchBar = () => (
 const styles =  StyleSheet.create({
       // Search Bar
   searchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 999,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    marginBottom: 24,
-    // Shadow for iOS
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 4,
-    // Shadow for Android
-    elevation: 2,
+    height: 48,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "#E5E7EB",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 14,
+    marginTop: 12,
+    marginBottom: 8,
   },
+
+  searchIcon: {
+    fontSize: 24,
+    color: "#6B7280",
+    marginRight: 8,
+    lineHeight: 24,
+  },
+
   searchInput: {
     flex: 1,
-    marginLeft: 12,
-    fontSize: 16,
-    color: '#1F2937',
+    height: "100%",
+    fontSize: 15,
+    color: "#111827",
+  },
+
+  clearButton: {
+    width: 28,
+    height: 28,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  clearText: {
+    fontSize: 26,
+    color: "#9CA3AF",
+    lineHeight: 26,
   },
 });
