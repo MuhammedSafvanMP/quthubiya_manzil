@@ -29,6 +29,9 @@ export const MenuButton = ({ icon, label }: MenuButtonProps) => {
     if(label === "Dikr") {
       router.push("/components/screen/qibla/qibla")
     }
+    if(label === "Shahada") {
+      router.push("/components/screen/shahada/shahada")
+    }
   };
 
   return (

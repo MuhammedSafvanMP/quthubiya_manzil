@@ -120,7 +120,7 @@ onPress={() => {
           
           <MenuButton icon={require("../../../assets/images/icons/masjid.png")} label="Mould" />
           <MenuButton icon={require("../../../assets/images/icons/swalath.png")} label="Swalath" />
-          <MenuButton icon={require("../../../assets/images/icons/shahdath.png")} label="Shahadath" />
+          <MenuButton icon={require("../../../assets/images/icons/shahdath.png")} label="Shahada" />
           <MenuButton icon={require("../../../assets/images/icons/dikar.png")}label="Dikr" />
         </View>
 
