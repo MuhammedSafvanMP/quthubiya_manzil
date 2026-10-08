@@ -20,6 +20,12 @@ export const MenuButton = ({ icon, label }: MenuButtonProps) => {
     if (label === "Quran") {
       router.push("../components/screen/quran/quran");
     }
+    if(label === "Asmaul Husna") {
+      router.push("../components/screen/asmaulhusna/asmaulhusnAllah");
+    }
+    if(label === "Asmaul Nabi"){
+       router.push("../components/screen/asmaulhusna/asmaulNabiya");
+    }
   };
 
   return (

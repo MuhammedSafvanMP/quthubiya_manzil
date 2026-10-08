@@ -1,0 +1,695 @@
+[
+  {
+    "id": 1,
+    "arabic": "الرَّحْمَنُ",
+    "transliteration": "Ar-Rahman",
+    "englishMeaning": "The Beneficent / The Entirely Merciful",
+    "malayalamMeaning": "പരമ കാരുണികൻ"
+  },
+  {
+    "id": 2,
+    "arabic": "الرَّحِيمُ",
+    "transliteration": "Ar-Raheem",
+    "englishMeaning": "The Merciful / The Especially Merciful",
+    "malayalamMeaning": "അത്യന്തം ദയാലു"
+  },
+  {
+    "id": 3,
+    "arabic": "الْمَلِكُ",
+    "transliteration": "Al-Malik",
+    "englishMeaning": "The King / The Sovereign",
+    "malayalamMeaning": "ആധിപത്യങ്ങളുടെ ഉടമ / രാജാവ്"
+  },
+  {
+    "id": 4,
+    "arabic": "الْقُدُّوسُ",
+    "transliteration": "Al-Quddus",
+    "englishMeaning": "The Holy / The Pure",
+    "malayalamMeaning": "പരിശുദ്ധൻ"
+  },
+  {
+    "id": 5,
+    "arabic": "السَّلَامُ",
+    "transliteration": "As-Salam",
+    "englishMeaning": "The Source of Peace",
+    "malayalamMeaning": "സമാധാനം നൽകുന്നവൻ"
+  },
+  {
+    "id": 6,
+    "arabic": "الْمُؤْمِنُ",
+    "transliteration": "Al-Mu'min",
+    "englishMeaning": "The Guardian of Faith / The Granter of Security",
+    "malayalamMeaning": "സുരക്ഷയും വിശ്വാസവും നൽകുന്നവൻ"
+  },
+  {
+    "id": 7,
+    "arabic": "الْمُهَيْمِنُ",
+    "transliteration": "Al-Muhaymin",
+    "englishMeaning": "The Protector / The Overseer",
+    "malayalamMeaning": "കാത്തുരക്ഷിക്കുന്നവൻ"
+  },
+  {
+    "id": 8,
+    "arabic": "الْعَزِيزُ",
+    "transliteration": "Al-Aziz",
+    "englishMeaning": "The Mighty / The Almighty",
+    "malayalamMeaning": "പ്രതാപശാലി / സർവ്വശക്തൻ"
+  },
+  {
+    "id": 9,
+    "arabic": "الْجَبَّارُ",
+    "transliteration": "Al-Jabbar",
+    "englishMeaning": "The Compeller / The Restorer",
+    "malayalamMeaning": "അടക്കിവരുത്തുന്നവൻ / പുനഃസ്ഥാപിക്കുന്നവൻ"
+  },
+  {
+    "id": 10,
+    "arabic": "الْمُتَكَبِّرُ",
+    "transliteration": "Al-Mutakabbir",
+    "englishMeaning": "The Majestic / The Supreme",
+    "malayalamMeaning": "മഹത്വത്തിന്റെ ഉടമ"
+  },
+  {
+    "id": 11,
+    "arabic": "الْخَالِقُ",
+    "transliteration": "Al-Khaliq",
+    "englishMeaning": "The Creator",
+    "malayalamMeaning": "സ്രഷ്ടാവ്"
+  },
+  {
+    "id": 12,
+    "arabic": "الْبَارِئُ",
+    "transliteration": "Al-Bari",
+    "englishMeaning": "The Originator / The Maker",
+    "malayalamMeaning": "സൃഷ്ടികർത്താവ്"
+  },
+  {
+    "id": 13,
+    "arabic": "الْمُصَوِّرُ",
+    "transliteration": "Al-Musawwir",
+    "englishMeaning": "The Fashioner",
+    "malayalamMeaning": "രൂപം നൽകുന്നവൻ"
+  },
+  {
+    "id": 14,
+    "arabic": "الْغَفَّارُ",
+    "transliteration": "Al-Ghaffar",
+    "englishMeaning": "The Constant Forgiver",
+    "malayalamMeaning": "നിരന്തരം പൊറുക്കുന്നവൻ"
+  },
+  {
+    "id": 15,
+    "arabic": "الْقَهَّارُ",
+    "transliteration": "Al-Qahhar",
+    "englishMeaning": "The Subduer / The Dominant",
+    "malayalamMeaning": "എല്ലാറ്റിനെയും കീഴടക്കുന്നവൻ"
+  },
+  {
+    "id": 16,
+    "arabic": "الْوَهَّابُ",
+    "transliteration": "Al-Wahhab",
+    "englishMeaning": "The Bestower",
+    "malayalamMeaning": "ധാരാളമായി നൽകുന്നവൻ"
+  },
+  {
+    "id": 17,
+    "arabic": "الرَّزَّاقُ",
+    "transliteration": "Ar-Razzaq",
+    "englishMeaning": "The Provider",
+    "malayalamMeaning": "ഉപജീവനം നൽകുന്നവൻ"
+  },
+  {
+    "id": 18,
+    "arabic": "الْفَتَّاحُ",
+    "transliteration": "Al-Fattah",
+    "englishMeaning": "The Opener / The Judge",
+    "malayalamMeaning": "വഴികൾ തുറക്കുന്നവൻ"
+  },
+  {
+    "id": 19,
+    "arabic": "الْعَلِيمُ",
+    "transliteration": "Al-Alim",
+    "englishMeaning": "The All-Knowing",
+    "malayalamMeaning": "സർവ്വജ്ഞൻ"
+  },
+  {
+    "id": 20,
+    "arabic": "الْقَابِضُ",
+    "transliteration": "Al-Qabid",
+    "englishMeaning": "The Withholder",
+    "malayalamMeaning": "പിടിച്ചുവെക്കുന്നവൻ"
+  },
+  {
+    "id": 21,
+    "arabic": "الْبَاسِطُ",
+    "transliteration": "Al-Basit",
+    "englishMeaning": "The Expander",
+    "malayalamMeaning": "വിശാലത നൽകുന്നവൻ"
+  },
+  {
+    "id": 22,
+    "arabic": "الْخَافِضُ",
+    "transliteration": "Al-Khafid",
+    "englishMeaning": "The Abaser / The Humiliator",
+    "malayalamMeaning": "താഴ്ത്തുന്നവൻ"
+  },
+  {
+    "id": 23,
+    "arabic": "الرَّافِعُ",
+    "transliteration": "Ar-Rafi",
+    "englishMeaning": "The Exalter",
+    "malayalamMeaning": "ഉയർത്തുന്നവൻ"
+  },
+  {
+    "id": 24,
+    "arabic": "الْمُعِزُّ",
+    "transliteration": "Al-Mu'izz",
+    "englishMeaning": "The Honourer",
+    "malayalamMeaning": "ബഹുമാനം നൽകുന്നവൻ"
+  },
+  {
+    "id": 25,
+    "arabic": "الْمُذِلُّ",
+    "transliteration": "Al-Mudhill",
+    "englishMeaning": "The Dishonourer",
+    "malayalamMeaning": "അപമാനിക്കുന്നവൻ"
+  },
+  {
+    "id": 26,
+    "arabic": "السَّمِيعُ",
+    "transliteration": "As-Sami",
+    "englishMeaning": "The All-Hearing",
+    "malayalamMeaning": "എല്ലാം കേൾക്കുന്നവൻ"
+  },
+  {
+    "id": 27,
+    "arabic": "الْبَصِيرُ",
+    "transliteration": "Al-Basir",
+    "englishMeaning": "The All-Seeing",
+    "malayalamMeaning": "എല്ലാം കാണുന്നവൻ"
+  },
+  {
+    "id": 28,
+    "arabic": "الْحَكَمُ",
+    "transliteration": "Al-Hakam",
+    "englishMeaning": "The Judge",
+    "malayalamMeaning": "വിധികർത്താവ്"
+  },
+  {
+    "id": 29,
+    "arabic": "الْعَدْلُ",
+    "transliteration": "Al-Adl",
+    "englishMeaning": "The Utterly Just",
+    "malayalamMeaning": "പരിപൂർണ്ണ നീതിമാൻ"
+  },
+  {
+    "id": 30,
+    "arabic": "اللَّطِيفُ",
+    "transliteration": "Al-Latif",
+    "englishMeaning": "The Gentle / The Subtle",
+    "malayalamMeaning": "സൂക്ഷ്മമായി അനുഗ്രഹിക്കുന്നവൻ"
+  },
+  {
+    "id": 31,
+    "arabic": "الْخَبِيرُ",
+    "transliteration": "Al-Khabir",
+    "englishMeaning": "The All-Aware",
+    "malayalamMeaning": "എല്ലാം അറിയുന്നവൻ"
+  },
+  {
+    "id": 32,
+    "arabic": "الْحَلِيمُ",
+    "transliteration": "Al-Halim",
+    "englishMeaning": "The Forbearing",
+    "malayalamMeaning": "ക്ഷമാശീലൻ"
+  },
+  {
+    "id": 33,
+    "arabic": "الْعَظِيمُ",
+    "transliteration": "Al-Azim",
+    "englishMeaning": "The Magnificent",
+    "malayalamMeaning": "മഹത്തായവൻ"
+  },
+  {
+    "id": 34,
+    "arabic": "الْغَفُورُ",
+    "transliteration": "Al-Ghafur",
+    "englishMeaning": "The All-Forgiving",
+    "malayalamMeaning": "ഏറെ പൊറുക്കുന്നവൻ"
+  },
+  {
+    "id": 35,
+    "arabic": "الشَّكُورُ",
+    "transliteration": "Ash-Shakur",
+    "englishMeaning": "The Appreciative / The Rewarder",
+    "malayalamMeaning": "നന്ദിക്ക് പ്രതിഫലം നൽകുന്നവൻ"
+  },
+  {
+    "id": 36,
+    "arabic": "الْعَلِيُّ",
+    "transliteration": "Al-Ali",
+    "englishMeaning": "The Most High",
+    "malayalamMeaning": "അത്യുന്നതൻ"
+  },
+  {
+    "id": 37,
+    "arabic": "الْكَبِيرُ",
+    "transliteration": "Al-Kabir",
+    "englishMeaning": "The Most Great",
+    "malayalamMeaning": "ഏറ്റവും മഹാനായവൻ"
+  },
+  {
+    "id": 38,
+    "arabic": "الْحَفِيظُ",
+    "transliteration": "Al-Hafiz",
+    "englishMeaning": "The Preserver / The Protector",
+    "malayalamMeaning": "സംരക്ഷിക്കുന്നവൻ"
+  },
+  {
+    "id": 39,
+    "arabic": "الْمُقِيتُ",
+    "transliteration": "Al-Muqit",
+    "englishMeaning": "The Sustainer",
+    "malayalamMeaning": "പോഷിപ്പിക്കുന്നവൻ"
+  },
+  {
+    "id": 40,
+    "arabic": "الْحَسِيبُ",
+    "transliteration": "Al-Hasib",
+    "englishMeaning": "The Reckoner",
+    "malayalamMeaning": "കണക്കെടുക്കുന്നവൻ"
+  },
+  {
+    "id": 41,
+    "arabic": "الْجَلِيلُ",
+    "transliteration": "Al-Jalil",
+    "englishMeaning": "The Majestic",
+    "malayalamMeaning": "മഹത്വമുള്ളവൻ"
+  },
+  {
+    "id": 42,
+    "arabic": "الْكَرِيمُ",
+    "transliteration": "Al-Karim",
+    "englishMeaning": "The Most Generous",
+    "malayalamMeaning": "ഏറ്റവും ഉദാരനായവൻ"
+  },
+  {
+    "id": 43,
+    "arabic": "الرَّقِيبُ",
+    "transliteration": "Ar-Raqib",
+    "englishMeaning": "The Watchful",
+    "malayalamMeaning": "സദാ നിരീക്ഷിക്കുന്നവൻ"
+  },
+  {
+    "id": 44,
+    "arabic": "الْمُجِيبُ",
+    "transliteration": "Al-Mujib",
+    "englishMeaning": "The Responsive",
+    "malayalamMeaning": "പ്രാർത്ഥനയ്ക്ക് ഉത്തരം നൽകുന്നവൻ"
+  },
+  {
+    "id": 45,
+    "arabic": "الْوَاسِعُ",
+    "transliteration": "Al-Wasi",
+    "englishMeaning": "The All-Encompassing",
+    "malayalamMeaning": "എല്ലാം ഉൾക്കൊള്ളുന്നവൻ"
+  },
+  {
+    "id": 46,
+    "arabic": "الْحَكِيمُ",
+    "transliteration": "Al-Hakim",
+    "englishMeaning": "The All-Wise",
+    "malayalamMeaning": "പരമജ്ഞാനി"
+  },
+  {
+    "id": 47,
+    "arabic": "الْوَدُودُ",
+    "transliteration": "Al-Wadud",
+    "englishMeaning": "The Most Loving",
+    "malayalamMeaning": "ഏറ്റവും സ്നേഹമുള്ളവൻ"
+  },
+  {
+    "id": 48,
+    "arabic": "الْمَجِيدُ",
+    "transliteration": "Al-Majid",
+    "englishMeaning": "The Glorious",
+    "malayalamMeaning": "മഹത്വപൂർണ്ണൻ"
+  },
+  {
+    "id": 49,
+    "arabic": "الْبَاعِثُ",
+    "transliteration": "Al-Ba'ith",
+    "englishMeaning": "The Resurrector",
+    "malayalamMeaning": "പുനരുജ്ജീവിപ്പിക്കുന്നവൻ"
+  },
+  {
+    "id": 50,
+    "arabic": "الشَّهِيدُ",
+    "transliteration": "Ash-Shahid",
+    "englishMeaning": "The Witness",
+    "malayalamMeaning": "സാക്ഷിയായവൻ"
+  },
+  {
+    "id": 51,
+    "arabic": "الْحَقُّ",
+    "transliteration": "Al-Haqq",
+    "englishMeaning": "The Truth",
+    "malayalamMeaning": "പരമസത്യം"
+  },
+  {
+    "id": 52,
+    "arabic": "الْوَكِيلُ",
+    "transliteration": "Al-Wakil",
+    "englishMeaning": "The Trustee / The Disposer of Affairs",
+    "malayalamMeaning": "കാര്യങ്ങൾ ഏൽപ്പിക്കാവുന്നവൻ"
+  },
+  {
+    "id": 53,
+    "arabic": "الْقَوِيُّ",
+    "transliteration": "Al-Qawiyy",
+    "englishMeaning": "The All-Strong",
+    "malayalamMeaning": "സർവ്വശക്തൻ"
+  },
+  {
+    "id": 54,
+    "arabic": "الْمَتِينُ",
+    "transliteration": "Al-Matin",
+    "englishMeaning": "The Firm / The Steadfast",
+    "malayalamMeaning": "അചഞ്ചലൻ"
+  },
+  {
+    "id": 55,
+    "arabic": "الْوَلِيُّ",
+    "transliteration": "Al-Wali",
+    "englishMeaning": "The Protecting Friend",
+    "malayalamMeaning": "സംരക്ഷകനും സഹായിയും"
+  },
+  {
+    "id": 56,
+    "arabic": "الْحَمِيدُ",
+    "transliteration": "Al-Hamid",
+    "englishMeaning": "The Praiseworthy",
+    "malayalamMeaning": "സ്തുത്യർഹൻ"
+  },
+  {
+    "id": 57,
+    "arabic": "الْمُحْصِي",
+    "transliteration": "Al-Muhsi",
+    "englishMeaning": "The Accounter",
+    "malayalamMeaning": "എല്ലാം കണക്കാക്കുന്നവൻ"
+  },
+  {
+    "id": 58,
+    "arabic": "الْمُبْدِئُ",
+    "transliteration": "Al-Mubdi",
+    "englishMeaning": "The Originator",
+    "malayalamMeaning": "ആദ്യം സൃഷ്ടിക്കുന്നവൻ"
+  },
+  {
+    "id": 59,
+    "arabic": "الْمُعِيدُ",
+    "transliteration": "Al-Muid",
+    "englishMeaning": "The Restorer",
+    "malayalamMeaning": "പുനഃസ്ഥാപിക്കുന്നവൻ"
+  },
+  {
+    "id": 60,
+    "arabic": "الْمُحْيِي",
+    "transliteration": "Al-Muhyi",
+    "englishMeaning": "The Giver of Life",
+    "malayalamMeaning": "ജീവൻ നൽകുന്നവൻ"
+  },
+  {
+    "id": 61,
+    "arabic": "الْمُمِيتُ",
+    "transliteration": "Al-Mumit",
+    "englishMeaning": "The Bringer of Death",
+    "malayalamMeaning": "മരണം നൽകുന്നവൻ"
+  },
+  {
+    "id": 62,
+    "arabic": "الْحَيُّ",
+    "transliteration": "Al-Hayy",
+    "englishMeaning": "The Ever-Living",
+    "malayalamMeaning": "നിത്യജീവിയുള്ളവൻ"
+  },
+  {
+    "id": 63,
+    "arabic": "الْقَيُّومُ",
+    "transliteration": "Al-Qayyum",
+    "englishMeaning": "The Self-Sustaining",
+    "malayalamMeaning": "സ്വയം നിലനിൽക്കുന്നവനും എല്ലാം നിലനിർത്തുന്നവനും"
+  },
+  {
+    "id": 64,
+    "arabic": "الْوَاجِدُ",
+    "transliteration": "Al-Wajid",
+    "englishMeaning": "The Finder / The Perceiver",
+    "malayalamMeaning": "എല്ലാം കണ്ടെത്തുന്നവൻ"
+  },
+  {
+    "id": 65,
+    "arabic": "الْمَاجِدُ",
+    "transliteration": "Al-Majid",
+    "englishMeaning": "The Noble / The Glorious",
+    "malayalamMeaning": "മഹത്വശാലി"
+  },
+  {
+    "id": 66,
+    "arabic": "الْوَاحِدُ",
+    "transliteration": "Al-Wahid",
+    "englishMeaning": "The One",
+    "malayalamMeaning": "ഏകനായവൻ"
+  },
+  {
+    "id": 67,
+    "arabic": "الْأَحَدُ",
+    "transliteration": "Al-Ahad",
+    "englishMeaning": "The Unique One",
+    "malayalamMeaning": "അതുല്യനായ ഏകൻ"
+  },
+  {
+    "id": 68,
+    "arabic": "الصَّمَدُ",
+    "transliteration": "As-Samad",
+    "englishMeaning": "The Eternal Refuge",
+    "malayalamMeaning": "എല്ലാവരും ആശ്രയിക്കുന്നവൻ"
+  },
+  {
+    "id": 69,
+    "arabic": "الْقَادِرُ",
+    "transliteration": "Al-Qadir",
+    "englishMeaning": "The Capable / The Powerful",
+    "malayalamMeaning": "സർവ്വശക്തനായവൻ"
+  },
+  {
+    "id": 70,
+    "arabic": "الْمُقْتَدِرُ",
+    "transliteration": "Al-Muqtadir",
+    "englishMeaning": "The All-Powerful",
+    "malayalamMeaning": "പൂർണ്ണ അധികാരമുള്ളവൻ"
+  },
+  {
+    "id": 71,
+    "arabic": "الْمُقَدِّمُ",
+    "transliteration": "Al-Muqaddim",
+    "englishMeaning": "The Expediter",
+    "malayalamMeaning": "മുന്നോട്ട് കൊണ്ടുവരുന്നവൻ"
+  },
+  {
+    "id": 72,
+    "arabic": "الْمُؤَخِّرُ",
+    "transliteration": "Al-Mu'akhkhir",
+    "englishMeaning": "The Delayer",
+    "malayalamMeaning": "പിന്നിലാക്കുന്നവൻ"
+  },
+  {
+    "id": 73,
+    "arabic": "الْأَوَّلُ",
+    "transliteration": "Al-Awwal",
+    "englishMeaning": "The First",
+    "malayalamMeaning": "ആദ്യനായവൻ"
+  },
+  {
+    "id": 74,
+    "arabic": "الْآخِرُ",
+    "transliteration": "Al-Akhir",
+    "englishMeaning": "The Last",
+    "malayalamMeaning": "അവസാനനായവൻ"
+  },
+  {
+    "id": 75,
+    "arabic": "الظَّاهِرُ",
+    "transliteration": "Az-Zahir",
+    "englishMeaning": "The Manifest",
+    "malayalamMeaning": "പ്രകടമായവൻ"
+  },
+  {
+    "id": 76,
+    "arabic": "الْبَاطِنُ",
+    "transliteration": "Al-Batin",
+    "englishMeaning": "The Hidden",
+    "malayalamMeaning": "അദൃശ്യനായവൻ"
+  },
+  {
+    "id": 77,
+    "arabic": "الْوَالِي",
+    "transliteration": "Al-Wali",
+    "englishMeaning": "The Governor / The Patron",
+    "malayalamMeaning": "എല്ലാം നിയന്ത്രിക്കുന്നവൻ"
+  },
+  {
+    "id": 78,
+    "arabic": "الْمُتَعَالِي",
+    "transliteration": "Al-Muta'ali",
+    "englishMeaning": "The Most Exalted",
+    "malayalamMeaning": "അത്യുന്നതനായവൻ"
+  },
+  {
+    "id": 79,
+    "arabic": "الْبَرُّ",
+    "transliteration": "Al-Barr",
+    "englishMeaning": "The Source of Goodness",
+    "malayalamMeaning": "നന്മയുടെ ഉറവിടം"
+  },
+  {
+    "id": 80,
+    "arabic": "التَّوَابُ",
+    "transliteration": "At-Tawwab",
+    "englishMeaning": "The Acceptor of Repentance",
+    "malayalamMeaning": "പശ്ചാത്താപം സ്വീകരിക്കുന്നവൻ"
+  },
+  {
+    "id": 81,
+    "arabic": "الْمُنْتَقِمُ",
+    "transliteration": "Al-Muntaqim",
+    "englishMeaning": "The Avenger",
+    "malayalamMeaning": "നീതിപൂർവ്വം പ്രതികാരം ചെയ്യുന്നവൻ"
+  },
+  {
+    "id": 82,
+    "arabic": "الْعَفُوُّ",
+    "transliteration": "Al-Afuww",
+    "englishMeaning": "The Pardoner",
+    "malayalamMeaning": "പൂർണ്ണമായി മാപ്പ് നൽകുന്നവൻ"
+  },
+  {
+    "id": 83,
+    "arabic": "الرَّؤُوفُ",
+    "transliteration": "Ar-Ra'uf",
+    "englishMeaning": "The Most Kind",
+    "malayalamMeaning": "അത്യന്തം ദയയുള്ളവൻ"
+  },
+  {
+    "id": 84,
+    "arabic": "مَالِكُ الْمُلْكِ",
+    "transliteration": "Malik-ul-Mulk",
+    "englishMeaning": "Owner of Sovereignty",
+    "malayalamMeaning": "സർവ്വാധിപത്യത്തിന്റെ ഉടമ"
+  },
+  {
+    "id": 85,
+    "arabic": "ذُو الْجَلَالِ وَالْإِكْرَامِ",
+    "transliteration": "Dhul-Jalali wal-Ikram",
+    "englishMeaning": "Lord of Majesty and Honour",
+    "malayalamMeaning": "മഹത്വത്തിന്റെയും ബഹുമാനത്തിന്റെയും ഉടമ"
+  },
+  {
+    "id": 86,
+    "arabic": "الْمُقْسِطُ",
+    "transliteration": "Al-Muqsit",
+    "englishMeaning": "The Equitable / The Just",
+    "malayalamMeaning": "നീതി പാലിക്കുന്നവൻ"
+  },
+  {
+    "id": 87,
+    "arabic": "الْجَامِعُ",
+    "transliteration": "Al-Jami",
+    "englishMeaning": "The Gatherer",
+    "malayalamMeaning": "ഒരുമിച്ചുകൂട്ടുന്നവൻ"
+  },
+  {
+    "id": 88,
+    "arabic": "الْغَنِيُّ",
+    "transliteration": "Al-Ghani",
+    "englishMeaning": "The Self-Sufficient",
+    "malayalamMeaning": "ആരെയും ആശ്രയിക്കാത്തവൻ"
+  },
+  {
+    "id": 89,
+    "arabic": "الْمُغْنِي",
+    "transliteration": "Al-Mughni",
+    "englishMeaning": "The Enricher",
+    "malayalamMeaning": "സമ്പന്നനാക്കുന്നവൻ"
+  },
+  {
+    "id": 90,
+    "arabic": "الْمَانِعُ",
+    "transliteration": "Al-Mani",
+    "englishMeaning": "The Preventer",
+    "malayalamMeaning": "തടയുന്നവൻ"
+  },
+  {
+    "id": 91,
+    "arabic": "الضَّارُ",
+    "transliteration": "Ad-Darr",
+    "englishMeaning": "The Distresser",
+    "malayalamMeaning": "ദോഷം സംഭവിക്കാൻ അനുവദിക്കുന്നവൻ"
+  },
+  {
+    "id": 92,
+    "arabic": "النَّافِعُ",
+    "transliteration": "An-Nafi",
+    "englishMeaning": "The Benefactor",
+    "malayalamMeaning": "ഉപകാരം നൽകുന്നവൻ"
+  },
+  {
+    "id": 93,
+    "arabic": "النُّورُ",
+    "transliteration": "An-Nur",
+    "englishMeaning": "The Light",
+    "malayalamMeaning": "പ്രകാശം"
+  },
+  {
+    "id": 94,
+    "arabic": "الْهَادِي",
+    "transliteration": "Al-Hadi",
+    "englishMeaning": "The Guide",
+    "malayalamMeaning": "മാർഗദർശകൻ"
+  },
+  {
+    "id": 95,
+    "arabic": "الْبَدِيعُ",
+    "transliteration": "Al-Badi",
+    "englishMeaning": "The Incomparable Originator",
+    "malayalamMeaning": "അതുല്യമായി സൃഷ്ടിക്കുന്നവൻ"
+  },
+  {
+    "id": 96,
+    "arabic": "الْبَاقِي",
+    "transliteration": "Al-Baqi",
+    "englishMeaning": "The Everlasting",
+    "malayalamMeaning": "നിത്യമായി നിലനിൽക്കുന്നവൻ"
+  },
+  {
+    "id": 97,
+    "arabic": "الْوَارِثُ",
+    "transliteration": "Al-Warith",
+    "englishMeaning": "The Inheritor",
+    "malayalamMeaning": "എല്ലാറ്റിന്റെയും അന്തിമ അവകാശി"
+  },
+  {
+    "id": 98,
+    "arabic": "الرَّشِيدُ",
+    "transliteration": "Ar-Rashid",
+    "englishMeaning": "The Guide to the Right Path",
+    "malayalamMeaning": "ശരിയായ മാർഗത്തിലേക്ക് നയിക്കുന്നവൻ"
+  },
+  {
+    "id": 99,
+    "arabic": "الصَّبُورُ",
+    "transliteration": "As-Sabur",
+    "englishMeaning": "The Most Patient",
+    "malayalamMeaning": "ഏറ്റവും ക്ഷമാശീലൻ"
+  }
+]

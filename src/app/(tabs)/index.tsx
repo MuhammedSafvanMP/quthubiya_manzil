@@ -119,13 +119,14 @@ onPress={() => {
         {/* Grid Menu */}
         <View style={styles.gridContainer}>
           <MenuButton   icon={require("../../../assets/images/icons/allah.png")} label="Asmaul Husna" /> 
+          <MenuButton icon={require("../../../assets/images/icons/nabi.png")} label="Asmaul Nabi" />
           <MenuButton icon={require("../../../assets/images/icons/quran.png")} label="Quran" />
-          <MenuButton icon={require("../../../assets/images/icons/book-text.png")} label="Adkar" />
+          <MenuButton icon={require("../../../assets/images/icons/azkar.png")} label="Azkar" />
           
           <MenuButton icon={require("../../../assets/images/icons/masjid.png")} label="Mould" />
-          <MenuButton icon={require("../../../assets/images/icons/hand-heart.png")} label="Swalath" />
-          <MenuButton icon={require("../../../assets/images/icons/music-2.png")} label="Qaseeda" />
-          <MenuButton icon={require("../../../assets/images/icons/dikr.png")}label="Dikr" />
+          <MenuButton icon={require("../../../assets/images/icons/swalath.png")} label="Swalath" />
+          <MenuButton icon={require("../../../assets/images/icons/shahdath.png")} label="Shahadath" />
+          <MenuButton icon={require("../../../assets/images/icons/dikar.png")}label="Dikr" />
         </View>
 
       </ScrollView>

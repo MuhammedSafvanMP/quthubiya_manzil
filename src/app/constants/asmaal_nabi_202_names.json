@@ -1,0 +1,1410 @@
+[
+  {
+    "id": 1,
+    "arabic": "مُحَمَّدٌ",
+    "transliteration": "Muḥammad",
+    "englishMeaning": "Oft-Praised",
+    "malayalamMeaning": "അത്യധികം സ്തുതിക്കപ്പെട്ടവൻ"
+  },
+  {
+    "id": 2,
+    "arabic": "أَحْمَدٌ",
+    "transliteration": "Aḥmad",
+    "englishMeaning": "Most Praising",
+    "malayalamMeaning": "ഏറ്റവും അധികം സ്തുതിക്കുന്നവൻ"
+  },
+  {
+    "id": 3,
+    "arabic": "حَامِدٌ",
+    "transliteration": "Ḥāmid",
+    "englishMeaning": "Praiser",
+    "malayalamMeaning": "സ്തുതിക്കുന്നവൻ"
+  },
+  {
+    "id": 4,
+    "arabic": "مَحْمُودٌ",
+    "transliteration": "Maḥmūd",
+    "englishMeaning": "Praised One",
+    "malayalamMeaning": "സ്തുതിക്കപ്പെട്ടവൻ"
+  },
+  {
+    "id": 5,
+    "arabic": "أَحِيدُ",
+    "transliteration": "Aḥīd",
+    "englishMeaning": "Repeller",
+    "malayalamMeaning": "തടയുന്നവൻ"
+  },
+  {
+    "id": 6,
+    "arabic": "وَحِيدٌ",
+    "transliteration": "Waḥīd",
+    "englishMeaning": "Unique One",
+    "malayalamMeaning": "അതുല്യനായവൻ"
+  },
+  {
+    "id": 7,
+    "arabic": "مَاحٍ",
+    "transliteration": "Māḥī",
+    "englishMeaning": "Effacer",
+    "malayalamMeaning": "മായ്ച്ചുകളയുന്നവൻ"
+  },
+  {
+    "id": 8,
+    "arabic": "حَاشِرٌ",
+    "transliteration": "Ḥāshir",
+    "englishMeaning": "Gatherer",
+    "malayalamMeaning": "ഒരുമിച്ചുകൂട്ടുന്നവൻ"
+  },
+  {
+    "id": 9,
+    "arabic": "عَاقِبٌ",
+    "transliteration": "ʿĀqib",
+    "englishMeaning": "Last in Succession",
+    "malayalamMeaning": "അവസാനമായി വരുന്നവൻ"
+  },
+  {
+    "id": 10,
+    "arabic": "طَهَ",
+    "transliteration": "Ṭāhā",
+    "englishMeaning": "Taha",
+    "malayalamMeaning": "ത്വാഹാ"
+  },
+  {
+    "id": 11,
+    "arabic": "يَسٓ",
+    "transliteration": "Yāsīn",
+    "englishMeaning": "Yasin",
+    "malayalamMeaning": "യാസീൻ"
+  },
+  {
+    "id": 12,
+    "arabic": "طَاهِرٌ",
+    "transliteration": "Ṭāhir",
+    "englishMeaning": "Pure One",
+    "malayalamMeaning": "പരിശുദ്ധൻ"
+  },
+  {
+    "id": 13,
+    "arabic": "مُطَهَّرٌ",
+    "transliteration": "Muṭahhar",
+    "englishMeaning": "Purified One",
+    "malayalamMeaning": "ശുദ്ധീകരിക്കപ്പെട്ടവൻ"
+  },
+  {
+    "id": 14,
+    "arabic": "طَيِّبٌ",
+    "transliteration": "Ṭayyib",
+    "englishMeaning": "Good and Pure",
+    "malayalamMeaning": "നല്ലവനും പരിശുദ്ധനും"
+  },
+  {
+    "id": 15,
+    "arabic": "سَيِّدٌ",
+    "transliteration": "Sayyid",
+    "englishMeaning": "Patron",
+    "malayalamMeaning": "നാഥൻ / നേതാവ്"
+  },
+  {
+    "id": 16,
+    "arabic": "رَسُولٌ",
+    "transliteration": "Rasūl",
+    "englishMeaning": "Messenger",
+    "malayalamMeaning": "ദൂതൻ"
+  },
+  {
+    "id": 17,
+    "arabic": "نَبِيٌّ",
+    "transliteration": "Nabiyy",
+    "englishMeaning": "Prophet",
+    "malayalamMeaning": "പ്രവാചകൻ"
+  },
+  {
+    "id": 18,
+    "arabic": "رَسُولُ الرَّحْمَةِ",
+    "transliteration": "Rasūlu r-Raḥmah",
+    "englishMeaning": "Messenger of Mercy",
+    "malayalamMeaning": "കാരുണ്യത്തിന്റെ ദൂതൻ"
+  },
+  {
+    "id": 19,
+    "arabic": "قَيِّمٌ",
+    "transliteration": "Qayyim",
+    "englishMeaning": "Upright One",
+    "malayalamMeaning": "നേരായവൻ"
+  },
+  {
+    "id": 20,
+    "arabic": "جَامِعٌ",
+    "transliteration": "Jāmiʿ",
+    "englishMeaning": "Embodier of all Virtues",
+    "malayalamMeaning": "എല്ലാ സദ്ഗുണങ്ങളും ഉൾക്കൊള്ളുന്നവൻ"
+  },
+  {
+    "id": 21,
+    "arabic": "مُقْتَفٍ",
+    "transliteration": "Muqtafī",
+    "englishMeaning": "Successor to the Past Prophets",
+    "malayalamMeaning": "മുൻ പ്രവാചകന്മാരെ പിന്തുടർന്നവൻ"
+  },
+  {
+    "id": 22,
+    "arabic": "مُقَفٍّ",
+    "transliteration": "Muqaffī",
+    "englishMeaning": "Last in Succession",
+    "malayalamMeaning": "തുടർച്ചയിലെ അവസാനവൻ"
+  },
+  {
+    "id": 23,
+    "arabic": "رَسُولُ الْمَلَاحِمِ",
+    "transliteration": "Rasūlu l-Malāḥim",
+    "englishMeaning": "Messenger of the Great Battles",
+    "malayalamMeaning": "മഹായുദ്ധങ്ങളുടെ ദൂതൻ"
+  },
+  {
+    "id": 24,
+    "arabic": "رَسُولُ الرَّاحَةِ",
+    "transliteration": "Rasūlu r-Rāḥah",
+    "englishMeaning": "Messenger of Comfort",
+    "malayalamMeaning": "ആശ്വാസത്തിന്റെ ദൂതൻ"
+  },
+  {
+    "id": 25,
+    "arabic": "كَامِلٌ",
+    "transliteration": "Kāmil",
+    "englishMeaning": "Perfect One",
+    "malayalamMeaning": "പരിപൂർണ്ണൻ"
+  },
+  {
+    "id": 26,
+    "arabic": "إِكْلِيلٌ",
+    "transliteration": "Iklīl",
+    "englishMeaning": "Crown",
+    "malayalamMeaning": "കിരീടം"
+  },
+  {
+    "id": 27,
+    "arabic": "مُدَّثِّرٌ",
+    "transliteration": "Muddaththir",
+    "englishMeaning": "Enwrapped in His Mantle",
+    "malayalamMeaning": "വസ്ത്രം പുതച്ചവൻ"
+  },
+  {
+    "id": 28,
+    "arabic": "مُزَّمِّلٌ",
+    "transliteration": "Muzzammil",
+    "englishMeaning": "Enwrapped in His Cloak",
+    "malayalamMeaning": "പുതപ്പിൽ പൊതിഞ്ഞവൻ"
+  },
+  {
+    "id": 29,
+    "arabic": "عَبْدُ اللَّهِ",
+    "transliteration": "ʿAbdu Llāh",
+    "englishMeaning": "Slave of Allah",
+    "malayalamMeaning": "അല്ലാഹുവിന്റെ ദാസൻ"
+  },
+  {
+    "id": 30,
+    "arabic": "حَبِيبُ اللَّهِ",
+    "transliteration": "Ḥabību Llāh",
+    "englishMeaning": "Beloved of Allah",
+    "malayalamMeaning": "അല്ലാഹുവിന്റെ പ്രിയപ്പെട്ടവൻ"
+  },
+  {
+    "id": 31,
+    "arabic": "صَفِيُّ اللَّهِ",
+    "transliteration": "Ṣafiyyu Llāh",
+    "englishMeaning": "Chosen One of Allah",
+    "malayalamMeaning": "അല്ലാഹുവിന്റെ തിരഞ്ഞെടുക്കപ്പെട്ടവൻ"
+  },
+  {
+    "id": 32,
+    "arabic": "نَجِيُّ اللَّهِ",
+    "transliteration": "Najiyyu Llāh",
+    "englishMeaning": "Intimate Confidant of Allah",
+    "malayalamMeaning": "അല്ലാഹുവിന്റെ അടുത്തവൻ"
+  },
+  {
+    "id": 33,
+    "arabic": "كَلِيمُ اللَّهِ",
+    "transliteration": "Kalīmu Llāh",
+    "englishMeaning": "One to Whom Allah Spoke",
+    "malayalamMeaning": "അല്ലാഹു സംസാരിച്ചവൻ"
+  },
+  {
+    "id": 34,
+    "arabic": "خَاتِمُ الْأَنْبِيَاءِ",
+    "transliteration": "Khātimu l-Anbiyā’",
+    "englishMeaning": "Seal of the Prophets",
+    "malayalamMeaning": "പ്രവാചകന്മാരുടെ മുദ്ര"
+  },
+  {
+    "id": 35,
+    "arabic": "خَاتِمُ الرُّسُلِ",
+    "transliteration": "Khātimu r-Rusul",
+    "englishMeaning": "Seal of the Messengers",
+    "malayalamMeaning": "ദൂതന്മാരുടെ മുദ്ര"
+  },
+  {
+    "id": 36,
+    "arabic": "مُحْيٍ",
+    "transliteration": "Muḥyī",
+    "englishMeaning": "Reviver",
+    "malayalamMeaning": "പുനരുജ്ജീവിപ്പിക്കുന്നവൻ"
+  },
+  {
+    "id": 37,
+    "arabic": "مُنْجٍ",
+    "transliteration": "Munjī",
+    "englishMeaning": "Deliverer",
+    "malayalamMeaning": "രക്ഷിക്കുന്നവൻ"
+  },
+  {
+    "id": 38,
+    "arabic": "مُذَكِّرٌ",
+    "transliteration": "Mudhakkir",
+    "englishMeaning": "One Who Reminds",
+    "malayalamMeaning": "ഓർമ്മപ്പെടുത്തുന്നവൻ"
+  },
+  {
+    "id": 39,
+    "arabic": "نَاصِرٌ",
+    "transliteration": "Nāṣir",
+    "englishMeaning": "Bringer of Victory",
+    "malayalamMeaning": "വിജയം കൊണ്ടുവരുന്നവൻ"
+  },
+  {
+    "id": 40,
+    "arabic": "مَنْصُورٌ",
+    "transliteration": "Manṣūr",
+    "englishMeaning": "One Granted Victory",
+    "malayalamMeaning": "വിജയം നൽകപ്പെട്ടവൻ"
+  },
+  {
+    "id": 41,
+    "arabic": "نَبِيُّ الرَّحْمَةِ",
+    "transliteration": "Nabiyyu r-Raḥmah",
+    "englishMeaning": "Prophet of Mercy",
+    "malayalamMeaning": "കാരുണ്യത്തിന്റെ പ്രവാചകൻ"
+  },
+  {
+    "id": 42,
+    "arabic": "نَبِيُّ التَّوْبَةِ",
+    "transliteration": "Nabiyyu t-Tawbah",
+    "englishMeaning": "Prophet of Repentance",
+    "malayalamMeaning": "തൗബയുടെ പ്രവാചകൻ"
+  },
+  {
+    "id": 43,
+    "arabic": "حَرِيصٌ عَلَيْكُمْ",
+    "transliteration": "Ḥarīṣun ʿAlaykum",
+    "englishMeaning": "Deeply Concerned for You",
+    "malayalamMeaning": "നിങ്ങളെക്കുറിച്ച് അതീവ ശ്രദ്ധയുള്ളവൻ"
+  },
+  {
+    "id": 44,
+    "arabic": "مَعْلُومٌ",
+    "transliteration": "Maʿlūm",
+    "englishMeaning": "Known One",
+    "malayalamMeaning": "അറിയപ്പെട്ടവൻ"
+  },
+  {
+    "id": 45,
+    "arabic": "شَهِيرٌ",
+    "transliteration": "Shahīr",
+    "englishMeaning": "Renowned One",
+    "malayalamMeaning": "പ്രശസ്തൻ"
+  },
+  {
+    "id": 46,
+    "arabic": "شَاهِدٌ",
+    "transliteration": "Shāhid",
+    "englishMeaning": "Testifier",
+    "malayalamMeaning": "സാക്ഷ്യം വഹിക്കുന്നവൻ"
+  },
+  {
+    "id": 47,
+    "arabic": "شَهِيدٌ",
+    "transliteration": "Shahīd",
+    "englishMeaning": "Witness",
+    "malayalamMeaning": "സാക്ഷി"
+  },
+  {
+    "id": 48,
+    "arabic": "مَشْهُودٌ",
+    "transliteration": "Mashhūd",
+    "englishMeaning": "One Who Is Witnessed",
+    "malayalamMeaning": "സാക്ഷ്യം വഹിക്കപ്പെടുന്നവൻ"
+  },
+  {
+    "id": 49,
+    "arabic": "بَشِيرٌ",
+    "transliteration": "Bashīr",
+    "englishMeaning": "Bearer of Glad Tidings",
+    "malayalamMeaning": "സുവാർത്ത അറിയിക്കുന്നവൻ"
+  },
+  {
+    "id": 50,
+    "arabic": "مُبَشِّرٌ",
+    "transliteration": "Mubashshir",
+    "englishMeaning": "Bringer of Good News",
+    "malayalamMeaning": "സുവാർത്ത കൊണ്ടുവരുന്നവൻ"
+  },
+  {
+    "id": 51,
+    "arabic": "نَذِيرٌ",
+    "transliteration": "Nadhīr",
+    "englishMeaning": "Warner",
+    "malayalamMeaning": "താക്കീത് നൽകുന്നവൻ"
+  },
+  {
+    "id": 52,
+    "arabic": "مُنْذِرٌ",
+    "transliteration": "Mundhir",
+    "englishMeaning": "Admonisher",
+    "malayalamMeaning": "മുന്നറിയിപ്പ് നൽകുന്നവൻ"
+  },
+  {
+    "id": 53,
+    "arabic": "نُورٌ",
+    "transliteration": "Nūr",
+    "englishMeaning": "Light",
+    "malayalamMeaning": "പ്രകാശം"
+  },
+  {
+    "id": 54,
+    "arabic": "سِرَاجٌ",
+    "transliteration": "Sirāj",
+    "englishMeaning": "Lamp",
+    "malayalamMeaning": "വിളക്ക്"
+  },
+  {
+    "id": 55,
+    "arabic": "مِصْبَاحٌ",
+    "transliteration": "Miṣbāḥ",
+    "englishMeaning": "Lantern",
+    "malayalamMeaning": "പ്രദീപം"
+  },
+  {
+    "id": 56,
+    "arabic": "هُدَىً",
+    "transliteration": "Hudā",
+    "englishMeaning": "Guidance",
+    "malayalamMeaning": "മാർഗദർശനം"
+  },
+  {
+    "id": 57,
+    "arabic": "مَهْدِيٌّ",
+    "transliteration": "Mahdiyy",
+    "englishMeaning": "Guided One",
+    "malayalamMeaning": "സന്മാർഗം ലഭിച്ചവൻ"
+  },
+  {
+    "id": 58,
+    "arabic": "مُنِيرٌ",
+    "transliteration": "Munīr",
+    "englishMeaning": "Giver of Light",
+    "malayalamMeaning": "പ്രകാശം നൽകുന്നവൻ"
+  },
+  {
+    "id": 59,
+    "arabic": "دَاعٍ",
+    "transliteration": "Dāʿī",
+    "englishMeaning": "Caller",
+    "malayalamMeaning": "വിളിക്കുന്നവൻ"
+  },
+  {
+    "id": 60,
+    "arabic": "مَدْعُوٌّ",
+    "transliteration": "Madʿuww",
+    "englishMeaning": "One Who Is Called",
+    "malayalamMeaning": "വിളിക്കപ്പെട്ടവൻ"
+  },
+  {
+    "id": 61,
+    "arabic": "مُجِيبٌ",
+    "transliteration": "Mujīb",
+    "englishMeaning": "One Who Responds",
+    "malayalamMeaning": "ഉത്തരം നൽകുന്നവൻ"
+  },
+  {
+    "id": 62,
+    "arabic": "مُجَابٌ",
+    "transliteration": "Mujāb",
+    "englishMeaning": "One Whose Prayer Is Answered",
+    "malayalamMeaning": "പ്രാർത്ഥന സ്വീകരിക്കപ്പെടുന്നവൻ"
+  },
+  {
+    "id": 63,
+    "arabic": "حَفِيٌّ",
+    "transliteration": "Ḥafiyy",
+    "englishMeaning": "Welcoming",
+    "malayalamMeaning": "സ്നേഹപൂർവ്വം സ്വീകരിക്കുന്നവൻ"
+  },
+  {
+    "id": 64,
+    "arabic": "عَفُوٌّ",
+    "transliteration": "ʿAfuww",
+    "englishMeaning": "Pardoning One",
+    "malayalamMeaning": "മാപ്പ് നൽകുന്നവൻ"
+  },
+  {
+    "id": 65,
+    "arabic": "وَلِيٌّ",
+    "transliteration": "Waliyy",
+    "englishMeaning": "Close Friend of Allah",
+    "malayalamMeaning": "അല്ലാഹുവിന്റെ അടുത്ത സുഹൃത്ത്"
+  },
+  {
+    "id": 66,
+    "arabic": "حَقٌّ",
+    "transliteration": "Ḥaqq",
+    "englishMeaning": "Truth",
+    "malayalamMeaning": "സത്യം"
+  },
+  {
+    "id": 67,
+    "arabic": "قَوِيٌّ",
+    "transliteration": "Qawiyy",
+    "englishMeaning": "Mighty One",
+    "malayalamMeaning": "ശക്തനായവൻ"
+  },
+  {
+    "id": 68,
+    "arabic": "أَمِينٌ",
+    "transliteration": "Amīn",
+    "englishMeaning": "Trustworthy One",
+    "malayalamMeaning": "വിശ്വസ്തൻ"
+  },
+  {
+    "id": 69,
+    "arabic": "مَأْمُونٌ",
+    "transliteration": "Ma’mūn",
+    "englishMeaning": "Trusted One",
+    "malayalamMeaning": "വിശ്വാസയോഗ്യൻ"
+  },
+  {
+    "id": 70,
+    "arabic": "كَرِيمٌ",
+    "transliteration": "Karīm",
+    "englishMeaning": "Noble One",
+    "malayalamMeaning": "മാന്യനും ഉദാരനുമായവൻ"
+  },
+  {
+    "id": 71,
+    "arabic": "مُكَرَّمٌ",
+    "transliteration": "Mukarram",
+    "englishMeaning": "Honoured One",
+    "malayalamMeaning": "ബഹുമാനിക്കപ്പെട്ടവൻ"
+  },
+  {
+    "id": 72,
+    "arabic": "مَكِينٌ",
+    "transliteration": "Makīn",
+    "englishMeaning": "Firmly Established",
+    "malayalamMeaning": "ദൃഢമായി സ്ഥാപിക്കപ്പെട്ടവൻ"
+  },
+  {
+    "id": 73,
+    "arabic": "مَتِينٌ",
+    "transliteration": "Matīn",
+    "englishMeaning": "Firm One",
+    "malayalamMeaning": "ദൃഢനായവൻ"
+  },
+  {
+    "id": 74,
+    "arabic": "مُبِينٌ",
+    "transliteration": "Mubīn",
+    "englishMeaning": "One Who Makes Clear",
+    "malayalamMeaning": "വ്യക്തമാക്കുന്നവൻ"
+  },
+  {
+    "id": 75,
+    "arabic": "مُؤَمِّلٌ",
+    "transliteration": "Mu’ammil",
+    "englishMeaning": "Hopeful One",
+    "malayalamMeaning": "പ്രതീക്ഷ നൽകുന്നവൻ"
+  },
+  {
+    "id": 76,
+    "arabic": "وَصُولٌ",
+    "transliteration": "Waṣūl",
+    "englishMeaning": "One Who Maintains Ties",
+    "malayalamMeaning": "ബന്ധങ്ങൾ നിലനിർത്തുന്നവൻ"
+  },
+  {
+    "id": 77,
+    "arabic": "ذُو قُوَّةٍ",
+    "transliteration": "Dhū Quwwah",
+    "englishMeaning": "Possessor of Might",
+    "malayalamMeaning": "ശക്തിയുടെ ഉടമ"
+  },
+  {
+    "id": 78,
+    "arabic": "ذُو حُرْمَةٍ",
+    "transliteration": "Dhū Ḥurmah",
+    "englishMeaning": "Possessor of Sanctity",
+    "malayalamMeaning": "പവിത്രതയുടെ ഉടമ"
+  },
+  {
+    "id": 79,
+    "arabic": "ذُو مَكَانَةٍ",
+    "transliteration": "Dhū Makānah",
+    "englishMeaning": "Possessor of a Mighty Station",
+    "malayalamMeaning": "മഹത്തായ സ്ഥാനത്തിന്റെ ഉടമ"
+  },
+  {
+    "id": 80,
+    "arabic": "ذُو عِزٍّ",
+    "transliteration": "Dhū ʿIzz",
+    "englishMeaning": "Possessor of Honour",
+    "malayalamMeaning": "മഹത്വത്തിന്റെ ഉടമ"
+  },
+  {
+    "id": 81,
+    "arabic": "ذُو فَضْلٍ",
+    "transliteration": "Dhū Faḍl",
+    "englishMeaning": "Possessor of Excellence",
+    "malayalamMeaning": "മികവിന്റെ ഉടമ"
+  },
+  {
+    "id": 82,
+    "arabic": "مُطَاعٌ",
+    "transliteration": "Muṭāʿ",
+    "englishMeaning": "Obeyed One",
+    "malayalamMeaning": "അനുസരിക്കപ്പെടുന്നവൻ"
+  },
+  {
+    "id": 83,
+    "arabic": "مُطِيعٌ",
+    "transliteration": "Muṭīʿ",
+    "englishMeaning": "Obedient One",
+    "malayalamMeaning": "അനുസരണയുള്ളവൻ"
+  },
+  {
+    "id": 84,
+    "arabic": "قَدَمُ صِدْقٍ",
+    "transliteration": "Qadamu Ṣidq",
+    "englishMeaning": "Honourable Precedence",
+    "malayalamMeaning": "മാന്യമായ മുൻഗണന"
+  },
+  {
+    "id": 85,
+    "arabic": "رَحْمَةٌ",
+    "transliteration": "Raḥmah",
+    "englishMeaning": "Mercy",
+    "malayalamMeaning": "കാരുണ്യം"
+  },
+  {
+    "id": 86,
+    "arabic": "بُشْرَى",
+    "transliteration": "Bushrā",
+    "englishMeaning": "Glad Tidings",
+    "malayalamMeaning": "സുവാർത്ത"
+  },
+  {
+    "id": 87,
+    "arabic": "غَوْثٌ",
+    "transliteration": "Ghawth",
+    "englishMeaning": "Aid",
+    "malayalamMeaning": "സഹായം"
+  },
+  {
+    "id": 88,
+    "arabic": "غَيْثٌ",
+    "transliteration": "Ghayth",
+    "englishMeaning": "Relief",
+    "malayalamMeaning": "ആശ്വാസം"
+  },
+  {
+    "id": 89,
+    "arabic": "غِيَاثٌ",
+    "transliteration": "Ghiyāth",
+    "englishMeaning": "Succour",
+    "malayalamMeaning": "സഹായവും രക്ഷയും"
+  },
+  {
+    "id": 90,
+    "arabic": "نِعْمَةُ اللَّهِ",
+    "transliteration": "Niʿmatu Llāh",
+    "englishMeaning": "Blessing of Allah",
+    "malayalamMeaning": "അല്ലാഹുവിന്റെ അനുഗ്രഹം"
+  },
+  {
+    "id": 91,
+    "arabic": "هَدِيَّةُ اللَّهِ",
+    "transliteration": "Hadiyyatu Llāh",
+    "englishMeaning": "Gift of Allah",
+    "malayalamMeaning": "അല്ലാഹുവിന്റെ സമ്മാനം"
+  },
+  {
+    "id": 92,
+    "arabic": "عُرْوَةٌ وُثْقَى",
+    "transliteration": "ʿUrwatun Wuthqā",
+    "englishMeaning": "Firmest Handhold",
+    "malayalamMeaning": "ഏറ്റവും ഉറച്ച പിടിവള്ളി"
+  },
+  {
+    "id": 93,
+    "arabic": "صِرَاطُ اللَّهِ",
+    "transliteration": "Ṣirāṭu Llāh",
+    "englishMeaning": "Path of Allah",
+    "malayalamMeaning": "അല്ലാഹുവിന്റെ മാർഗം"
+  },
+  {
+    "id": 94,
+    "arabic": "صِرَاطٌ مُسْتَقِيمٌ",
+    "transliteration": "Ṣirāṭun Mustaqīm",
+    "englishMeaning": "Straight Path",
+    "malayalamMeaning": "നേരായ പാത"
+  },
+  {
+    "id": 95,
+    "arabic": "ذِكْرُ اللَّهِ",
+    "transliteration": "Dhikru Llāh",
+    "englishMeaning": "Remembrance of Allah",
+    "malayalamMeaning": "അല്ലാഹുവിന്റെ സ്മരണം"
+  },
+  {
+    "id": 96,
+    "arabic": "سَيْفُ اللَّهِ",
+    "transliteration": "Sayfu Llāh",
+    "englishMeaning": "Sword of Allah",
+    "malayalamMeaning": "അല്ലാഹുവിന്റെ വാൾ"
+  },
+  {
+    "id": 97,
+    "arabic": "حِزْبُ اللَّهِ",
+    "transliteration": "Ḥizbu Llāh",
+    "englishMeaning": "Party of Allah",
+    "malayalamMeaning": "അല്ലാഹുവിന്റെ സംഘം"
+  },
+  {
+    "id": 98,
+    "arabic": "النَّجْمُ الثَّاقِبُ",
+    "transliteration": "An-Najmu th-Thāqib",
+    "englishMeaning": "Piercing Star",
+    "malayalamMeaning": "തുളച്ചുകയറുന്ന നക്ഷത്രം"
+  },
+  {
+    "id": 99,
+    "arabic": "مُصْطَفَى",
+    "transliteration": "Muṣṭafā",
+    "englishMeaning": "Chosen One",
+    "malayalamMeaning": "തിരഞ്ഞെടുക്കപ്പെട്ടവൻ"
+  },
+  {
+    "id": 100,
+    "arabic": "مُجْتَبَى",
+    "transliteration": "Mujtabā",
+    "englishMeaning": "Selected One",
+    "malayalamMeaning": "തിരഞ്ഞെടുക്കപ്പെട്ടവൻ"
+  },
+  {
+    "id": 101,
+    "arabic": "مُنْتَقَى",
+    "transliteration": "Muntaqā",
+    "englishMeaning": "Elect",
+    "malayalamMeaning": "തിരഞ്ഞെടുക്കപ്പെട്ടവൻ"
+  },
+  {
+    "id": 102,
+    "arabic": "أُمِّيٌّ",
+    "transliteration": "Ummiyy",
+    "englishMeaning": "Primordial",
+    "malayalamMeaning": "പ്രാഥമിക / ഉമ്മിയ്യ്"
+  },
+  {
+    "id": 103,
+    "arabic": "مُخْتَارٌ",
+    "transliteration": "Mukhtār",
+    "englishMeaning": "Preferred One",
+    "malayalamMeaning": "തിരഞ്ഞെടുത്തവൻ"
+  },
+  {
+    "id": 104,
+    "arabic": "أَجِيرٌ",
+    "transliteration": "Ajīr",
+    "englishMeaning": "Protector",
+    "malayalamMeaning": "സംരക്ഷകൻ"
+  },
+  {
+    "id": 105,
+    "arabic": "جَبَّارٌ",
+    "transliteration": "Jabbār",
+    "englishMeaning": "Rectifier",
+    "malayalamMeaning": "പരിഹരിക്കുന്നവൻ"
+  },
+  {
+    "id": 106,
+    "arabic": "أَبُو الْقَاسِمِ",
+    "transliteration": "Abū l-Qāsim",
+    "englishMeaning": "Father of al-Qasim",
+    "malayalamMeaning": "ഖാസിമിന്റെ പിതാവ്"
+  },
+  {
+    "id": 107,
+    "arabic": "أَبُو الطَّاهِرِ",
+    "transliteration": "Abū ṭ-Ṭāhir",
+    "englishMeaning": "Father of al-Tahir",
+    "malayalamMeaning": "ത്വാഹിറിന്റെ പിതാവ്"
+  },
+  {
+    "id": 108,
+    "arabic": "أَبُو الطَّيِّبِ",
+    "transliteration": "Abū ṭ-Ṭayyib",
+    "englishMeaning": "Father of al-Tayyib",
+    "malayalamMeaning": "ത്വയ്യിബിന്റെ പിതാവ്"
+  },
+  {
+    "id": 109,
+    "arabic": "أَبُو إِبْرَاهِيمَ",
+    "transliteration": "Abū Ibrāhīm",
+    "englishMeaning": "Father of Ibrahim",
+    "malayalamMeaning": "ഇബ്രാഹീമിന്റെ പിതാവ്"
+  },
+  {
+    "id": 110,
+    "arabic": "مُشَفَّعٌ",
+    "transliteration": "Mushaffaʿ",
+    "englishMeaning": "One Whose Intercession Is Accepted",
+    "malayalamMeaning": "ശഫാഅത്ത് സ്വീകരിക്കപ്പെടുന്നവൻ"
+  },
+  {
+    "id": 111,
+    "arabic": "شَفِيعٌ",
+    "transliteration": "Shafīʿ",
+    "englishMeaning": "Intercessor",
+    "malayalamMeaning": "ശുപാർശ ചെയ്യുന്നവൻ"
+  },
+  {
+    "id": 112,
+    "arabic": "صَالِحٌ",
+    "transliteration": "Ṣāliḥ",
+    "englishMeaning": "Righteous One",
+    "malayalamMeaning": "നീതിമാൻ"
+  },
+  {
+    "id": 113,
+    "arabic": "مُصْلِحٌ",
+    "transliteration": "Muṣliḥ",
+    "englishMeaning": "Reformer",
+    "malayalamMeaning": "പരിഷ്കർത്താവ്"
+  },
+  {
+    "id": 114,
+    "arabic": "مُهَيْمِنٌ",
+    "transliteration": "Muhaymin",
+    "englishMeaning": "Guardian",
+    "malayalamMeaning": "സംരക്ഷകൻ"
+  },
+  {
+    "id": 115,
+    "arabic": "صَادِقٌ",
+    "transliteration": "Ṣādiq",
+    "englishMeaning": "Truthful One",
+    "malayalamMeaning": "സത്യവാൻ"
+  },
+  {
+    "id": 116,
+    "arabic": "مُصَدَّقٌ",
+    "transliteration": "Muṣaddaq",
+    "englishMeaning": "One Whose Truthfulness Is Confirmed",
+    "malayalamMeaning": "സത്യസന്ധത സ്ഥിരീകരിക്കപ്പെട്ടവൻ"
+  },
+  {
+    "id": 117,
+    "arabic": "صِدْقٌ",
+    "transliteration": "Ṣidq",
+    "englishMeaning": "Truthfulness",
+    "malayalamMeaning": "സത്യസന്ധത"
+  },
+  {
+    "id": 118,
+    "arabic": "سَيِّدُ الْمُرْسَلِينَ",
+    "transliteration": "Sayyidu l-Mursalīn",
+    "englishMeaning": "Master of the Messengers",
+    "malayalamMeaning": "ദൂതന്മാരുടെ നേതാവ്"
+  },
+  {
+    "id": 119,
+    "arabic": "إِمَامُ الْمُتَّقِينَ",
+    "transliteration": "Imāmu l-Muttaqīn",
+    "englishMeaning": "Leader of the God-fearing",
+    "malayalamMeaning": "മുത്തഖികളുടെ നേതാവ്"
+  },
+  {
+    "id": 120,
+    "arabic": "قَائِدُ الْغُرِّ الْمُحَجَّلِينَ",
+    "transliteration": "Qā’idu l-Ghurri l-Muḥajjalīn",
+    "englishMeaning": "Leader of the Radiant, Brightly-marked Ones",
+    "malayalamMeaning": "പ്രകാശഭരിതരായവരുടെ നേതാവ്"
+  },
+  {
+    "id": 121,
+    "arabic": "خَلِيلُ الرَّحْمَنِ",
+    "transliteration": "Khalīlu r-Raḥmān",
+    "englishMeaning": "Intimate Friend of the Most Merciful",
+    "malayalamMeaning": "പരമകാരുണികന്റെ അടുത്ത സുഹൃത്ത്"
+  },
+  {
+    "id": 122,
+    "arabic": "بَرٌّ",
+    "transliteration": "Barr",
+    "englishMeaning": "Dutiful One",
+    "malayalamMeaning": "നന്മയുള്ളവൻ"
+  },
+  {
+    "id": 123,
+    "arabic": "مَبَرٌّ",
+    "transliteration": "Mabarr",
+    "englishMeaning": "Beneficent One",
+    "malayalamMeaning": "ഉപകാരി"
+  },
+  {
+    "id": 124,
+    "arabic": "وَجِيهٌ",
+    "transliteration": "Wajīh",
+    "englishMeaning": "Eminent One",
+    "malayalamMeaning": "പ്രമുഖൻ"
+  },
+  {
+    "id": 125,
+    "arabic": "نَصِيحٌ",
+    "transliteration": "Naṣīḥ",
+    "englishMeaning": "Sincere Well-Wisher",
+    "malayalamMeaning": "ആത്മാർത്ഥമായ ഗുണകാംക്ഷി"
+  },
+  {
+    "id": 126,
+    "arabic": "نَاصِحٌ",
+    "transliteration": "Nāṣiḥ",
+    "englishMeaning": "Sincere Advisor",
+    "malayalamMeaning": "ആത്മാർത്ഥ ഉപദേശകൻ"
+  },
+  {
+    "id": 127,
+    "arabic": "وَكِيلٌ",
+    "transliteration": "Wakīl",
+    "englishMeaning": "Trustee",
+    "malayalamMeaning": "കാര്യനിർവാഹകൻ"
+  },
+  {
+    "id": 128,
+    "arabic": "مُتَوَكِّلٌ",
+    "transliteration": "Mutawakkil",
+    "englishMeaning": "One Who Relies upon Allah",
+    "malayalamMeaning": "അല്ലാഹുവിൽ ഭരമേൽപ്പിക്കുന്നവൻ"
+  },
+  {
+    "id": 129,
+    "arabic": "كَفِيلٌ",
+    "transliteration": "Kafīl",
+    "englishMeaning": "Guarantor",
+    "malayalamMeaning": "ഉത്തരവാദി / ജാമ്യക്കാരൻ"
+  },
+  {
+    "id": 130,
+    "arabic": "شَفِيقٌ",
+    "transliteration": "Shafīq",
+    "englishMeaning": "Compassionate One",
+    "malayalamMeaning": "കരുണയുള്ളവൻ"
+  },
+  {
+    "id": 131,
+    "arabic": "مُقِيمُ السُّنَّةِ",
+    "transliteration": "Muqīmu s-Sunnah",
+    "englishMeaning": "Upholder of the Sunnah",
+    "malayalamMeaning": "സുന്നത്ത് നിലനിർത്തുന്നവൻ"
+  },
+  {
+    "id": 132,
+    "arabic": "مُقَدَّسٌ",
+    "transliteration": "Muqaddas",
+    "englishMeaning": "Sanctified One",
+    "malayalamMeaning": "വിശുദ്ധീകരിക്കപ്പെട്ടവൻ"
+  },
+  {
+    "id": 133,
+    "arabic": "رُوحُ الْقُدُسِ",
+    "transliteration": "Rūḥu l-Qudus",
+    "englishMeaning": "Spirit of Holiness",
+    "malayalamMeaning": "വിശുദ്ധിയുടെ ആത്മാവ്"
+  },
+  {
+    "id": 134,
+    "arabic": "رُوحُ الْحَقِّ",
+    "transliteration": "Rūḥu l-Ḥaqq",
+    "englishMeaning": "Spirit of Truth",
+    "malayalamMeaning": "സത്യത്തിന്റെ ആത്മാവ്"
+  },
+  {
+    "id": 135,
+    "arabic": "رُوحُ الْقِسْطِ",
+    "transliteration": "Rūḥu l-Qisṭ",
+    "englishMeaning": "Spirit of Justice",
+    "malayalamMeaning": "നീതിയുടെ ആത്മാവ്"
+  },
+  {
+    "id": 136,
+    "arabic": "كَافٍ",
+    "transliteration": "Kāfī",
+    "englishMeaning": "One Who Suffices",
+    "malayalamMeaning": "പര്യാപ്തനായവൻ"
+  },
+  {
+    "id": 137,
+    "arabic": "مُكْتَفٍ",
+    "transliteration": "Muktafī",
+    "englishMeaning": "Contented One",
+    "malayalamMeaning": "തൃപ്തനായവൻ"
+  },
+  {
+    "id": 138,
+    "arabic": "بَالِغٌ",
+    "transliteration": "Bāligh",
+    "englishMeaning": "One Who Attains",
+    "malayalamMeaning": "എത്തിച്ചേരുന്നവൻ"
+  },
+  {
+    "id": 139,
+    "arabic": "مُبَلِّغٌ",
+    "transliteration": "Muballigh",
+    "englishMeaning": "Conveyor",
+    "malayalamMeaning": "സന്ദേശം എത്തിക്കുന്നവൻ"
+  },
+  {
+    "id": 140,
+    "arabic": "شَافٍ",
+    "transliteration": "Shāfī",
+    "englishMeaning": "Healer",
+    "malayalamMeaning": "രോഗശാന്തി നൽകുന്നവൻ"
+  },
+  {
+    "id": 141,
+    "arabic": "وَاصِلٌ",
+    "transliteration": "Wāṣil",
+    "englishMeaning": "One Who Reaches",
+    "malayalamMeaning": "എത്തിച്ചേരുന്നവൻ"
+  },
+  {
+    "id": 142,
+    "arabic": "مَوْصُولٌ",
+    "transliteration": "Mawṣūl",
+    "englishMeaning": "Connected One",
+    "malayalamMeaning": "ബന്ധപ്പെട്ടവൻ"
+  },
+  {
+    "id": 143,
+    "arabic": "سَابِقٌ",
+    "transliteration": "Sābiq",
+    "englishMeaning": "Forerunner",
+    "malayalamMeaning": "മുൻഗാമി"
+  },
+  {
+    "id": 144,
+    "arabic": "سَائِقٌ",
+    "transliteration": "Sā’iq",
+    "englishMeaning": "One Who Leads Forward",
+    "malayalamMeaning": "മുന്നോട്ട് നയിക്കുന്നവൻ"
+  },
+  {
+    "id": 145,
+    "arabic": "هَادٍ",
+    "transliteration": "Hādī",
+    "englishMeaning": "Guide",
+    "malayalamMeaning": "മാർഗദർശകൻ"
+  },
+  {
+    "id": 146,
+    "arabic": "مُهْدٍ",
+    "transliteration": "Muhdī",
+    "englishMeaning": "One Who Guides",
+    "malayalamMeaning": "മാർഗം കാണിക്കുന്നവൻ"
+  },
+  {
+    "id": 147,
+    "arabic": "مُقَدَّمٌ",
+    "transliteration": "Muqaddam",
+    "englishMeaning": "Foremost One",
+    "malayalamMeaning": "മുൻനിരയിലുള്ളവൻ"
+  },
+  {
+    "id": 148,
+    "arabic": "عَزِيزٌ",
+    "transliteration": "ʿAzīz",
+    "englishMeaning": "Mighty One",
+    "malayalamMeaning": "പ്രതാപശാലി"
+  },
+  {
+    "id": 149,
+    "arabic": "فَاضِلٌ",
+    "transliteration": "Fāḍil",
+    "englishMeaning": "Outstanding One",
+    "malayalamMeaning": "മികവുറ്റവൻ"
+  },
+  {
+    "id": 150,
+    "arabic": "مُفَضَّلٌ",
+    "transliteration": "Mufaḍḍal",
+    "englishMeaning": "Favoured One",
+    "malayalamMeaning": "പ്രിയപ്പെട്ടവൻ / ശ്രേഷ്ഠനാക്കിയവൻ"
+  },
+  {
+    "id": 151,
+    "arabic": "فَاتِحٌ",
+    "transliteration": "Fātiḥ",
+    "englishMeaning": "Opener",
+    "malayalamMeaning": "തുറക്കുന്നവൻ"
+  },
+  {
+    "id": 152,
+    "arabic": "مِفْتَاحٌ",
+    "transliteration": "Miftāḥ",
+    "englishMeaning": "Key",
+    "malayalamMeaning": "താക്കോൽ"
+  },
+  {
+    "id": 153,
+    "arabic": "مِفْتَاحُ الرَّحْمَةِ",
+    "transliteration": "Miftāḥu r-Raḥmah",
+    "englishMeaning": "Key to Mercy",
+    "malayalamMeaning": "കാരുണ്യത്തിലേക്കുള്ള താക്കോൽ"
+  },
+  {
+    "id": 154,
+    "arabic": "مِفْتَاحُ الْجَنَّةِ",
+    "transliteration": "Miftāḥu l-Jannah",
+    "englishMeaning": "Key to Paradise",
+    "malayalamMeaning": "സ്വർഗത്തിലേക്കുള്ള താക്കോൽ"
+  },
+  {
+    "id": 155,
+    "arabic": "عَلَمُ الْإِيمَانِ",
+    "transliteration": "ʿAlamu l-Īmān",
+    "englishMeaning": "Sign of Faith",
+    "malayalamMeaning": "വിശ്വാസത്തിന്റെ അടയാളം"
+  },
+  {
+    "id": 156,
+    "arabic": "عَلَمُ الْيَقِينِ",
+    "transliteration": "ʿAlamu l-Yaqīn",
+    "englishMeaning": "Sign of Certainty",
+    "malayalamMeaning": "ദൃഢവിശ്വാസത്തിന്റെ അടയാളം"
+  },
+  {
+    "id": 157,
+    "arabic": "دَلِيلُ الْخَيْرَاتِ",
+    "transliteration": "Dalīlu l-Khayrāt",
+    "englishMeaning": "Guide to Goodness",
+    "malayalamMeaning": "നന്മകളിലേക്കുള്ള മാർഗദർശകൻ"
+  },
+  {
+    "id": 158,
+    "arabic": "مُصَحِّحُ الْحَسَنَاتِ",
+    "transliteration": "Muṣaḥḥiḥu l-Ḥasanāt",
+    "englishMeaning": "Perfecter of Good Deeds",
+    "malayalamMeaning": "സൽകർമ്മങ്ങളെ പൂർണമാക്കുന്നവൻ"
+  },
+  {
+    "id": 159,
+    "arabic": "مُقِيلُ الْعَثَرَاتِ",
+    "transliteration": "Muqīlu l-ʿAtharāt",
+    "englishMeaning": "Pardoner of Errors",
+    "malayalamMeaning": "തെറ്റുകൾ പൊറുക്കുന്നവൻ"
+  },
+  {
+    "id": 160,
+    "arabic": "صَفُوحٌ عَنِ الزَّلَّاتِ",
+    "transliteration": "Ṣafūḥun ʿani z-Zallāt",
+    "englishMeaning": "One Who Pardons Lapses",
+    "malayalamMeaning": "വീഴ്ചകൾ പൊറുക്കുന്നവൻ"
+  },
+  {
+    "id": 161,
+    "arabic": "صَاحِبُ الشَّفَاعَةِ",
+    "transliteration": "Ṣāḥibu sh-Shafāʿah",
+    "englishMeaning": "Possessor of Intercession",
+    "malayalamMeaning": "ശഫാഅത്തിന്റെ ഉടമ"
+  },
+  {
+    "id": 162,
+    "arabic": "صَاحِبُ الْمَقَامِ",
+    "transliteration": "Ṣāḥibu l-Maqām",
+    "englishMeaning": "Possessor of the Lofty Station",
+    "malayalamMeaning": "ഉന്നത സ്ഥാനത്തിന്റെ ഉടമ"
+  },
+  {
+    "id": 163,
+    "arabic": "صَاحِبُ الْقَدَمِ",
+    "transliteration": "Ṣāḥibu l-Qadam",
+    "englishMeaning": "Possessor of Precedence",
+    "malayalamMeaning": "മുൻഗണനയുടെ ഉടമ"
+  },
+  {
+    "id": 164,
+    "arabic": "مَخْصُوصٌ بِالْعِزِّ",
+    "transliteration": "Makhṣūṣun bi-l-ʿIzz",
+    "englishMeaning": "One Singled out for Honour",
+    "malayalamMeaning": "പ്രത്യേക ബഹുമതി ലഭിച്ചവൻ"
+  },
+  {
+    "id": 165,
+    "arabic": "مَخْصُوصٌ بِالْمَجْدِ",
+    "transliteration": "Makhṣūṣun bi-l-Majd",
+    "englishMeaning": "One Distinguished by Splendour",
+    "malayalamMeaning": "മഹത്വത്താൽ വിശിഷ്ടനായവൻ"
+  },
+  {
+    "id": 166,
+    "arabic": "مَخْصُوصٌ بِالشَّرَفِ",
+    "transliteration": "Makhṣūṣun bi-sh-Sharaf",
+    "englishMeaning": "One Distinguished by Nobility",
+    "malayalamMeaning": "മാന്യതയാൽ വിശിഷ്ടനായവൻ"
+  },
+  {
+    "id": 167,
+    "arabic": "صَاحِبُ الْوَسِيلَةِ",
+    "transliteration": "Ṣāḥibu l-Wasīlah",
+    "englishMeaning": "Possessor of the Wasilah",
+    "malayalamMeaning": "വസീലയുടെ ഉടമ"
+  },
+  {
+    "id": 168,
+    "arabic": "صَاحِبُ السَّيْفِ",
+    "transliteration": "Ṣāḥibu s-Sayf",
+    "englishMeaning": "Possessor of the Sword",
+    "malayalamMeaning": "വാളിന്റെ ഉടമ"
+  },
+  {
+    "id": 169,
+    "arabic": "صَاحِبُ الْفَضِيلَةِ",
+    "transliteration": "Ṣāḥibu l-Faḍīlah",
+    "englishMeaning": "Possessor of Virtue",
+    "malayalamMeaning": "മഹത്വത്തിന്റെ ഉടമ"
+  },
+  {
+    "id": 170,
+    "arabic": "صَاحِبُ الْإِزَارِ",
+    "transliteration": "Ṣāḥibu l-Izār",
+    "englishMeaning": "Wearer of the Waist-Wrap",
+    "malayalamMeaning": "ഇസാർ ധരിക്കുന്നവൻ"
+  },
+  {
+    "id": 171,
+    "arabic": "صَاحِبُ الْحُجَّةِ",
+    "transliteration": "Ṣāḥibu l-Ḥujjah",
+    "englishMeaning": "Possessor of the Proof",
+    "malayalamMeaning": "തെളിവിന്റെ ഉടമ"
+  },
+  {
+    "id": 172,
+    "arabic": "صَاحِبُ السُّلْطَانِ",
+    "transliteration": "Ṣāḥibu s-Sulṭān",
+    "englishMeaning": "Possessor of Authority",
+    "malayalamMeaning": "അധികാരത്തിന്റെ ഉടമ"
+  },
+  {
+    "id": 173,
+    "arabic": "صَاحِبُ الرِّدَاءِ",
+    "transliteration": "Ṣāḥibu r-Ridā’",
+    "englishMeaning": "Wearer of the Mantle",
+    "malayalamMeaning": "മേലങ്കി ധരിക്കുന്നവൻ"
+  },
+  {
+    "id": 174,
+    "arabic": "صَاحِبُ الدَّرَجَةِ الرَّفِيعَةِ",
+    "transliteration": "Ṣāḥibu d-Darajati r-Rafīʿah",
+    "englishMeaning": "Possessor of the Exalted Rank",
+    "malayalamMeaning": "ഉന്നത പദവിയുടെ ഉടമ"
+  },
+  {
+    "id": 175,
+    "arabic": "صَاحِبُ التَّاجِ",
+    "transliteration": "Ṣāḥibu t-Tāj",
+    "englishMeaning": "Wearer of the Crown",
+    "malayalamMeaning": "കിരീടം ധരിക്കുന്നവൻ"
+  },
+  {
+    "id": 176,
+    "arabic": "صَاحِبُ الْمِغْفَرِ",
+    "transliteration": "Ṣāḥibu l-Mighfar",
+    "englishMeaning": "Wearer of the Helmet",
+    "malayalamMeaning": "ശിരസ്ത്രാണം ധരിക്കുന്നവൻ"
+  },
+  {
+    "id": 177,
+    "arabic": "صَاحِبُ اللِّوَاءِ",
+    "transliteration": "Ṣāḥibu l-Liwā’",
+    "englishMeaning": "Possessor of the Banner",
+    "malayalamMeaning": "പതാകയുടെ ഉടമ"
+  },
+  {
+    "id": 178,
+    "arabic": "صَاحِبُ الْمِعْرَاجِ",
+    "transliteration": "Ṣāḥibu l-Miʿrāj",
+    "englishMeaning": "Possessor of the Ascension",
+    "malayalamMeaning": "മിഅ്റാജിന്റെ ഉടമ"
+  },
+  {
+    "id": 179,
+    "arabic": "صَاحِبُ الْقَضِيبِ",
+    "transliteration": "Ṣāḥibu l-Qaḍīb",
+    "englishMeaning": "Possessor of the Staff",
+    "malayalamMeaning": "വടിയുടെ ഉടമ"
+  },
+  {
+    "id": 180,
+    "arabic": "صَاحِبُ الْبُرَاقِ",
+    "transliteration": "Ṣāḥibu l-Burāq",
+    "englishMeaning": "Rider of the Buraq",
+    "malayalamMeaning": "ബുറാഖിന്റെ സവാരി ചെയ്തവൻ"
+  },
+  {
+    "id": 181,
+    "arabic": "صَاحِبُ الْخَاتَمِ",
+    "transliteration": "Ṣāḥibu l-Khātam",
+    "englishMeaning": "Possessor of the Seal of Prophethood",
+    "malayalamMeaning": "പ്രവാചകത്വത്തിന്റെ മുദ്രയുടെ ഉടമ"
+  },
+  {
+    "id": 182,
+    "arabic": "صَاحِبُ الْعَلَامَةِ",
+    "transliteration": "Ṣāḥibu l-ʿAlāmah",
+    "englishMeaning": "Possessor of the Mark",
+    "malayalamMeaning": "അടയാളത്തിന്റെ ഉടമ"
+  },
+  {
+    "id": 183,
+    "arabic": "صَاحِبُ الْبُرْهَانِ",
+    "transliteration": "Ṣāḥibu l-Burhān",
+    "englishMeaning": "Possessor of the Decisive Proof",
+    "malayalamMeaning": "വ്യക്തമായ തെളിവിന്റെ ഉടമ"
+  },
+  {
+    "id": 184,
+    "arabic": "صَاحِبُ الْبَيَانِ",
+    "transliteration": "Ṣāḥibu l-Bayān",
+    "englishMeaning": "Possessor of Elucidation",
+    "malayalamMeaning": "വ്യക്തീകരണത്തിന്റെ ഉടമ"
+  },
+  {
+    "id": 185,
+    "arabic": "فَصِيحُ اللِّسَانِ",
+    "transliteration": "Faṣīḥu l-Lisān",
+    "englishMeaning": "Eloquent of Tongue",
+    "malayalamMeaning": "വാക്ചാതുര്യമുള്ളവൻ"
+  },
+  {
+    "id": 186,
+    "arabic": "مُطَهَّرُ الْجَنَانِ",
+    "transliteration": "Muṭahharu l-Janān",
+    "englishMeaning": "Pure of Heart",
+    "malayalamMeaning": "ശുദ്ധഹൃദയൻ"
+  },
+  {
+    "id": 187,
+    "arabic": "رَؤُوفٌ",
+    "transliteration": "Ra’ūf",
+    "englishMeaning": "Compassionate",
+    "malayalamMeaning": "അത്യന്തം കരുണയുള്ളവൻ"
+  },
+  {
+    "id": 188,
+    "arabic": "رَحِيمٌ",
+    "transliteration": "Raḥīm",
+    "englishMeaning": "Merciful",
+    "malayalamMeaning": "കാരുണ്യമുള്ളവൻ"
+  },
+  {
+    "id": 189,
+    "arabic": "أُذُنُ خَيْرٍ",
+    "transliteration": "Udhunu Khayr",
+    "englishMeaning": "One Who Listens to Good",
+    "malayalamMeaning": "നന്മ കേൾക്കുന്നവൻ"
+  },
+  {
+    "id": 190,
+    "arabic": "صَحِيحُ الْإِسْلَامِ",
+    "transliteration": "Ṣaḥīḥu l-Islām",
+    "englishMeaning": "Sound in Islam",
+    "malayalamMeaning": "ഇസ്‌ലാമിൽ സമ്പൂർണ്ണനായവൻ"
+  },
+  {
+    "id": 191,
+    "arabic": "سَيِّدُ الْكَوْنَيْنِ",
+    "transliteration": "Sayyidu l-Kawnayn",
+    "englishMeaning": "Master of Both Worlds",
+    "malayalamMeaning": "ഇരു ലോകങ്ങളുടെയും നേതാവ്"
+  },
+  {
+    "id": 192,
+    "arabic": "عَيْنُ النَّعِيمِ",
+    "transliteration": "ʿAynu n-Naʿīm",
+    "englishMeaning": "Source of Bliss",
+    "malayalamMeaning": "ആനന്ദത്തിന്റെ ഉറവിടം"
+  },
+  {
+    "id": 193,
+    "arabic": "عَيْنُ الْغُرِّ",
+    "transliteration": "ʿAynu l-Ghurr",
+    "englishMeaning": "Foremost of the Radiant Ones",
+    "malayalamMeaning": "പ്രകാശമുള്ളവരിൽ മുൻപന്തിയിലുള്ളവൻ"
+  },
+  {
+    "id": 194,
+    "arabic": "سَعْدُ اللَّهِ",
+    "transliteration": "Saʿdu Llāh",
+    "englishMeaning": "Felicity from Allah",
+    "malayalamMeaning": "അല്ലാഹുവിൽ നിന്നുള്ള സൗഭാഗ്യം"
+  },
+  {
+    "id": 195,
+    "arabic": "سَعْدُ الْخَلْقِ",
+    "transliteration": "Saʿdu l-Khalq",
+    "englishMeaning": "Felicity of Creation",
+    "malayalamMeaning": "സൃഷ്ടികളുടെ സൗഭാഗ്യം"
+  },
+  {
+    "id": 196,
+    "arabic": "خَطِيبُ الْأُمَمِ",
+    "transliteration": "Khaṭību l-Umam",
+    "englishMeaning": "Orator of the Nations",
+    "malayalamMeaning": "സമൂഹങ്ങളുടെ പ്രസംഗകൻ"
+  },
+  {
+    "id": 197,
+    "arabic": "عَلَمُ الْهُدَى",
+    "transliteration": "ʿAlamu l-Hudā",
+    "englishMeaning": "Banner of Guidance",
+    "malayalamMeaning": "മാർഗദർശനത്തിന്റെ പതാക"
+  },
+  {
+    "id": 198,
+    "arabic": "كَاشِفُ الْكُرَبِ",
+    "transliteration": "Kāshifu l-Kurab",
+    "englishMeaning": "Reliever of Distresses",
+    "malayalamMeaning": "ദുരിതങ്ങൾ നീക്കുന്നവൻ"
+  },
+  {
+    "id": 199,
+    "arabic": "رَافِعُ الرُّتَبِ",
+    "transliteration": "Rāfiʿu r-Rutab",
+    "englishMeaning": "Raiser of Ranks",
+    "malayalamMeaning": "പദവികൾ ഉയർത്തുന്നവൻ"
+  },
+  {
+    "id": 200,
+    "arabic": "عِزُّ الْعَرَبِ",
+    "transliteration": "ʿIzzu l-ʿArab",
+    "englishMeaning": "Glory of the Arabs",
+    "malayalamMeaning": "അറബികളുടെ മഹത്വം"
+  },
+  {
+    "id": 201,
+    "arabic": "صَاحِبُ الْفَرَجِ",
+    "transliteration": "Ṣāḥibu l-Faraj",
+    "englishMeaning": "Bringer of Relief",
+    "malayalamMeaning": "ആശ്വാസം കൊണ്ടുവരുന്നവൻ"
+  }
+
+]

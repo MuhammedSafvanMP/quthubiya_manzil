@@ -613,7 +613,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: "#F0F0F0",
+    backgroundColor: "black",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -621,7 +621,7 @@ const styles = StyleSheet.create({
   numberText: {
     fontSize: 14,
     fontWeight: "600",
-    color: "#111827",
+    color: "#ffff",
   },
 
   arabicName: {
