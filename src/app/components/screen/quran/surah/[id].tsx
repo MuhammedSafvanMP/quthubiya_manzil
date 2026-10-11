@@ -710,28 +710,28 @@ export default function SurahDetails() {
           </Pressable>
 
           {/* Top Lines */}
-          <View style={styles.topLineContainer}>
+          {/* <View style={styles.topLineContainer}>
             <View style={styles.topSmallLine} />
             <View style={styles.topMainLine} />
             <View style={styles.topSmallLine} />
-          </View>
+          </View> */}
 
           {/* Title */}
           <View style={styles.titleContainer}>
 
             {/* Left Decoration */}
-            <View style={styles.decoration}>
+            {/* <View style={styles.decoration}>
               <View style={styles.decorationCircle} />
               <View style={styles.decorationLine} />
               <View style={styles.decorationDot} />
-            </View>
+            </View> */}
 
             <Text style={styles.surahName}>
               {surah.name}
             </Text>
 
             {/* Right Decoration */}
-            <View
+            {/* <View
               style={[
                 styles.decoration,
                 styles.rightDecoration,
@@ -740,7 +740,7 @@ export default function SurahDetails() {
               <View style={styles.decorationCircle} />
               <View style={styles.decorationLine} />
               <View style={styles.decorationDot} />
-            </View>
+            </View> */}
 
           </View>
 

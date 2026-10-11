@@ -26,7 +26,7 @@ export interface SurahDetail {
   name: string;
   englishName: string;
   englishNameTranslation: string;
-  numberOfAyahs: number;
+  numberOfAyahs?: number;
   revelationType: string;
   ayahs: Ayah[];
 }
