@@ -1,3 +1,4 @@
+
 import { NativeTabs } from "expo-router/unstable-native-tabs";
 
 export default function TabLayout() {
@@ -12,43 +13,29 @@ export default function TabLayout() {
       indicatorColor="transparent"
       rippleColor="transparent"
     >
+      {/* Home */}
       <NativeTabs.Trigger name="index">
         <NativeTabs.Trigger.Label hidden />
-        <NativeTabs.Trigger.Icon
-          src={require("../../../assets/images/icons/house.png")}
-        />
+        <NativeTabs.Trigger.Icon sf="house" md="home" />
       </NativeTabs.Trigger>
 
+      {/* Audio */}
       <NativeTabs.Trigger name="audio">
         <NativeTabs.Trigger.Label hidden />
-        <NativeTabs.Trigger.Icon
-          src={require("../../../assets/images/icons/headphones.png")}    
-        />
+        <NativeTabs.Trigger.Icon sf="headphones" md="headphones" />
       </NativeTabs.Trigger>
 
-      {/* <NativeTabs.Trigger name="favorite">
-        <NativeTabs.Trigger.Label hidden />
-
-        <NativeTabs.Trigger.Icon
-          src={require("../../../assets/images/icons/bookmark.png")}
-        />
-      </NativeTabs.Trigger> */}
-
+      {/* Settings */}
       <NativeTabs.Trigger name="settings">
         <NativeTabs.Trigger.Label hidden />
-        <NativeTabs.Trigger.Icon
-          src={require("../../../assets/images/icons/settings.png")}
-        />
+        <NativeTabs.Trigger.Icon sf="gearshape" md="settings" />
       </NativeTabs.Trigger>
 
-     
-        <NativeTabs.Trigger name="search" role="search">
-          <NativeTabs.Trigger.Label hidden />
-          <NativeTabs.Trigger.Icon
-            src={require("../../../assets/images/icons/search.png")}
-          />
-        </NativeTabs.Trigger>
-   
+      {/* Search */}
+      <NativeTabs.Trigger name="search" role="search">
+        <NativeTabs.Trigger.Label hidden />
+        <NativeTabs.Trigger.Icon sf="magnifyingglass" md="search" />
+      </NativeTabs.Trigger>
     </NativeTabs>
   );
 }
