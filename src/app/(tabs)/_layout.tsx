@@ -22,7 +22,7 @@ export default function TabLayout() {
       <NativeTabs.Trigger name="audio">
         <NativeTabs.Trigger.Label hidden />
         <NativeTabs.Trigger.Icon
-          src={require("../../../assets/images/icons/headphones.png")}
+          src={require("../../../assets/images/icons/headphones.png")}    
         />
       </NativeTabs.Trigger>
 

@@ -35,6 +35,9 @@ export const MenuButton = ({ icon, label }: MenuButtonProps) => {
     if(label === "Swalath"){
       router.push("/components/screen/counter/counter")
     }
+    if(label === "Prayer Time") {
+      router.push("/components/screen/prayer/prayer");
+    }
   };
 
   return (

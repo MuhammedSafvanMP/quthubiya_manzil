@@ -1,177 +1,429 @@
-import React from 'react';
-import { 
-  View, 
-  Text, 
-  ScrollView, 
+// import React from 'react';
+// import {
+//   View,
+//   Text,
+//   ScrollView,
 
-  StatusBar, 
-  StyleSheet, 
+//   StatusBar,
+//   StyleSheet,
+//   Dimensions,
+//   Pressable
+// } from 'react-native';
+// import { MenuButton } from '../components/common/menuButton';
+// import { ReminderCard } from '../components/common/remainderCard';
+// import { ChevronRight } from 'lucide-react-native';
+// import { router } from 'expo-router';
+// import { SafeAreaView } from 'react-native-safe-area-context';
+// import quran from "../constants/quran.json"
+
+// export default function Index() {
+
+//   const SCREEN_WIDTH = Dimensions.get("window").width;
+// const CARD_WIDTH = (SCREEN_WIDTH - 32 - 12) / 2;
+
+//  const daysANDnumber = [
+//    {
+//      id: 1,
+//      'day': "monday",
+//      surah: [36, 67, 56]
+
+//    },
+//       {
+//      id: 2,
+//      'day': "tusday",
+//      surah: [36, 67, 56]
+
+//    },
+//       {
+//      id: 1,
+//      'day': "wendsday",
+//      surah: [36, 67, 56]
+
+//    },
+//       {
+//      id: 1,
+//      'day': "thursday",
+//      surah: [36, 67, 56]
+
+//    },
+//       {
+//      id: 1,
+//      'day': "friday",
+//      surah: [18,55, 36, 67, 56]
+
+//    },
+//       {
+//      id: 1,
+//      'day': "sunday",
+//      surah: [36, 67, 56]
+
+//    },
+//  ];
+
+//    for(let i  = 0; i < quran.data.surahs; i ++ ){
+
+//    }
+
+//    const reaminderDaySurah = quran.data.surahs.filter((v: any) => v.number)
+
+//   return (
+//     <SafeAreaView style={styles.container}>
+//       <StatusBar barStyle="dark-content" />
+//       <ScrollView
+//         showsVerticalScrollIndicator={false}
+//         contentContainerStyle={styles.scrollContent}
+//       >
+//         {/* Header */}
+//         <View style={styles.header}>
+//           <Text style={styles.greeting}>Assalamu Alaikum ✨</Text>
+//           <Text style={styles.appTitle}>Quthubiya Manzil</Text>
+//         </View>
+
+//         {/* Main Player */}
+//         {/* <AudioPlayerCard /> */}
+
+//         {/* Friday Reminder Section */}
+//         <Text style={styles.sectionTitle}>Friday Reminder</Text>
+
+//    <ScrollView
+//   horizontal
+//   showsHorizontalScrollIndicator={false}
+//   contentContainerStyle={styles.remindersRow}
+//   snapToInterval={CARD_WIDTH + 12}
+//   decelerationRate="fast"
+// >
+//   <ReminderCard
+//     width={CARD_WIDTH}
+//     title="Surah Yaseen"
+//     surahNum="36"
+//     arabicText="يس"
+//     reciter="Mishary"
+//     verses="83"
+//     colors={["#4b5563", "#1f2937"]}
+//   />
+
+//   <ReminderCard
+//     width={CARD_WIDTH}
+//     title="Surah Ar-Rahman"
+//     surahNum="55"
+//     arabicText="الرحمن"
+//     reciter="Sudais"
+//     verses="78"
+//     colors={["#4c3b18", "#1a1a1a"]}
+//   />
+
+//   <ReminderCard
+//     width={CARD_WIDTH}
+//     title="Surah Al-Mulk"
+//     surahNum="67"
+//     arabicText="الملك"
+//     reciter="Mishary"
+//     verses="30"
+//     colors={["#374151", "#111827"]}
+//   />
+
+//   <ReminderCard
+//     width={CARD_WIDTH}
+//     title="Surah Al-Kahf"
+//     surahNum="18"
+//     arabicText="الكهف"
+//     reciter="Sudais"
+//     verses="110"
+//     colors={["#3f3f46", "#18181b"]}
+//   />
+// </ScrollView>
+
+// <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, marginTop: 8 }}>
+
+//   <View>
+//   <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Categories</Text>
+
+// </View>
+
+// <Pressable style={{ flexDirection: 'row', alignItems: 'center' }}
+// onPress={() => {
+//    router.push('/(tabs)/search');
+// }}
+// >
+//   <Text>See More</Text>
+//   <ChevronRight width={20} />
+// </Pressable>
+
+// </View>
+
+//         {/* Grid Menu */}
+//         <View style={styles.gridContainer}>
+//           <MenuButton   icon={require("../../../assets/images/icons/allah.png")} label="Asmaul Husna" />
+//           <MenuButton icon={require("../../../assets/images/icons/nabi.png")} label="Asmaul Nabi" />
+//           <MenuButton icon={require("../../../assets/images/icons/quran.png")} label="Quran" />
+//           <MenuButton icon={require("../../../assets/images/icons/azkar.png")} label="Azkar" />
+
+//           <MenuButton icon={require("../../../assets/images/icons/masjid.png")} label="Mould" />
+//           <MenuButton icon={require("../../../assets/images/icons/swalath.png")} label="Swalath" />
+//           <MenuButton icon={require("../../../assets/images/icons/shahdath.png")} label="Shahada" />
+//           <MenuButton icon={require("../../../assets/images/icons/dikar.png")}label="Dikr" />
+//         </View>
+
+//       </ScrollView>
+
+//     </SafeAreaView>
+//   );
+// }
+
+// // --- Stylesheet ---
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#FAFAFA',
+//   },
+//   scrollContent: {
+//     padding: 20,
+//     marginTop: 20,
+//   },
+
+//   // Header
+//   header: {
+//     marginBottom: 16,
+//   },
+//   greeting: {
+//     color: '#6B7280',
+//     fontSize: 14,
+//     fontWeight: '500',
+//   },
+//   appTitle: {
+//     color: '#000000',
+//     fontSize: 30,
+//     fontWeight: 'bold',
+//   },
+//   sectionTitle: {
+//     color: '#000000',
+//     fontSize: 20,
+//     fontWeight: 'bold',
+//     marginBottom: 16,
+//   },
+//     remindersRow: {
+//     flexDirection: 'row',
+//     justifyContent: 'space-between',
+//     marginBottom: 32,
+//     gap: 12,
+//   },
+//     gridContainer: {
+//     flexDirection: 'row',
+//     flexWrap: 'wrap',
+//     justifyContent: 'space-between',
+//   },
+
+// });
+
+import { router } from "expo-router";
+import { ChevronRight } from "lucide-react-native";
+import {
   Dimensions,
-  Pressable
-} from 'react-native';
-import { MenuButton } from '../components/common/menuButton';
-import { ReminderCard } from '../components/common/remainderCard';
-import { ChevronRight } from 'lucide-react-native';
-import { router } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
+  Pressable,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
+import { MenuButton } from "../components/common/menuButton";
+import { ReminderCard } from "../components/common/remainderCard";
+import { menu, menuIcons } from "../constants/menu";
+import quran from "../constants/quran.json";
+
+const SCREEN_WIDTH = Dimensions.get("window").width;
+const CARD_WIDTH = (SCREEN_WIDTH - 32 - 12) / 2;
+
+const daysANDnumber = [
+  {
+    id: 1,
+    day: "monday",
+    surah: [36, 67, 56],
+  },
+  {
+    id: 2,
+    day: "tuesday",
+    surah: [36, 67, 56],
+  },
+  {
+    id: 3,
+    day: "wednesday",
+    surah: [36, 67, 56],
+  },
+  {
+    id: 4,
+    day: "thursday",
+    surah: [36, 67, 56],
+  },
+  {
+    id: 5,
+    day: "friday",
+    surah: [18, 55, 36, 67, 56],
+  },
+  {
+    id: 6,
+    day: "sunday",
+    surah: [36, 67, 56],
+  },
+];
+
+const surahColors: Record<string, [string, string]> = {
+  "36": ["#4b5563", "#1f2937"],
+  "55": ["#4c3b18", "#1a1a1a"],
+  "67": ["#374151", "#111827"],
+  "18": ["#3f3f46", "#18181b"],
+};
 
 export default function Index() {
+  // Get all Surahs from the local Quran JSON.
+  const allSurahs = quran.data.surahs;
 
-  const SCREEN_WIDTH = Dimensions.get("window").width;
-const CARD_WIDTH = (SCREEN_WIDTH - 32 - 12) / 2;
+  // Compare the configured Surah numbers with Quran JSON data.
+  // This preserves the order configured for each day.
+  const getDaySurahs = (surahNumbers: number[]) => {
+    return surahNumbers
+      .map((number) => allSurahs.find((surah: any) => surah.number === number))
+      .filter(Boolean);
+  };
+
+  const today = new Date()
+    .toLocaleDateString("en-US", { weekday: "long" })
+    .toLowerCase();
+
+  const todayData = daysANDnumber.find((item) => item.day === today);
+
+  const todaySurahs = getDaySurahs(todayData?.surah ?? []);
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
-      <ScrollView 
+
+      <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.greeting}>Assalamu Alaikum ✨</Text>
+          <Text style={styles.greeting}>Assalamu Alaikum</Text>
           <Text style={styles.appTitle}>Quthubiya Manzil</Text>
         </View>
 
-   
+        {/* Friday Reminder */}
+        <Text style={styles.sectionTitle}>
+          {today.charAt(0).toUpperCase() + today.slice(1)} Reminder
+        </Text>
 
-        {/* Main Player */}
-        {/* <AudioPlayerCard /> */}
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.remindersRow}
+          snapToInterval={CARD_WIDTH + 12}
+          decelerationRate="fast"
+        >
+          {todaySurahs.map((surah: any) => (
+            <ReminderCard
+              key={surah.number}
+              id={surah.number}
+              width={CARD_WIDTH}
+              title={`Surah ${surah.englishName}`}
+              surahNum={String(surah.number)}
+              arabicText={surah.name}
+              reciter={surah.revelationType}
+              colors={
+                surahColors[String(surah.number)] ?? ["#374151", "#111827"]
+              }
+            />
+          ))}
+        </ScrollView>
 
-        {/* Friday Reminder Section */}
-        <Text style={styles.sectionTitle}>Friday Reminder</Text>
-        
-   <ScrollView
-  horizontal
-  showsHorizontalScrollIndicator={false}
-  contentContainerStyle={styles.remindersRow}
-  snapToInterval={CARD_WIDTH + 12}
-  decelerationRate="fast"
->
-  <ReminderCard
-    width={CARD_WIDTH}
-    title="Surah Yaseen"
-    surahNum="36"
-    arabicText="يس"
-    reciter="Mishary"
-    verses="83"
-    colors={["#4b5563", "#1f2937"]}
-  />
+        {/* Categories Header */}
+        <View style={styles.categoriesHeader}>
+          <Text style={styles.categoriesTitle}>Categories</Text>
 
-  <ReminderCard
-    width={CARD_WIDTH}
-    title="Surah Ar-Rahman"
-    surahNum="55"
-    arabicText="الرحمن"
-    reciter="Sudais"
-    verses="78"
-    colors={["#4c3b18", "#1a1a1a"]}
-  />
-
-  <ReminderCard
-    width={CARD_WIDTH}
-    title="Surah Al-Mulk"
-    surahNum="67"
-    arabicText="الملك"
-    reciter="Mishary"
-    verses="30"
-    colors={["#374151", "#111827"]}
-  />
-
-  <ReminderCard
-    width={CARD_WIDTH}
-    title="Surah Al-Kahf"
-    surahNum="18"
-    arabicText="الكهف"
-    reciter="Sudais"
-    verses="110"
-    colors={["#3f3f46", "#18181b"]}
-  />
-</ScrollView>
-
-<View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, marginTop: 8 }}>
-
-  <View>
-  <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Categories</Text>
-  
-</View>
-
-<Pressable style={{ flexDirection: 'row', alignItems: 'center' }}
-onPress={() => {
-   router.push('/(tabs)/search');
-}}
->
-  <Text>See More</Text>
-  <ChevronRight width={20} />
-</Pressable>
-
-
-</View>
-
-
+          <Pressable
+            style={styles.seeMore}
+            onPress={() => router.push("/(tabs)/search")}
+          >
+            <Text>See More</Text>
+            <ChevronRight width={20} />
+          </Pressable>
+        </View>
 
         {/* Grid Menu */}
         <View style={styles.gridContainer}>
-          <MenuButton   icon={require("../../../assets/images/icons/allah.png")} label="Asmaul Husna" /> 
-          <MenuButton icon={require("../../../assets/images/icons/nabi.png")} label="Asmaul Nabi" />
-          <MenuButton icon={require("../../../assets/images/icons/quran.png")} label="Quran" />
-          <MenuButton icon={require("../../../assets/images/icons/azkar.png")} label="Azkar" />
-          
-          <MenuButton icon={require("../../../assets/images/icons/masjid.png")} label="Mould" />
-          <MenuButton icon={require("../../../assets/images/icons/swalath.png")} label="Swalath" />
-          <MenuButton icon={require("../../../assets/images/icons/shahdath.png")} label="Shahada" />
-          <MenuButton icon={require("../../../assets/images/icons/dikar.png")}label="Dikr" />
+          {menu.map((v) => (
+            <MenuButton key={v.id} icon={menuIcons[v.icon]} label={v.label} />
+          ))}
         </View>
-
       </ScrollView>
-      
     </SafeAreaView>
   );
 }
 
-// --- Stylesheet ---
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FAFAFA',
+    backgroundColor: "#FAFAFA",
   },
+
   scrollContent: {
     padding: 20,
     marginTop: 20,
   },
-  
-  // Header
+
   header: {
     marginBottom: 16,
   },
+
   greeting: {
-    color: '#6B7280',
+    color: "#6B7280",
     fontSize: 14,
-    fontWeight: '500',
+    fontWeight: "500",
   },
+
   appTitle: {
-    color: '#000000',
+    color: "#000000",
     fontSize: 30,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
+
   sectionTitle: {
-    color: '#000000',
+    color: "#000000",
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 16,
   },
-    remindersRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+
+  remindersRow: {
+    flexDirection: "row",
     marginBottom: 32,
     gap: 12,
   },
-    gridContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+
+  categoriesHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 16,
+    marginTop: 8,
   },
 
+  categoriesTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+
+  seeMore: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  gridContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+  },
 });
