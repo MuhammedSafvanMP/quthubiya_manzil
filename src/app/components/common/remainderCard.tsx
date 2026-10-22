@@ -3,7 +3,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export const ReminderCard = ({
+const ReminderCard = ({
   id,
   width,
   title,
@@ -132,3 +132,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+export default ReminderCard;

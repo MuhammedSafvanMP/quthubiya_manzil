@@ -1,221 +1,3 @@
-// import React from 'react';
-// import {
-//   View,
-//   Text,
-//   ScrollView,
-
-//   StatusBar,
-//   StyleSheet,
-//   Dimensions,
-//   Pressable
-// } from 'react-native';
-// import { MenuButton } from '../components/common/menuButton';
-// import { ReminderCard } from '../components/common/remainderCard';
-// import { ChevronRight } from 'lucide-react-native';
-// import { router } from 'expo-router';
-// import { SafeAreaView } from 'react-native-safe-area-context';
-// import quran from "../constants/quran.json"
-
-// export default function Index() {
-
-//   const SCREEN_WIDTH = Dimensions.get("window").width;
-// const CARD_WIDTH = (SCREEN_WIDTH - 32 - 12) / 2;
-
-//  const daysANDnumber = [
-//    {
-//      id: 1,
-//      'day': "monday",
-//      surah: [36, 67, 56]
-
-//    },
-//       {
-//      id: 2,
-//      'day': "tusday",
-//      surah: [36, 67, 56]
-
-//    },
-//       {
-//      id: 1,
-//      'day': "wendsday",
-//      surah: [36, 67, 56]
-
-//    },
-//       {
-//      id: 1,
-//      'day': "thursday",
-//      surah: [36, 67, 56]
-
-//    },
-//       {
-//      id: 1,
-//      'day': "friday",
-//      surah: [18,55, 36, 67, 56]
-
-//    },
-//       {
-//      id: 1,
-//      'day': "sunday",
-//      surah: [36, 67, 56]
-
-//    },
-//  ];
-
-//    for(let i  = 0; i < quran.data.surahs; i ++ ){
-
-//    }
-
-//    const reaminderDaySurah = quran.data.surahs.filter((v: any) => v.number)
-
-//   return (
-//     <SafeAreaView style={styles.container}>
-//       <StatusBar barStyle="dark-content" />
-//       <ScrollView
-//         showsVerticalScrollIndicator={false}
-//         contentContainerStyle={styles.scrollContent}
-//       >
-//         {/* Header */}
-//         <View style={styles.header}>
-//           <Text style={styles.greeting}>Assalamu Alaikum ✨</Text>
-//           <Text style={styles.appTitle}>Quthubiya Manzil</Text>
-//         </View>
-
-//         {/* Main Player */}
-//         {/* <AudioPlayerCard /> */}
-
-//         {/* Friday Reminder Section */}
-//         <Text style={styles.sectionTitle}>Friday Reminder</Text>
-
-//    <ScrollView
-//   horizontal
-//   showsHorizontalScrollIndicator={false}
-//   contentContainerStyle={styles.remindersRow}
-//   snapToInterval={CARD_WIDTH + 12}
-//   decelerationRate="fast"
-// >
-//   <ReminderCard
-//     width={CARD_WIDTH}
-//     title="Surah Yaseen"
-//     surahNum="36"
-//     arabicText="يس"
-//     reciter="Mishary"
-//     verses="83"
-//     colors={["#4b5563", "#1f2937"]}
-//   />
-
-//   <ReminderCard
-//     width={CARD_WIDTH}
-//     title="Surah Ar-Rahman"
-//     surahNum="55"
-//     arabicText="الرحمن"
-//     reciter="Sudais"
-//     verses="78"
-//     colors={["#4c3b18", "#1a1a1a"]}
-//   />
-
-//   <ReminderCard
-//     width={CARD_WIDTH}
-//     title="Surah Al-Mulk"
-//     surahNum="67"
-//     arabicText="الملك"
-//     reciter="Mishary"
-//     verses="30"
-//     colors={["#374151", "#111827"]}
-//   />
-
-//   <ReminderCard
-//     width={CARD_WIDTH}
-//     title="Surah Al-Kahf"
-//     surahNum="18"
-//     arabicText="الكهف"
-//     reciter="Sudais"
-//     verses="110"
-//     colors={["#3f3f46", "#18181b"]}
-//   />
-// </ScrollView>
-
-// <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, marginTop: 8 }}>
-
-//   <View>
-//   <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Categories</Text>
-
-// </View>
-
-// <Pressable style={{ flexDirection: 'row', alignItems: 'center' }}
-// onPress={() => {
-//    router.push('/(tabs)/search');
-// }}
-// >
-//   <Text>See More</Text>
-//   <ChevronRight width={20} />
-// </Pressable>
-
-// </View>
-
-//         {/* Grid Menu */}
-//         <View style={styles.gridContainer}>
-//           <MenuButton   icon={require("../../../assets/images/icons/allah.png")} label="Asmaul Husna" />
-//           <MenuButton icon={require("../../../assets/images/icons/nabi.png")} label="Asmaul Nabi" />
-//           <MenuButton icon={require("../../../assets/images/icons/quran.png")} label="Quran" />
-//           <MenuButton icon={require("../../../assets/images/icons/azkar.png")} label="Azkar" />
-
-//           <MenuButton icon={require("../../../assets/images/icons/masjid.png")} label="Mould" />
-//           <MenuButton icon={require("../../../assets/images/icons/swalath.png")} label="Swalath" />
-//           <MenuButton icon={require("../../../assets/images/icons/shahdath.png")} label="Shahada" />
-//           <MenuButton icon={require("../../../assets/images/icons/dikar.png")}label="Dikr" />
-//         </View>
-
-//       </ScrollView>
-
-//     </SafeAreaView>
-//   );
-// }
-
-// // --- Stylesheet ---
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#FAFAFA',
-//   },
-//   scrollContent: {
-//     padding: 20,
-//     marginTop: 20,
-//   },
-
-//   // Header
-//   header: {
-//     marginBottom: 16,
-//   },
-//   greeting: {
-//     color: '#6B7280',
-//     fontSize: 14,
-//     fontWeight: '500',
-//   },
-//   appTitle: {
-//     color: '#000000',
-//     fontSize: 30,
-//     fontWeight: 'bold',
-//   },
-//   sectionTitle: {
-//     color: '#000000',
-//     fontSize: 20,
-//     fontWeight: 'bold',
-//     marginBottom: 16,
-//   },
-//     remindersRow: {
-//     flexDirection: 'row',
-//     justifyContent: 'space-between',
-//     marginBottom: 32,
-//     gap: 12,
-//   },
-//     gridContainer: {
-//     flexDirection: 'row',
-//     flexWrap: 'wrap',
-//     justifyContent: 'space-between',
-//   },
-
-// });
-
 import { router } from "expo-router";
 import { ChevronRight } from "lucide-react-native";
 import {
@@ -229,10 +11,10 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { MenuButton } from "../components/common/menuButton";
-import { ReminderCard } from "../components/common/remainderCard";
-import { menu, menuIcons } from "../constants/menu";
-import quran from "../constants/quran.json";
+import { menu, menuIcons } from "../../constants/menu";
+import quran from "../../constants/quran.json";
+import MenuButton from "../components/common/menuButton";
+import ReminderCard from "../components/common/remainderCard";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const CARD_WIDTH = (SCREEN_WIDTH - 32 - 12) / 2;
@@ -263,8 +45,9 @@ const daysANDnumber = [
     day: "friday",
     surah: [18, 55, 36, 67, 56],
   },
+  { id: 6, day: "saturday", surah: [36, 67, 56] },
   {
-    id: 6,
+    id: 7,
     day: "sunday",
     surah: [36, 67, 56],
   },
@@ -354,7 +137,7 @@ export default function Index() {
 
         {/* Grid Menu */}
         <View style={styles.gridContainer}>
-          {menu.map((v) => (
+          {menu.slice(0, 8).map((v) => (
             <MenuButton key={v.id} icon={menuIcons[v.icon]} label={v.label} />
           ))}
         </View>

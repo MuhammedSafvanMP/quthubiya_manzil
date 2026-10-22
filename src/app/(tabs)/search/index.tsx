@@ -1,87 +1,19 @@
-// import { useState } from "react";
-// import { ScrollView, StyleSheet, View } from "react-native";
-// import { SafeAreaView } from "react-native-safe-area-context";
-
-// import { Stack } from "expo-router";
-// import { MenuButton } from "../../components/common/menuButton";
-// import { menu, menuIcons } from "../../constants/menu";
-
-// export default function SearchIndex() {
-//   const [search, setSearch] = useState("");
-
-//   const filteredMenu = menu.filter((item) =>
-//     item.label.toLowerCase().includes(search.toLowerCase()),
-//   );
-
-//   return (
-//     <SafeAreaView style={styles.container} edges={["top"]}>
-//       <Stack.Title style={{}}>Categories</Stack.Title>
-
-//       <ScrollView
-//         contentContainerStyle={styles.scrollContent}
-//         showsVerticalScrollIndicator={false}
-//         keyboardShouldPersistTaps="handled"
-//       >
-//         <View style={styles.gridContainer}>
-//           {filteredMenu.map((item) => (
-//             <MenuButton
-//               key={item.id}
-//               icon={menuIcons[item.icon]}
-//               label={item.label}
-//             />
-//           ))}
-//         </View>
-//       </ScrollView>
-//       <Stack.SearchBar
-//         placement="automatic"
-//         placeholder="Search"
-//         onChangeText={() => setSearch}
-//       />
-//     </SafeAreaView>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#FAFAFA",
-//   },
-//   searchContainer: {
-//     marginHorizontal: 16,
-//     marginTop: 12,
-//     marginBottom: 18,
-//     height: 48,
-//     backgroundColor: "#F0F0F0",
-//     borderRadius: 14,
-//     justifyContent: "center",
-//     paddingHorizontal: 16,
-//   },
-//   searchInput: {
-//     flex: 1,
-//     fontSize: 15,
-//     color: "#171717",
-//     paddingVertical: 0,
-//   },
-//   scrollContent: {
-//     paddingHorizontal: 16,
-//     paddingBottom: 24,
-//   },
-//   gridContainer: {
-//     flexDirection: "row",
-//     flexWrap: "wrap",
-//     justifyContent: "space-between",
-//     rowGap: 18,
-//   },
-// });
-
+import { Ionicons } from "@expo/vector-icons";
 import { Stack, useRouter } from "expo-router";
-import { useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useCallback, useState } from "react";
+import {
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { ChevronLeft } from "lucide-react-native";
-import { MenuButton } from "../../components/common/menuButton";
-import { menu, menuIcons } from "../../constants/menu";
+import { menu, menuIcons } from "../../../constants/menu";
+import AppBar from "../../components/common/AppBar";
+import MenuButton from "../../components/common/menuButton";
 
 export default function SearchIndex() {
   const router = useRouter();
@@ -91,32 +23,63 @@ export default function SearchIndex() {
     item.label.toLowerCase().includes(search.toLowerCase().trim()),
   );
 
+  const handleSearchChange = useCallback((text: any) => {
+    setSearch(text);
+  }, []);
+
+  const handleNativeSearchChange = useCallback((event: any) => {
+    setSearch(event.nativeEvent.text);
+  }, []);
+
   return (
     <SafeAreaView style={styles.container} edges={["top"]}>
       <Stack.Screen
         options={{
-          headerShown: false,
+          // iOS: show native header so Stack.SearchBar works like before
+          // Android: hide native header, we render our own top bar + search
+          headerShown: Platform.OS === "ios",
+          title: "Categories",
         }}
       />
 
-      <Stack.Title>Categoris</Stack.Title>
+      {/* Custom AppBar on Android only (iOS uses native header) */}
+      {Platform.OS !== "ios" && <AppBar title="Categories" />}
 
-      {/* Top heading and back icon */}
-      <View style={styles.header}>
-        <Pressable
-          onPress={() => router.back()}
-          hitSlop={10}
-          style={styles.backButton}
-        >
-          <ChevronLeft size={24} color="#171717" strokeWidth={2} />
-        </Pressable>
-
-        <Text style={styles.headerTitle}>Categories</Text>
-      </View>
+      {/* Custom search bar on Android only */}
+      {Platform.OS === "android" && (
+        <View style={styles.searchContainer}>
+          <Ionicons
+            name="search-outline"
+            size={20}
+            color="#737373"
+            style={styles.searchIcon}
+          />
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search categories"
+            placeholderTextColor="#999"
+            value={search}
+            onChangeText={handleSearchChange}
+            returnKeyType="search"
+          />
+          {search.length > 0 && (
+            <Ionicons
+              name="close-circle"
+              size={20}
+              color="#999"
+              style={styles.clearIcon}
+              onPress={() => setSearch("")}
+            />
+          )}
+        </View>
+      )}
 
       {/* Category grid */}
       <ScrollView
-        style={styles.scrollView}
+        style={{
+          flex: 1,
+          ...(Platform.OS === "ios" && { marginTop: 80 }),
+        }}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled"
@@ -136,13 +99,14 @@ export default function SearchIndex() {
         )}
       </ScrollView>
 
-      {/* Native search bar */}
-      <Stack.SearchBar
-        placement="automatic"
-        placeholder="Search categories"
-        onChangeText={(event) => setSearch(event.nativeEvent.text)}
-        // onCancel={() => setSearch("")}
-      />
+      {/* Native search bar on iOS only (keeps the original iOS look) */}
+      {Platform.OS === "ios" && (
+        <Stack.SearchBar
+          placement="automatic"
+          placeholder="Search categories"
+          onChangeText={handleNativeSearchChange}
+        />
+      )}
     </SafeAreaView>
   );
 }
@@ -152,31 +116,34 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FAFAFA",
   },
-  header: {
-    height: 56,
+
+  /* Android custom search bar */
+  searchContainer: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 16,
+    backgroundColor: "#FFFFFF",
+    marginHorizontal: 16,
+    marginTop: 4,
+    marginBottom: 8,
+    paddingHorizontal: 12,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#E5E5E5",
+    height: 44,
   },
-  backButton: {
-    width: 40,
-    height: 40,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 20,
+  searchIcon: {
+    marginRight: 8,
   },
-  headerTitle: {
-    fontSize: 21,
-    fontWeight: "700",
-    color: "#171717",
-    marginLeft: 8,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 70,
-  },
-  scrollView: {
+  searchInput: {
     flex: 1,
+    fontSize: 16,
+    color: "#171717",
+    paddingVertical: 0,
   },
+  clearIcon: {
+    marginLeft: 8,
+  },
+
   scrollContent: {
     paddingHorizontal: 16,
     paddingTop: 12,

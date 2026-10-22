@@ -1,41 +1,48 @@
 import { Search } from "lucide-react-native";
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-export const SearchBar = ({ search, setSearch }: { search: string; setSearch: (text: string) => void }) => (
+const SearchBar = ({
+  search,
+  setSearch,
+}: {
+  search: string;
+  setSearch: (text: string) => void;
+}) => (
+  <View style={styles.searchContainer}>
+    <Text style={styles.searchIcon}>
+      <Search width={20} />
+    </Text>
 
-  
-        <View style={styles.searchContainer}>
-          <Text style={styles.searchIcon}>
+    <TextInput
+      value={search}
+      onChangeText={setSearch}
+      placeholder="Search Surah..."
+      placeholderTextColor="#9CA3AF"
+      style={styles.searchInput}
+      autoCorrect={false}
+      autoCapitalize="none"
+      returnKeyType="search"
+    />
 
-            <Search width={20} />
-          </Text>
-
-          <TextInput
-            value={search}
-            onChangeText={setSearch}
-            placeholder="Search Surah..."
-            placeholderTextColor="#9CA3AF"
-            style={styles.searchInput}
-            autoCorrect={false}
-            autoCapitalize="none"
-            returnKeyType="search"
-          />
-
-          {search.length > 0 && (
-            <TouchableOpacity
-              onPress={() => setSearch("")}
-              style={styles.clearButton}
-            >
-              <Text style={styles.clearText}>×</Text>
-            </TouchableOpacity>
-          )}
-        </View>
+    {search.length > 0 && (
+      <TouchableOpacity
+        onPress={() => setSearch("")}
+        style={styles.clearButton}
+      >
+        <Text style={styles.clearText}>×</Text>
+      </TouchableOpacity>
+    )}
+  </View>
 );
 
-
-
-const styles =  StyleSheet.create({
-      // Search Bar
+const styles = StyleSheet.create({
+  // Search Bar
   searchContainer: {
     height: 48,
     backgroundColor: "#FFFFFF",
@@ -76,3 +83,5 @@ const styles =  StyleSheet.create({
     lineHeight: 26,
   },
 });
+
+export default SearchBar;

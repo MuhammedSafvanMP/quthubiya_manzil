@@ -1,4 +1,4 @@
-import { ENDPOINTS } from "../constants/api";
+import ENDPOINTS from "../constants/api";
 
 export interface Surah {
   number: number;
@@ -67,9 +67,7 @@ export const getSurahList = async (): Promise<Surah[]> => {
  * - Quran Uthmani
  * - English translation
  */
-export const getSurah = async (
-  surahNo: number
-): Promise<SurahDetail[]> => {
+export const getSurah = async (surahNo: number): Promise<SurahDetail[]> => {
   try {
     const response = await fetch(ENDPOINTS.surah(surahNo));
 

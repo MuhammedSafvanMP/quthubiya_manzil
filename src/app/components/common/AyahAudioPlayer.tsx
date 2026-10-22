@@ -1,5 +1,5 @@
-
-import React, { useEffect, useState } from "react";
+import { useAudioPlayer, useAudioPlayerStatus } from "expo-audio";
+import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Pressable,
@@ -7,21 +7,24 @@ import {
   Text,
   View,
 } from "react-native";
-import { useAudioPlayer, useAudioPlayerStatus } from "expo-audio";
 
 type Props = {
   audioUrl: string;
   ayahNumber: number;
 };
 
-export default function AyahAudioPlayer({
-  audioUrl,
-  ayahNumber,
-}: Props) {
+export default function AyahAudioPlayer({ audioUrl, ayahNumber }: Props) {
   const player = useAudioPlayer(audioUrl);
   const status = useAudioPlayerStatus(player);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    if (status.isLoaded) {
+      setIsLoading(false);
+    }
+  }, [status.isLoaded]);
 
   useEffect(() => {
     if (status.playing) {
@@ -30,22 +33,32 @@ export default function AyahAudioPlayer({
   }, [status.playing]);
 
   const togglePlayback = async () => {
+    if (!status.isLoaded || hasError) return;
+
     try {
+      // Pause the current ayah.
       if (status.playing) {
         player.pause();
         return;
       }
 
-      if (status.isLoaded && status.currentTime > 0) {
-        player.play();
-        return;
+      setHasError(false);
+
+      // IMPORTANT: Restart from the beginning after finishing.
+      const finished =
+        status.didJustFinish ||
+        (status.duration > 0 && status.currentTime >= status.duration - 0.3);
+
+      if (finished) {
+        await player.seekTo(0);
       }
 
       setIsLoading(true);
-      player.play();
+      await player.play();
     } catch (error) {
-      console.error("Audio playback failed:", error);
+      console.error(`Ayah ${ayahNumber} playback failed:`, error);
       setIsLoading(false);
+      setHasError(true);
     }
   };
 
@@ -54,22 +67,30 @@ export default function AyahAudioPlayer({
       <Pressable
         onPress={togglePlayback}
         style={styles.playButton}
+        disabled={!status.isLoaded}
         accessibilityRole="button"
-        accessibilityLabel={`Play ayah ${ayahNumber}`}
+        accessibilityLabel={
+          status.playing
+            ? `Pause ayah ${ayahNumber}`
+            : `Play ayah ${ayahNumber}`
+        }
       >
-        {isLoading ? (
+        {isLoading && !hasError ? (
           <ActivityIndicator color="#FFFFFF" size="small" />
         ) : (
-          <Text style={styles.playIcon}>
-            {status.playing ? "Ⅱ" : "▶"}
-          </Text>
+          <Text style={styles.playIcon}>{status.playing ? "Ⅱ" : "▶"}</Text>
         )}
       </Pressable>
 
       <View style={styles.info}>
         <Text style={styles.title}>Ayah {ayahNumber}</Text>
+
         <Text style={styles.subtitle}>
-          {status.playing ? "Now playing" : "Tap to listen"}
+          {hasError
+            ? "Playback failed"
+            : status.playing
+              ? "Now playing"
+              : "Tap to listen"}
         </Text>
       </View>
 
@@ -132,4 +153,3 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 });
-

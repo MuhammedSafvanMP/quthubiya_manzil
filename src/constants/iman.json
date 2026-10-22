@@ -1,0 +1,39 @@
+{
+  "data": {
+    "title": "أركان الإيمان",
+    "title_english": "Iman karyam",
+    "tilte_malyalam": "ഈമാൻ കാര്യം",
+    "iman": [
+      {
+        "arabic_title": "الإيمان بالله",
+        "english_title": "Belief In Allah (Faith)",
+        "malayalam_title": "അല്ലാഹുവിൽ വിശ്വസിക്കുക ."
+      },
+      {
+        "arabic_title": "الإيمان بالملائكة",
+        "english_title": "Belief In Allah’s Angels",
+        "malayalam_title": "അല്ലാഹുവിന്റെ മലക്കുകളിൽ വിശ്വസിക്കുക ."
+      },
+      {
+        "arabic_title": "الإيمان بالكتب السماوية",
+        "english_title": "Belief In Allah’s Books",
+        "malayalam_title": "അല്ലാഹുവിന്റെ ഗ്രന്ഥങ്ങളിൽ വിശ്വസിക്കുക ."
+      },
+      {
+        "arabic_title": "الإيمان بالرسل",
+        "english_title": "Belief In Allah’s Messengers",
+        "malayalam_title": "അല്ലാഹുവിന്റെ പ്രവാചകൻമാരിൽ വിശ്വസിക്കുക ."
+      },
+      {
+        "arabic_title": "الإيمان باليوم الآخر",
+        "english_title": "Belief In The Hereafter",
+        "malayalam_title": "അന്ത്യദിനത്തിൽ വിശ്വസിക്കുക ."
+      },
+      {
+        "arabic_title": "الإيمان بالقضاء والقدر",
+        "english_title": "Belief In Qadar (Divine Decree)",
+        "malayalam_title": "നന്മയും തിൻമയും ആയ എല്ലാ കാര്യങ്ങളും അല്ലാഹുവിൽ നിന്നാണെന്നും അവന്റെ മുൻ നിശ്ചയം അനുസരിച്ചാണെന്നും വിശ്വസിക്കുക ."
+      }
+    ]
+  }
+}

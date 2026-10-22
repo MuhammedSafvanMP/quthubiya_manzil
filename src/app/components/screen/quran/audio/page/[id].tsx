@@ -1,7 +1,5 @@
-
-
-
-import React, { useCallback, useEffect, useState } from "react";
+import { useLocalSearchParams, useRouter } from "expo-router";
+import { useCallback, useEffect, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
@@ -10,20 +8,16 @@ import {
   Text,
   View,
 } from "react-native";
-import { useLocalSearchParams, useRouter } from "expo-router";
 
-import { getSurah, SurahDetail } from "../../../../services/quranApi";
-import {
-  RECITERS,
-  Reciter,
-} from "../../../../constants/reciters";
+import { Reciter, RECITERS } from "../../../../../../constants/reciters";
+import { SurahDetail } from "../../../../../../services/quranApi";
 
-import AyahAudioPlayer from "../../../../components/common/AyahAudioPlayer";
-import BottomSheetComponent from "../../../../components/common/BottomSheet";
-import { useDrawer } from "../../../../lib/context/global";
-import quranData from "../../../../constants/quran.json";
 import { SafeAreaView } from "react-native-safe-area-context";
-
+import quranData from "../../../../../../constants/quran.json";
+import { useDrawer } from "../../../../../../lib/context/global";
+import AyahAudioPlayer from "../../../../../components/common/AyahAudioPlayer";
+import BottomSheetComponent from "../../../../../components/common/BottomSheet";
+import SurahBottomPlayer from "../../../../../components/common/SurahBottomPlayer";
 
 type Ayah = {
   number: number;
@@ -46,17 +40,13 @@ const RECITER_PATHS: Record<string, string> = {
 
 export default function SurahAudioDetails() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { openSheet } = useDrawer();
+  const { openSheet, selectedReciter, setSelectedReciter } = useDrawer();
   const router = useRouter();
 
   const surahId = Number(id);
 
   const [surah, setSurah] = useState<SurahDetail | null>(null);
   const [loading, setLoading] = useState(true);
-
-  const [selectedReciter, setSelectedReciter] = useState<Reciter>(
-    RECITERS[0]
-  );
 
   /**
    * Load Quran text
@@ -70,21 +60,20 @@ export default function SurahAudioDetails() {
     try {
       setLoading(true);
 
-         const surahId = Number(id);
+      const surahId = Number(id);
 
       const foundSurah = quranData.data.surahs.find(
-        (item) => item.number === surahId
+        (item) => item.number === surahId,
       );
 
-    //   const data = await getSurah(surahId);
-    //   setSurah(data[0]);
+      //   const data = await getSurah(surahId);
+      //   setSurah(data[0]);
 
-       if (foundSurah) {
+      if (foundSurah) {
         setSurah(foundSurah);
       } else {
         setSurah(null);
       }
-
     } catch (error) {
       console.error("Failed to load Surah:", error);
     } finally {
@@ -109,14 +98,13 @@ export default function SurahAudioDetails() {
         (selectedReciter as any).key ??
         "";
 
-      const reciterUrlPath =
-        RECITER_PATHS[reciterId] ?? "Alafasy_128kbps";
+      const reciterUrlPath = RECITER_PATHS[reciterId] ?? "Alafasy_128kbps";
 
       const verseAudioUrl = `https://everyayah.com/data/${reciterUrlPath}/${pS}${pA}.mp3`;
 
       return verseAudioUrl;
     },
-    [surahId, selectedReciter]
+    [surahId, selectedReciter],
   );
 
   /**
@@ -163,6 +151,7 @@ export default function SurahAudioDetails() {
 
         {audioUrl ? (
           <AyahAudioPlayer
+            key={`${selectedReciter.name}-${item.numberInSurah}`}
             audioUrl={audioUrl}
             ayahNumber={item.numberInSurah}
           />
@@ -179,10 +168,7 @@ export default function SurahAudioDetails() {
     <SafeAreaView style={styles.safeArea}>
       {/* HEADER */}
       <View style={styles.header}>
-        <Pressable
-          onPress={() => router.back()}
-          style={styles.closeButton}
-        >
+        <Pressable onPress={() => router.back()} style={styles.closeButton}>
           <Text style={styles.closeIcon}>✕</Text>
         </Pressable>
 
@@ -192,12 +178,8 @@ export default function SurahAudioDetails() {
 
         <View style={styles.headerLine} />
 
-
         {/* RECITER SELECTOR */}
-        <Pressable
-          style={styles.reciterButton}
-          onPress={() => openSheet()}
-        >
+        <Pressable style={styles.reciterButton} onPress={() => openSheet()}>
           <View style={styles.reciterLeft}>
             <View style={styles.reciterIcon}>
               <Text style={styles.reciterIconText}>♪</Text>
@@ -230,6 +212,11 @@ export default function SurahAudioDetails() {
           setSelectedReciter={setSelectedReciter}
           selectedReciter={selectedReciter}
           reciters={RECITERS}
+        />
+        <SurahBottomPlayer
+          surahName={surah.name}
+          surahNo={id}
+          reciterName={selectedReciter.name}
         />
       </View>
     </SafeAreaView>

@@ -1,263 +1,9 @@
-// import React, { useEffect, useState } from "react";
-// import {
-//   View,
-//   Text,
-//   Pressable,
-//   StyleSheet,
-// } from "react-native";
-// import {
-//   useAudioPlayer,
-//   useAudioPlayerStatus,
-// } from "expo-audio";
-
-// type Props = {
-//   surahName: string;
-//   audioUrl: string;
-//   onNext?: () => void;
-//   onPrevious?: () => void;
-// };
-
-// function formatTime(seconds: number) {
-//   if (!Number.isFinite(seconds) || seconds < 0) {
-//     return "0:00";
-//   }
-
-//   const minutes = Math.floor(seconds / 60);
-//   const remainingSeconds = Math.floor(seconds % 60);
-
-//   return `${minutes}:${String(remainingSeconds).padStart(2, "0")}`;
-// }
-
-// export default function SurahBottomPlayer({
-//   surahName,
-//   audioUrl,
-//   onNext,
-//   onPrevious,
-// }: Props) {
-
-//     console.log(audioUrl, "hiiii");
-    
-//   const player = useAudioPlayer(audioUrl);
-//   const status = useAudioPlayerStatus(player);
-
-//   const [isSeeking, setIsSeeking] = useState(false);
-//   const [seekValue, setSeekValue] = useState(0);
-
-//   useEffect(() => {
-//     player.play();
-//   }, [audioUrl]);
-
-//   const duration = status.duration || 0;
-//   const currentTime = status.currentTime || 0;
-
-//   const progress = duration > 0
-//     ? Math.min(currentTime / duration, 1)
-//     : 0;
-
-//   const seekTo = (seconds: number) => {
-//     const target = Math.max(
-//       0,
-//       Math.min(seconds, duration || seconds)
-//     );
-
-//     player.seekTo(target);
-//     setSeekValue(target);
-//     setIsSeeking(false);
-//   };
-
-//   return (
-//     <View style={styles.container}>
-//       <View style={styles.topRow}>
-//         <View style={styles.cover}>
-//           <Text style={styles.coverIcon}>۞</Text>
-//         </View>
-
-//         <View style={styles.trackInfo}>
-//           <Text style={styles.trackTitle} numberOfLines={1}>
-//             {surahName}
-//           </Text>
-//           <Text style={styles.trackSubtitle}>
-//             Quran Recitation
-//           </Text>
-//         </View>
-
-//         <Text style={styles.musicIcon}>♫</Text>
-//       </View>
-
-//       <View style={styles.progressContainer}>
-//         <View style={styles.progressBackground}>
-//           <View
-//             style={[
-//               styles.progressFill,
-//               { width: `${progress * 100}%` },
-//             ]}
-//           />
-//         </View>
-
-//         <View style={styles.timeRow}>
-//           <Text style={styles.timeText}>
-//             {formatTime(isSeeking ? seekValue : currentTime)}
-//           </Text>
-
-//           <Text style={styles.timeText}>
-//             {formatTime(duration)}
-//           </Text>
-//         </View>
-
-//         {/* Simple seeking controls */}
-//         <View style={styles.seekRow}>
-//           <Pressable
-//             onPress={() => seekTo(currentTime - 10)}
-//             style={styles.seekButton}
-//           >
-//             <Text style={styles.seekText}>−10</Text>
-//           </Pressable>
-
-//           <Pressable
-//             onPress={() => seekTo(currentTime + 10)}
-//             style={styles.seekButton}
-//           >
-//             <Text style={styles.seekText}>+10</Text>
-//           </Pressable>
-//         </View>
-//       </View>
-
-//       <View style={styles.controls}>
-//         <Pressable onPress={onPrevious}>
-//           <Text style={styles.skipIcon}>|◀</Text>
-//         </Pressable>
-
-//         <Pressable
-//           onPress={() => {
-//             if (status.playing) {
-//               player.pause();
-//             } else {
-//               player.play();
-//             }
-//           }}
-//           style={styles.playButton}
-//         >
-//           <Text style={styles.playIcon}>
-//             {status.playing ? "Ⅱ" : "▶"}
-//           </Text>
-//         </Pressable>
-
-//         <Pressable onPress={onNext}>
-//           <Text style={styles.skipIcon}>▶|</Text>
-//         </Pressable>
-//       </View>
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     backgroundColor: "#FFFCF5",
-//     borderTopWidth: 1,
-//     borderColor: "#EADCC8",
-//     paddingHorizontal: 18,
-//     paddingTop: 14,
-//     paddingBottom: 22,
-//   },
-//   topRow: {
-//     flexDirection: "row",
-//     alignItems: "center",
-//   },
-//   cover: {
-//     width: 48,
-//     height: 48,
-//     borderRadius: 12,
-//     backgroundColor: "#F1E2CF",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-//   coverIcon: {
-//     fontSize: 30,
-//     color: "#A96738",
-//   },
-//   trackInfo: {
-//     flex: 1,
-//     marginLeft: 12,
-//   },
-//   trackTitle: {
-//     fontSize: 16,
-//     fontWeight: "700",
-//     color: "#30251C",
-//   },
-//   trackSubtitle: {
-//     marginTop: 4,
-//     fontSize: 12,
-//     color: "#967B63",
-//   },
-//   musicIcon: {
-//     fontSize: 25,
-//     color: "#A96738",
-//   },
-//   progressContainer: {
-//     marginTop: 16,
-//   },
-//   progressBackground: {
-//     height: 4,
-//     borderRadius: 2,
-//     backgroundColor: "#EADCC8",
-//     overflow: "hidden",
-//   },
-//   progressFill: {
-//     height: 4,
-//     backgroundColor: "#A96738",
-//   },
-//   timeRow: {
-//     marginTop: 7,
-//     flexDirection: "row",
-//     justifyContent: "space-between",
-//   },
-//   timeText: {
-//     color: "#967B63",
-//     fontSize: 11,
-//   },
-//   seekRow: {
-//     flexDirection: "row",
-//     justifyContent: "center",
-//     gap: 30,
-//     marginTop: 10,
-//   },
-//   seekButton: {
-//     padding: 6,
-//   },
-//   seekText: {
-//     fontSize: 13,
-//     color: "#A96738",
-//     fontWeight: "600",
-//   },
-//   controls: {
-//     flexDirection: "row",
-//     alignItems: "center",
-//     justifyContent: "center",
-//     gap: 42,
-//     marginTop: 8,
-//   },
-//   playButton: {
-//     width: 52,
-//     height: 52,
-//     borderRadius: 26,
-//     backgroundColor: "#A96738",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-//   playIcon: {
-//     color: "#FFFFFF",
-//     fontSize: 22,
-//     fontWeight: "700",
-//   },
-//   skipIcon: {
-//     color: "#A96738",
-//     fontSize: 21,
-//     fontWeight: "600",
-//   },
-// });
-
-
-import React, { useEffect, useState } from "react";
+import {
+  setAudioModeAsync,
+  useAudioPlayer,
+  useAudioPlayerStatus,
+} from "expo-audio";
+import { useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
   Pressable,
@@ -265,423 +11,266 @@ import {
   Text,
   View,
 } from "react-native";
-import {
-  useAudioPlayer,
-  useAudioPlayerStatus,
-} from "expo-audio";
+
+import ENDPOINTS from "../../../constants/api";
+import { useDrawer } from "../../../lib/context/global";
 
 type Props = {
   surahName: string;
-  audioUrls: string[];
+  surahNo: number | string;
   reciterName: string;
 };
 
-function formatTime(seconds: number) {
-  if (!Number.isFinite(seconds) || seconds < 0) {
-    return "0:00";
-  }
+function formatTime(seconds: number): string {
+  if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
 
   const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = Math.floor(seconds % 60);
+  const remaining = Math.floor(seconds % 60);
 
-  return `${minutes}:${String(remainingSeconds).padStart(
-    2,
-    "0"
-  )}`;
+  return `${minutes}:${String(remaining).padStart(2, "0")}`;
 }
 
-function toArabicNumber(number: number) {
-  const numbers = [
-    "٠",
-    "١",
-    "٢",
-    "٣",
-    "٤",
-    "٥",
-    "٦",
-    "٧",
-    "٨",
-    "٩",
-  ];
+function getReciterId(name: string): string {
+  const normalized = name.toLowerCase();
 
-  return String(number)
-    .split("")
-    .map((digit) => numbers[Number(digit)])
-    .join("");
+  if (normalized.includes("maher")) return "maher";
+  if (normalized.includes("fares")) return "fares";
+  if (normalized.includes("sudais")) return "sudais";
+  if (normalized.includes("bader")) return "bader";
+  if (normalized.includes("yasser")) return "yasser";
+
+  return "yasser";
 }
 
 export default function SurahBottomPlayer({
   surahName,
-  audioUrls,
+  surahNo,
   reciterName,
 }: Props) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
-  const [isChangingTrack, setIsChangingTrack] =
-    useState(false);
+  const { selectedReciter } = useDrawer();
 
-  /**
-   * Current ayah MP3
-   *
-   * Example:
-   *
-   * 0 -> 1.mp3
-   * 1 -> 2.mp3
-   * 2 -> 3.mp3
-   */
-  const currentAudioUrl =
-    audioUrls[currentIndex];
+  const recitername = selectedReciter.id;
 
-  const player = useAudioPlayer(
-    currentAudioUrl || null
+  const reciterId = useMemo(() => getReciterId(recitername), [recitername]);
+
+  const audioUrl = useMemo(
+    () => ENDPOINTS.getChapterAudioUrl(Number(surahNo), reciterId),
+    [surahNo, reciterId],
   );
 
+  const player = useAudioPlayer(null);
   const status = useAudioPlayerStatus(player);
 
-  /**
-   * When a completely new Surah / reciter is loaded,
-   * start from Ayah 1.
-   */
+  // Load the Surah only. Do NOT start playback here.
+
   useEffect(() => {
-    setCurrentIndex(0);
-  }, [audioUrls]);
+    let cancelled = false;
 
-  /**
-   * Automatically play the current Ayah
-   * whenever the audio URL changes.
-   */
-//   useEffect(() => {
-//     if (!currentAudioUrl) {
-//       return;
-//     }
-
-//     setIsChangingTrack(true);
-
-//     const timer = setTimeout(() => {
-//       try {
-//         player.play();
-//       } catch (error) {
-//         console.error(
-//           "Failed to play audio:",
-//           error
-//         );
-//       }
-
-//       setIsChangingTrack(false);
-//     }, 150);
-
-//     return () => clearTimeout(timer);
-//   }, [currentAudioUrl]);
-
-  /**
-   * Automatically go to the next Ayah
-   * when the current Ayah finishes.
-   */
-  useEffect(() => {
-    if (!status.duration) {
-      return;
-    }
-
-    if (!status.currentTime) {
-      return;
-    }
-
-    const remaining =
-      status.duration - status.currentTime;
-
-    /**
-     * We consider the ayah finished when
-     * less than 0.3 second remains.
-     */
-    if (remaining <= 0.3) {
-      if (
-        currentIndex <
-        audioUrls.length - 1
-      ) {
-        setCurrentIndex(
-          (previous) => previous + 1
-        );
-      } else {
-        /**
-         * Last Ayah finished.
-         */
-        try {
-          player.pause();
-        } catch {}
-      }
-    }
-  }, [
-    status.currentTime,
-    status.duration,
-    currentIndex,
-    audioUrls.length,
-  ]);
-
-  /**
-   * Loading state
-   */
-  if (!currentAudioUrl) {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator
-          size="small"
-          color="#A96738"
-        />
-
-        <Text style={styles.loadingText}>
-          Loading recitation...
-        </Text>
-      </View>
-    );
-  }
-
-  const duration = status.duration || 0;
-
-  const currentTime =
-    status.currentTime || 0;
-
-  const progress =
-    duration > 0
-      ? Math.min(
-          currentTime / duration,
-          1
-        )
-      : 0;
-
-  /**
-   * Go to next Ayah
-   */
-  const nextAyah = () => {
-    if (
-      currentIndex <
-      audioUrls.length - 1
-    ) {
-      setCurrentIndex(
-        (previous) => previous + 1
-      );
-    }
-  };
-
-  /**
-   * Go to previous Ayah
-   */
-  const previousAyah = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(
-        (previous) => previous - 1
-      );
-    } else {
-      /**
-       * If already on Ayah 1,
-       * restart it.
-       */
-      try {
-        player.seekTo(0);
-      } catch {}
-    }
-  };
-
-  /**
-   * Seek
-   */
-  const seekTo = (seconds: number) => {
-    const target = Math.max(
-      0,
-      Math.min(
-        seconds,
-        duration || seconds
-      )
-    );
+    setHasError(false);
+    setIsReady(false);
+    setIsLoading(true);
 
     try {
-      player.seekTo(target);
+      player.replace({ uri: audioUrl });
     } catch (error) {
-      console.error(
-        "Seek failed:",
-        error
-      );
+      console.error("Audio source error:", error);
+
+      if (!cancelled) {
+        setHasError(true);
+        setIsLoading(false);
+      }
     }
+
+    return () => {
+      cancelled = true;
+    };
+  }, [audioUrl, player]);
+
+  // Wait until the audio is ready, but never autoplay.
+
+  useEffect(() => {
+    if (status.isLoaded) {
+      setIsReady(true);
+      setIsLoading(false);
+    }
+  }, [status.isLoaded]);
+
+  const duration = status.duration || 0;
+  const currentTime = status.currentTime || 0;
+
+  const progress = duration > 0 ? Math.min(currentTime / duration, 1) : 0;
+
+  const seekTo = (seconds: number) => {
+    if (!isReady || duration <= 0 || hasError) return;
+
+    void player.seekTo(Math.max(0, Math.min(seconds, duration)));
   };
 
-  /**
-   * Toggle play / pause
-   */
-  const togglePlay = () => {
+  // Playback starts ONLY after pressing the play button.
+  // const togglePlay = async () => {
+  //   if (!isReady || isLoading || hasError) return;
+
+  //   try {
+  //     if (status.playing) {
+  //       player.pause();
+  //       return;
+  //     }
+
+  //     // Restart from the beginning after the Surah finishes.
+  //     if (duration > 0 && currentTime >= duration - 0.5) {
+  //       await player.seekTo(0);
+  //     }
+
+  //     await player.play();
+  //   } catch (error) {
+  //     console.error("Play/pause error:", error);
+  //     setHasError(true);
+  //   }
+  // };
+
+  const togglePlay = async () => {
+    if (!isReady || isLoading || hasError) return;
+
     try {
       if (status.playing) {
         player.pause();
-      } else {
-        player.play();
+        return;
       }
+
+      if (duration > 0 && currentTime >= duration - 0.5) {
+        await player.seekTo(0);
+      }
+
+      player.setActiveForLockScreen(true, {
+        title: surahName,
+        artist: reciterName,
+        albumTitle: "QuthubiyaManzil Quran",
+      });
+
+      await player.play();
     } catch (error) {
-      console.error(
-        "Play/pause failed:",
-        error
-      );
+      console.error("Play/pause error:", error);
+      setHasError(true);
     }
   };
 
+  // const retryPlayback = () => {
+  //   setHasError(false);
+  //   setIsLoading(true);
+  //   setIsReady(false);
+
+  //   try {
+  //     player.pause();
+  //     player.replace({ uri: audioUrl });
+  //     // Intentionally do not call player.play().
+  //   } catch (error) {
+  //     console.error("Retry failed:", error);
+  //     setHasError(true);
+  //     setIsLoading(false);
+  //   }
+  // };
+
+  const retryPlayback = () => {
+    setHasError(false);
+    setIsLoading(true);
+    setIsReady(false);
+
+    try {
+      player.replace({ uri: audioUrl });
+    } catch (error) {
+      console.error("Retry failed:", error);
+      setHasError(true);
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    setAudioModeAsync({
+      playsInSilentMode: true,
+      shouldPlayInBackground: true,
+      interruptionMode: "doNotMix",
+    }).catch(console.error);
+  }, []);
+
   return (
     <View style={styles.container}>
-      {/* TOP TRACK INFORMATION */}
-
       <View style={styles.topRow}>
         <View style={styles.cover}>
-          <Text style={styles.coverIcon}>
-            ۞
-          </Text>
+          <Text style={styles.coverIcon}>۞</Text>
         </View>
 
         <View style={styles.trackInfo}>
-          <Text
-            style={styles.trackTitle}
-            numberOfLines={1}
-          >
+          <Text style={styles.trackTitle} numberOfLines={1}>
             {surahName}
           </Text>
 
-          <Text
-            style={styles.trackSubtitle}
-            numberOfLines={1}
-          >
-            {reciterName}
+          <Text style={styles.trackSubtitle} numberOfLines={1}>
+            {reciterName} · Full Surah
           </Text>
         </View>
 
-        <View style={styles.ayahBadge}>
-          <Text style={styles.ayahBadgeNumber}>
-            {toArabicNumber(
-              currentIndex + 1
-            )}
-          </Text>
-
-          <Text style={styles.ayahBadgeSlash}>
-            /
-          </Text>
-
-          <Text style={styles.ayahBadgeTotal}>
-            {toArabicNumber(
-              audioUrls.length
-            )}
-          </Text>
+        <View style={styles.badge}>
+          <Text style={styles.badgeText}>Surah {surahNo}</Text>
         </View>
       </View>
-
-      {/* CURRENT AYAH */}
-
-      <View style={styles.currentAyahRow}>
-        <Text style={styles.currentAyahLabel}>
-          AYAH
-        </Text>
-
-        <Text style={styles.currentAyahNumber}>
-          {currentIndex + 1} /{" "}
-          {audioUrls.length}
-        </Text>
-      </View>
-
-      {/* PROGRESS */}
 
       <View style={styles.progressContainer}>
-        <View
-          style={
-            styles.progressBackground
-          }
-        >
+        <View style={styles.progressBackground}>
           <View
-            style={[
-              styles.progressFill,
-              {
-                width: `${
-                  progress * 100
-                }%`,
-              },
-            ]}
+            style={[styles.progressFill, { width: `${progress * 100}%` }]}
           />
         </View>
 
         <View style={styles.timeRow}>
-          <Text style={styles.timeText}>
-            {formatTime(currentTime)}
-          </Text>
+          <Text style={styles.timeText}>{formatTime(currentTime)}</Text>
 
-          <Text style={styles.timeText}>
-            {formatTime(duration)}
-          </Text>
+          <Text style={styles.timeText}>{formatTime(duration)}</Text>
         </View>
       </View>
 
-      {/* SEEK */}
-
-      <View style={styles.seekRow}>
-        <Pressable
-          onPress={() =>
-            seekTo(currentTime - 10)
-          }
-          style={styles.seekButton}
-        >
-          <Text style={styles.seekText}>
-            −10
-          </Text>
+      {hasError && (
+        <Pressable onPress={retryPlayback} style={styles.retryButton}>
+          <Text style={styles.errorText}>Audio failed. Tap here to retry.</Text>
         </Pressable>
-
-        <Pressable
-          onPress={() =>
-            seekTo(currentTime + 10)
-          }
-          style={styles.seekButton}
-        >
-          <Text style={styles.seekText}>
-            +10
-          </Text>
-        </Pressable>
-      </View>
-
-      {/* MAIN CONTROLS */}
+      )}
 
       <View style={styles.controls}>
-        {/* PREVIOUS */}
-
         <Pressable
-          onPress={previousAyah}
-          style={styles.controlButton}
+          onPress={() => seekTo(currentTime - 10)}
+          style={styles.seekButton}
+          disabled={!isReady || isLoading || hasError}
         >
-          <Text style={styles.skipIcon}>
-            |◀
-          </Text>
+          <Text style={styles.seekText}>−10</Text>
         </Pressable>
-
-        {/* PLAY */}
 
         <Pressable
           onPress={togglePlay}
           style={styles.playButton}
+          disabled={!isReady || isLoading || hasError}
         >
-          {isChangingTrack ? (
-            <ActivityIndicator
-              size="small"
-              color="#FFFFFF"
-            />
+          {isLoading ? (
+            <ActivityIndicator color="#FFFFFF" size="small" />
           ) : (
-            <Text style={styles.playIcon}>
-              {status.playing
-                ? "Ⅱ"
-                : "▶"}
-            </Text>
+            <Text style={styles.playIcon}>{status.playing ? "Ⅱ" : "▶"}</Text>
           )}
         </Pressable>
 
-        {/* NEXT */}
-
         <Pressable
-          onPress={nextAyah}
-          style={styles.controlButton}
+          onPress={() => seekTo(currentTime + 10)}
+          style={styles.seekButton}
+          disabled={!isReady || isLoading || hasError}
         >
-          <Text style={styles.skipIcon}>
-            ▶|
-          </Text>
+          <Text style={styles.seekText}>+10</Text>
         </Pressable>
       </View>
+
+      {isLoading && (
+        <Text style={styles.loadingText}>Loading recitation...</Text>
+      )}
     </View>
   );
 }
@@ -695,28 +284,10 @@ const styles = StyleSheet.create({
     paddingTop: 14,
     paddingBottom: 18,
   },
-
-  loadingContainer: {
-    minHeight: 75,
-    backgroundColor: "#FFFCF5",
-    borderTopWidth: 1,
-    borderTopColor: "#EADCC8",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-  },
-
-  loadingText: {
-    marginLeft: 10,
-    color: "#8A6748",
-    fontSize: 12,
-  },
-
   topRow: {
     flexDirection: "row",
     alignItems: "center",
   },
-
   cover: {
     width: 48,
     height: 48,
@@ -725,139 +296,77 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-
   coverIcon: {
     fontSize: 29,
     color: "#A96738",
   },
-
   trackInfo: {
     flex: 1,
     marginLeft: 12,
-    marginRight: 10,
+    marginRight: 8,
   },
-
   trackTitle: {
     fontSize: 16,
     fontWeight: "700",
     color: "#30251C",
   },
-
   trackSubtitle: {
     marginTop: 4,
     fontSize: 12,
     color: "#967B63",
   },
-
-  ayahBadge: {
-    minWidth: 58,
-    height: 38,
-    borderRadius: 12,
+  badge: {
     backgroundColor: "#F7EDDF",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
+    paddingHorizontal: 9,
+    paddingVertical: 7,
+    borderRadius: 10,
   },
-
-  ayahBadgeNumber: {
-    fontSize: 15,
-    color: "#A96738",
-    fontWeight: "800",
-  },
-
-  ayahBadgeSlash: {
-    marginHorizontal: 3,
-    color: "#C5A98D",
-    fontSize: 13,
-  },
-
-  ayahBadgeTotal: {
-    fontSize: 13,
-    color: "#967B63",
-    fontWeight: "600",
-  },
-
-  currentAyahRow: {
-    marginTop: 12,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-
-  currentAyahLabel: {
-    fontSize: 9,
-    letterSpacing: 2,
-    color: "#A96738",
-    fontWeight: "800",
-  },
-
-  currentAyahNumber: {
+  badgeText: {
     fontSize: 11,
-    color: "#967B63",
-    fontWeight: "600",
+    fontWeight: "700",
+    color: "#A96738",
   },
-
   progressContainer: {
-    marginTop: 7,
+    marginTop: 17,
   },
-
   progressBackground: {
     height: 4,
     borderRadius: 2,
     backgroundColor: "#EADCC8",
     overflow: "hidden",
   },
-
   progressFill: {
     height: 4,
     borderRadius: 2,
     backgroundColor: "#A96738",
   },
-
   timeRow: {
-    marginTop: 6,
+    marginTop: 7,
     flexDirection: "row",
     justifyContent: "space-between",
   },
-
   timeText: {
     color: "#967B63",
-    fontSize: 10,
+    fontSize: 11,
   },
-
-  seekRow: {
-    flexDirection: "row",
-    justifyContent: "center",
-    gap: 35,
-    marginTop: 6,
-  },
-
-  seekButton: {
-    paddingHorizontal: 8,
-    paddingVertical: 5,
-  },
-
-  seekText: {
-    fontSize: 12,
-    color: "#A96738",
-    fontWeight: "700",
-  },
-
   controls: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 42,
-    marginTop: 2,
+    gap: 38,
+    marginTop: 12,
   },
-
-  controlButton: {
+  seekButton: {
     width: 42,
     height: 42,
     alignItems: "center",
     justifyContent: "center",
   },
-
+  seekText: {
+    fontSize: 15,
+    fontWeight: "700",
+    color: "#A96738",
+  },
   playButton: {
     width: 52,
     height: 52,
@@ -866,16 +375,23 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-
   playIcon: {
     color: "#FFFFFF",
     fontSize: 21,
     fontWeight: "800",
   },
-
-  skipIcon: {
-    color: "#A96738",
-    fontSize: 20,
-    fontWeight: "700",
+  loadingText: {
+    marginTop: 8,
+    textAlign: "center",
+    fontSize: 11,
+    color: "#967B63",
+  },
+  retryButton: {
+    paddingVertical: 8,
+  },
+  errorText: {
+    color: "#B42318",
+    textAlign: "center",
+    fontSize: 12,
   },
 });

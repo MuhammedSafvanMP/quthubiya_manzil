@@ -1,6 +1,5 @@
-
 import { router } from "expo-router";
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
@@ -10,9 +9,9 @@ import {
   View,
 } from "react-native";
 
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { SearchBar } from "../components/common/searchBar";
-import quranData from "../constants/quran.json";
+import { SafeAreaView } from "react-native-safe-area-context";
+import quranData from "../../constants/quran.json";
+import SearchBar from "../components/common/searchBar";
 
 type Ayah = {
   number: number;
@@ -82,9 +81,7 @@ export default function audio() {
       <View style={styles.center}>
         <ActivityIndicator size="large" />
 
-        <Text style={styles.loadingText}>
-          Loading Quran...
-        </Text>
+        <Text style={styles.loadingText}>Loading Quran...</Text>
       </View>
     );
   }
@@ -99,10 +96,7 @@ export default function audio() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-   
-
       <View style={styles.container}>
-
         <SearchBar search={search} setSearch={setSearch} />
 
         {/* Result count */}
@@ -119,40 +113,32 @@ export default function audio() {
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={
-            filteredSurahs.length === 0
-              ? styles.emptyList
-              : undefined
+            filteredSurahs.length === 0 ? styles.emptyList : undefined
           }
           renderItem={({ item }) => (
             <TouchableOpacity
               activeOpacity={0.7}
               style={styles.surah}
               onPress={() =>
-                router.push(`../../components/screen/quran/audio/${item.number}`)
+                router.push(
+                  `../../components/screen/quran/audio/page/${item.number}`,
+                )
               }
             >
               <View style={styles.surahRow}>
-
                 {/* Number */}
                 <View style={styles.number}>
-                  <Text style={styles.numberText}>
-                    {item.number}
-                  </Text>
+                  <Text style={styles.numberText}>{item.number}</Text>
                 </View>
 
                 {/* Arabic Name */}
-                <Text style={styles.arabicName}>
-                  {item.name}
-                </Text>
-
+                <Text style={styles.arabicName}>{item.name}</Text>
               </View>
             </TouchableOpacity>
           )}
           ListEmptyComponent={
             <View style={styles.emptyContainer}>
-              <Text style={styles.emptyTitle}>
-                No Surah found
-              </Text>
+              <Text style={styles.emptyTitle}>No Surah found</Text>
 
               <Text style={styles.emptyText}>
                 Try searching another Surah name or number.
@@ -190,7 +176,6 @@ const styles = StyleSheet.create({
   },
 
   // Search
- 
 
   resultText: {
     fontSize: 12,
@@ -261,4 +246,3 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
-

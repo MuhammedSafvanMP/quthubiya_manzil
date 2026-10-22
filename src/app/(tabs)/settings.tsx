@@ -1,53 +1,52 @@
-import React from 'react';
+import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-  SafeAreaView,
   Alert,
+  ScrollView,
   Share,
-} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const SettingsScreen = ({ navigation }) => {
+const SettingsScreen = ({ navigation }: any) => {
   const handleShare = async () => {
     try {
       const result = await Share.share({
         message:
-          'Check out Quthubiy Manzil app! A privacy-focused app that doesn\'t collect any user data.\n\nDownload now!',
-        title: 'Quthubiy Manzil',
+          "Check out Quthubiy Manzil app! A privacy-focused app that doesn't collect any user data.\n\nDownload now!",
+        title: "Quthubiy Manzil",
       });
-    } catch (error) {
-      Alert.alert('Error', error.message);
+    } catch (error: any) {
+      Alert.alert("Error", error.message);
     }
   };
 
   const settingsItems = [
     {
       id: 1,
-      title: 'About',
-      subtitle: 'Learn more about Quthubiy Manzil',
-      icon: 'information-circle-outline',
-      color: '#4A90E2',
-      onPress: () =>  router.push("/components/screen/about/about"),
+      title: "About",
+      subtitle: "Learn more about Quthubiy Manzil",
+      icon: "information-circle-outline",
+      color: "#4A90E2",
+      onPress: () => router.push("../components/screen/about/about"),
     },
     {
       id: 2,
-      title: 'Privacy Policy',
-      subtitle: 'Read our complete privacy policy',
-      icon: 'shield-checkmark-outline',
-      color: '#34C759',
-      onPress: () => router.push("/components/screen/privacy/privacy"),
+      title: "Privacy Policy",
+      subtitle: "Read our complete privacy policy",
+      icon: "shield-checkmark-outline",
+      color: "#34C759",
+      onPress: () => router.push("../components/screen/privacy/privacy"),
     },
     {
       id: 3,
-      title: 'Share App',
-      subtitle: 'Share Quthubiy Manzil with friends',
-      icon: 'share-social-outline',
-      color: '#FF9500',
+      title: "Share App",
+      subtitle: "Share Quthubiy Manzil with friends",
+      icon: "share-social-outline",
+      color: "#FF9500",
       onPress: handleShare,
     },
   ];
@@ -61,14 +60,19 @@ const SettingsScreen = ({ navigation }) => {
         </View>
 
         <View style={styles.section}>
-          {settingsItems.map((item) => (
+          {settingsItems.map((item: any) => (
             <TouchableOpacity
               key={item.id}
               style={styles.settingItem}
               onPress={item.onPress}
               activeOpacity={0.7}
             >
-              <View style={[styles.iconContainer, { backgroundColor: item.color + '20' }]}>
+              <View
+                style={[
+                  styles.iconContainer,
+                  { backgroundColor: item.color + "20" },
+                ]}
+              >
                 <Ionicons name={item.icon} size={24} color={item.color} />
               </View>
               <View style={styles.textContainer}>
@@ -83,7 +87,7 @@ const SettingsScreen = ({ navigation }) => {
         <View style={styles.footer}>
           <Text style={styles.footerText}>Version 1.0.0</Text>
           <Text style={styles.footerText}>
-            © 2024 Quthubiy Manzil. All rights reserved.
+            © {new Date().getFullYear()} Quthubiy Manzil. All rights reserved.
           </Text>
         </View>
       </ScrollView>
@@ -94,7 +98,7 @@ const SettingsScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2F2F7',
+    backgroundColor: "#FAFAFA",
   },
   scrollContent: {
     paddingBottom: 30,
@@ -105,33 +109,33 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 34,
-    fontWeight: 'bold',
-    color: '#1C1C1E',
+    fontWeight: "bold",
+    color: "#1C1C1E",
   },
   headerSubtitle: {
     fontSize: 16,
-    color: '#8E8E93',
+    color: "#8E8E93",
     marginTop: 4,
   },
   section: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     marginHorizontal: 16,
     borderRadius: 12,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   settingItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     padding: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#F2F2F7',
+    borderBottomColor: "#F2F2F7",
   },
   iconContainer: {
     width: 40,
     height: 40,
     borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   textContainer: {
     flex: 1,
@@ -139,21 +143,21 @@ const styles = StyleSheet.create({
   },
   itemTitle: {
     fontSize: 16,
-    fontWeight: '600',
-    color: '#1C1C1E',
+    fontWeight: "600",
+    color: "#1C1C1E",
   },
   itemSubtitle: {
     fontSize: 13,
-    color: '#8E8E93',
+    color: "#8E8E93",
     marginTop: 2,
   },
   footer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 30,
   },
   footerText: {
     fontSize: 12,
-    color: '#8E8E93',
+    color: "#8E8E93",
     marginTop: 4,
   },
 });

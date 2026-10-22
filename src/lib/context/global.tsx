@@ -1,5 +1,6 @@
 import BottomSheet from "@expo/ui/community/bottom-sheet";
 import React, { createContext, useContext, useRef, useState } from "react";
+import { Reciter, RECITERS } from "../../constants/reciters";
 
 type DrawerContextType = {
   showDrawer: boolean;
@@ -8,6 +9,8 @@ type DrawerContextType = {
   openSheet: any;
   dropDownShow: boolean;
   setDropDownShow: (open: boolean) => void;
+  setSelectedReciter: any;
+  selectedReciter: any;
 };
 
 export const DrawerContext = createContext<DrawerContextType | undefined>(
@@ -17,6 +20,8 @@ export const DrawerContext = createContext<DrawerContextType | undefined>(
 export function DrawerProvider({ children }: { children: React.ReactNode }) {
   const [showDrawer, setShowDrawer] = useState(false);
   const [dropDownShow, setDropDownShow] = useState(false);
+
+  const [selectedReciter, setSelectedReciter] = useState<Reciter>(RECITERS[0]);
 
   const sheetRef = useRef<BottomSheet>(null);
 
@@ -33,6 +38,8 @@ export function DrawerProvider({ children }: { children: React.ReactNode }) {
         openSheet,
         dropDownShow,
         setDropDownShow,
+        selectedReciter,
+        setSelectedReciter,
       }}
     >
       {children}

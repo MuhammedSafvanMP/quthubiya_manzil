@@ -1,21 +1,25 @@
-import React, { useState } from "react";
+import { Ionicons } from "@expo/vector-icons";
+import { useState } from "react";
 import {
   Alert,
+  Modal,
+  Pressable,
+  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
   View,
-  Pressable,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AppBar from "../../common/AppBar";
 
 const DEFAULT_TARGET = 33;
+const TARGET_OPTIONS = [33, 100, 313, 500, 1000];
 
 export default function CounterScreen() {
   const [count, setCount] = useState(0);
   const [target, setTarget] = useState(DEFAULT_TARGET);
+  const [targetModalVisible, setTargetModalVisible] = useState(false);
 
   const progress = Math.min(count / target, 1);
 
@@ -41,42 +45,28 @@ export default function CounterScreen() {
     ]);
   };
 
-  const changeTarget = () => {
-    Alert.alert("Choose Target", "Select your zikr target.", [
-      {
-        text: "33",
-        onPress: () => setTarget(33),
-      },
-      {
-        text: "100",
-        onPress: () => setTarget(100),
-      },
-      {
-        text: "1000",
-        onPress: () => setTarget(1000),
-      },
-      {
-        text: "Cancel",
-        style: "cancel",
-      },
-    ]);
+  const openTargetModal = () => {
+    setTargetModalVisible(true);
+  };
+
+  const selectTarget = (value: any) => {
+    setTarget(value);
+    setTargetModalVisible(false);
   };
 
   return (
     <SafeAreaView style={styles.safeArea}>
-        <AppBar title="Zikr Counter" />
+      <AppBar title="Zikr Counter" />
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
 
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.header}>
-          <View>
-           
-          </View>
+          <View></View>
 
           <Pressable
             style={styles.headerIcon}
-            onPress={changeTarget}
+            onPress={openTargetModal}
             accessibilityRole="button"
             accessibilityLabel="Change target"
           >
@@ -87,8 +77,6 @@ export default function CounterScreen() {
         {/* Main Counter Card */}
         <View style={styles.counterCard}>
           <Text style={styles.cardLabel}>YOUR DAILY ZIKR</Text>
-
-       
 
           {/* Circular Counter */}
           <View style={styles.circleOuter}>
@@ -111,10 +99,7 @@ export default function CounterScreen() {
           <View style={styles.progressSection}>
             <View style={styles.progressTrack}>
               <View
-                style={[
-                  styles.progressFill,
-                  { width: `${progress * 100}%` },
-                ]}
+                style={[styles.progressFill, { width: `${progress * 100}%` }]}
               />
             </View>
 
@@ -133,11 +118,7 @@ export default function CounterScreen() {
               ]}
               accessibilityRole="button"
             >
-              <Ionicons
-                name="refresh-outline"
-                size={18}
-                color="#FFFFFF"
-              />
+              <Ionicons name="refresh-outline" size={18} color="#FFFFFF" />
               <Text style={styles.resetText}>RESET</Text>
             </Pressable>
 
@@ -186,11 +167,7 @@ export default function CounterScreen() {
           {/* Target completed message */}
           {count >= target && (
             <View style={styles.completedBadge}>
-              <Ionicons
-                name="checkmark-circle"
-                size={18}
-                color="#FFFFFF"
-              />
+              <Ionicons name="checkmark-circle" size={18} color="#FFFFFF" />
               <Text style={styles.completedText}>
                 Target completed. MashaAllah!
               </Text>
@@ -211,7 +188,7 @@ export default function CounterScreen() {
             </View>
 
             <Pressable
-              onPress={changeTarget}
+              onPress={openTargetModal}
               style={styles.editButton}
               accessibilityRole="button"
               accessibilityLabel="Edit target"
@@ -245,6 +222,73 @@ export default function CounterScreen() {
           <View style={styles.footerLine} />
         </View>
       </View>
+
+      {/* Target Selection Modal */}
+      <Modal
+        visible={targetModalVisible}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setTargetModalVisible(false)}
+      >
+        <Pressable
+          style={styles.modalBackdrop}
+          onPress={() => setTargetModalVisible(false)}
+        >
+          <Pressable style={styles.modalSheet} onPress={() => {}}>
+            <View style={styles.modalHandle} />
+
+            <Text style={styles.modalTitle}>Choose Target</Text>
+            <Text style={styles.modalSubtitle}>Select your zikr target.</Text>
+
+            <ScrollView
+              style={styles.modalList}
+              showsVerticalScrollIndicator={false}
+            >
+              {TARGET_OPTIONS.map((value) => {
+                const selected = value === target;
+                return (
+                  <Pressable
+                    key={value}
+                    onPress={() => selectTarget(value)}
+                    style={({ pressed }) => [
+                      styles.targetOption,
+                      selected && styles.targetOptionSelected,
+                      pressed && styles.pressed,
+                    ]}
+                    accessibilityRole="button"
+                    accessibilityState={{ selected }}
+                  >
+                    <Text
+                      style={[
+                        styles.targetOptionText,
+                        selected && styles.targetOptionTextSelected,
+                      ]}
+                    >
+                      {value}
+                    </Text>
+
+                    {selected && (
+                      <Ionicons name="checkmark" size={20} color="#FFFFFF" />
+                    )}
+                  </Pressable>
+                );
+              })}
+            </ScrollView>
+
+            <Pressable
+              onPress={() => setTargetModalVisible(false)}
+              style={({ pressed }) => [
+                styles.modalCancel,
+                pressed && styles.pressed,
+              ]}
+              accessibilityRole="button"
+              accessibilityLabel="Cancel target selection"
+            >
+              <Text style={styles.modalCancelText}>CANCEL</Text>
+            </Pressable>
+          </Pressable>
+        </Pressable>
+      </Modal>
     </SafeAreaView>
   );
 }
@@ -550,5 +594,95 @@ const styles = StyleSheet.create({
     fontSize: 9,
     fontWeight: "700",
     letterSpacing: 2,
+  },
+
+  /* ---- Target Modal Styles ---- */
+  modalBackdrop: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.55)",
+    justifyContent: "flex-end",
+  },
+
+  modalSheet: {
+    backgroundColor: "#FFFFFF",
+    borderTopLeftRadius: 26,
+    borderTopRightRadius: 26,
+    paddingHorizontal: 20,
+    paddingTop: 12,
+    paddingBottom: 24,
+    maxHeight: "85%",
+  },
+
+  modalHandle: {
+    alignSelf: "center",
+    width: 42,
+    height: 4,
+    borderRadius: 2,
+    backgroundColor: "#DDDDDD",
+    marginBottom: 16,
+  },
+
+  modalTitle: {
+    fontSize: 19,
+    fontWeight: "800",
+    color: "#111111",
+    textAlign: "center",
+  },
+
+  modalSubtitle: {
+    fontSize: 13,
+    color: "#777777",
+    textAlign: "center",
+    marginTop: 4,
+    marginBottom: 16,
+  },
+
+  modalList: {
+    marginBottom: 12,
+  },
+
+  targetOption: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingVertical: 15,
+    paddingHorizontal: 16,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: "#EEEEEE",
+    backgroundColor: "#F7F7F7",
+    marginBottom: 9,
+  },
+
+  targetOptionSelected: {
+    backgroundColor: "#080808",
+    borderColor: "#080808",
+  },
+
+  targetOptionText: {
+    fontSize: 16,
+    fontWeight: "700",
+    color: "#111111",
+  },
+
+  targetOptionTextSelected: {
+    color: "#FFFFFF",
+  },
+
+  modalCancel: {
+    height: 50,
+    borderRadius: 14,
+    borderWidth: 1.5,
+    borderColor: "#BDBDBD",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 4,
+  },
+
+  modalCancelText: {
+    color: "#111111",
+    fontSize: 13,
+    fontWeight: "700",
+    letterSpacing: 1.2,
   },
 });

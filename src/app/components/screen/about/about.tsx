@@ -1,211 +1,33 @@
-// import React from 'react';
-// import {
-//   View,
-//   Text,
-//   StyleSheet,
-//   ScrollView,
-
-//   Image,
-// } from 'react-native';
-// import { Ionicons } from '@expo/vector-icons';
-// import { SafeAreaView } from 'react-native-safe-area-context';
-// import AppBar from '../../common/AppBar';
-
-// const AboutScreen = () => {
-//   return (
-//     <SafeAreaView style={styles.container}>
-//         <AppBar title='About' />
-//       <ScrollView contentContainerStyle={styles.scrollContent}>
-//         <View style={styles.logoContainer}>
-//           <View style={styles.logoCircle}>
-//             <Ionicons name="book-outline" size={60} color="#4A90E2" />
-//           </View>
-//           <Text style={styles.appName}>Quthubiy Manzil</Text>
-//           <Text style={styles.version}>Version 1.0.0</Text>
-//         </View>
-
-//         <View style={styles.card}>
-//           <Text style={styles.sectionTitle}>About the App</Text>
-//           <Text style={styles.paragraph}>
-//             Quthubiy Manzil is a privacy-first application designed to provide
-//             you with a seamless experience without compromising your personal
-//             data. We believe that your privacy is a fundamental right, and our
-//             app is built with that principle at its core.
-//           </Text>
-//         </View>
-
-//         <View style={styles.card}>
-//           <Text style={styles.sectionTitle}>Our Commitment</Text>
-          
-//           <View style={styles.commitmentItem}>
-//             <Ionicons name="checkmark-circle" size={22} color="#34C759" />
-//             <Text style={styles.commitmentText}>
-//               We do not collect any personal information
-//             </Text>
-//           </View>
-          
-//           <View style={styles.commitmentItem}>
-//             <Ionicons name="checkmark-circle" size={22} color="#34C759" />
-//             <Text style={styles.commitmentText}>
-//               We do not track your usage or behavior
-//             </Text>
-//           </View>
-          
-//           <View style={styles.commitmentItem}>
-//             <Ionicons name="checkmark-circle" size={22} color="#34C759" />
-//             <Text style={styles.commitmentText}>
-//               We do not share data with third parties
-//             </Text>
-//           </View>
-          
-//           <View style={styles.commitmentItem}>
-//             <Ionicons name="checkmark-circle" size={22} color="#34C759" />
-//             <Text style={styles.commitmentText}>
-//               We do not require any account registration
-//             </Text>
-//           </View>
-          
-//           <View style={styles.commitmentItem}>
-//             <Ionicons name="checkmark-circle" size={22} color="#34C759" />
-//             <Text style={styles.commitmentText}>
-//               All data stays on your device only
-//             </Text>
-//           </View>
-//         </View>
-
-//         <View style={styles.card}>
-//           <Text style={styles.sectionTitle}>Contact Us</Text>
-//           <Text style={styles.paragraph}>
-//             If you have any questions, suggestions, or feedback, feel free to
-//             reach out to us at:
-//           </Text>
-//           <Text style={styles.email}>support@quthubiymanzil.com</Text>
-//         </View>
-
-//         <View style={styles.footer}>
-//           <Text style={styles.footerText}>
-//             Made with ❤️ for our users
-//           </Text>
-//           <Text style={styles.footerText}>
-//             © 2024 Quthubiy Manzil. All rights reserved.
-//           </Text>
-//         </View>
-//       </ScrollView>
-//     </SafeAreaView>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#F2F2F7',
-//   },
-//   scrollContent: {
-//     padding: 16,
-//     paddingBottom: 30,
-//   },
-//   logoContainer: {
-//     alignItems: 'center',
-//     marginVertical: 24,
-//   },
-//   logoCircle: {
-//     width: 120,
-//     height: 120,
-//     borderRadius: 60,
-//     backgroundColor: '#E8F1FC',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     marginBottom: 16,
-//   },
-//   appName: {
-//     fontSize: 26,
-//     fontWeight: 'bold',
-//     color: '#1C1C1E',
-//   },
-//   version: {
-//     fontSize: 14,
-//     color: '#8E8E93',
-//     marginTop: 4,
-//   },
-//   card: {
-//     backgroundColor: '#FFFFFF',
-//     borderRadius: 12,
-//     padding: 16,
-//     marginBottom: 16,
-//   },
-//   sectionTitle: {
-//     fontSize: 18,
-//     fontWeight: '700',
-//     color: '#1C1C1E',
-//     marginBottom: 12,
-//   },
-//   paragraph: {
-//     fontSize: 15,
-//     lineHeight: 22,
-//     color: '#3A3A3C',
-//   },
-//   commitmentItem: {
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//     marginBottom: 10,
-//   },
-//   commitmentText: {
-//     fontSize: 15,
-//     color: '#3A3A3C',
-//     marginLeft: 10,
-//     flex: 1,
-//   },
-//   email: {
-//     fontSize: 15,
-//     color: '#4A90E2',
-//     fontWeight: '600',
-//     marginTop: 8,
-//   },
-//   footer: {
-//     alignItems: 'center',
-//     marginTop: 16,
-//   },
-//   footerText: {
-//     fontSize: 12,
-//     color: '#8E8E93',
-//     marginTop: 4,
-//     textAlign: 'center',
-//   },
-// });
-
-// export default AboutScreen;
-
-
-import React from 'react';
+import { Ionicons } from "@expo/vector-icons";
 import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  Linking,
   Dimensions,
-} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import AppBar from '../../common/AppBar';
+  Linking,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import AppBar from "../../common/AppBar";
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 
 const AboutScreen = () => {
-  const handleEmailPress = () => Linking.openURL('mailto:support@quthubiymanzil.com');
-  const handleWebsitePress = () => Linking.openURL('https://zorrowtech.in');
+  const handleEmailPress = () =>
+    Linking.openURL("mailto:support@quthubiymanzil.com");
+  const handleWebsitePress = () => Linking.openURL("https://zorrowtech.in");
 
   const commitments = [
-    { icon: 'person-outline', text: 'No personal information collected' },
-    { icon: 'analytics-outline', text: 'No usage tracking or analytics' },
-    { icon: 'share-outline', text: 'No data shared with third parties' },
-    { icon: 'key-outline', text: 'No account registration required' },
-    { icon: 'phone-portrait-outline', text: 'All data stays on your device' },
+    { icon: "person-outline", text: "No personal information collected" },
+    { icon: "analytics-outline", text: "No usage tracking or analytics" },
+    { icon: "share-outline", text: "No data shared with third parties" },
+    { icon: "key-outline", text: "No account registration required" },
+    { icon: "phone-portrait-outline", text: "All data stays on your device" },
   ];
 
   return (
-    <SafeAreaView style={styles.container} >
+    <SafeAreaView style={styles.container}>
       <AppBar title="About" />
 
       <ScrollView
@@ -252,10 +74,10 @@ const AboutScreen = () => {
           <Text style={styles.sectionLabel}>ABOUT THE APP</Text>
           <View style={styles.card}>
             <Text style={styles.bodyText}>
-              Quthubiy Manzil is a privacy-first application built to give you
-              a seamless experience without ever compromising your personal
-              data. Your privacy is a fundamental right — and we built this
-              app around that belief.
+              Quthubiy Manzil is a privacy-first application built to give you a
+              seamless experience without ever compromising your personal data.
+              Your privacy is a fundamental right — and we built this app around
+              that belief.
             </Text>
           </View>
         </View>
@@ -264,7 +86,7 @@ const AboutScreen = () => {
         <View style={styles.section}>
           <Text style={styles.sectionLabel}>OUR COMMITMENT</Text>
           <View style={styles.card}>
-            {commitments.map((item, index) => (
+            {commitments.map((item: any, index: any) => (
               <View
                 key={index}
                 style={[
@@ -316,7 +138,7 @@ const AboutScreen = () => {
 
               <TouchableOpacity
                 style={styles.devContactRow}
-                onPress={() => Linking.openURL('mailto:zorrowtech@gamil.com')}
+                onPress={() => Linking.openURL("mailto:zorrowtech@gamil.com")}
                 activeOpacity={0.7}
               >
                 <Ionicons name="mail-outline" size={16} color="#93C5FD" />
@@ -374,7 +196,7 @@ const AboutScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9FAFB',
+    backgroundColor: "#F9FAFB",
   },
   scrollContent: {
     paddingBottom: 40,
@@ -382,10 +204,10 @@ const styles = StyleSheet.create({
 
   /* ---------- HERO ---------- */
   hero: {
-    alignItems: 'center',
+    alignItems: "center",
     paddingTop: 24,
     paddingBottom: 28,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     borderBottomLeftRadius: 28,
     borderBottomRightRadius: 28,
   },
@@ -393,11 +215,11 @@ const styles = StyleSheet.create({
     width: 96,
     height: 96,
     borderRadius: 28,
-    backgroundColor: '#DBEAFE',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#DBEAFE",
+    justifyContent: "center",
+    alignItems: "center",
     marginBottom: 16,
-    shadowColor: '#2563EB',
+    shadowColor: "#2563EB",
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.15,
     shadowRadius: 16,
@@ -407,25 +229,25 @@ const styles = StyleSheet.create({
     width: 72,
     height: 72,
     borderRadius: 22,
-    backgroundColor: '#2563EB',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#2563EB",
+    justifyContent: "center",
+    alignItems: "center",
   },
   appName: {
     fontSize: 24,
-    fontWeight: '700',
-    color: '#111827',
+    fontWeight: "700",
+    color: "#111827",
     letterSpacing: -0.4,
   },
   tagline: {
     fontSize: 13,
-    color: '#6B7280',
+    color: "#6B7280",
     marginTop: 4,
   },
   versionPill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#F3F4F6',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#F3F4F6",
     paddingHorizontal: 12,
     paddingVertical: 5,
     borderRadius: 100,
@@ -435,24 +257,24 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: '#22C55E',
+    backgroundColor: "#22C55E",
     marginRight: 6,
   },
   versionText: {
     fontSize: 12,
-    color: '#4B5563',
-    fontWeight: '500',
+    color: "#4B5563",
+    fontWeight: "500",
   },
 
   /* ---------- STATS ---------- */
   statsRow: {
-    flexDirection: 'row',
-    backgroundColor: '#FFFFFF',
+    flexDirection: "row",
+    backgroundColor: "#FFFFFF",
     marginHorizontal: 16,
     marginTop: -20,
     borderRadius: 18,
     paddingVertical: 16,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.06,
     shadowRadius: 12,
@@ -460,22 +282,22 @@ const styles = StyleSheet.create({
   },
   statBox: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
   statValue: {
     fontSize: 20,
-    fontWeight: '700',
-    color: '#111827',
+    fontWeight: "700",
+    color: "#111827",
   },
   statLabel: {
     fontSize: 11,
-    color: '#6B7280',
+    color: "#6B7280",
     marginTop: 2,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   statDivider: {
     width: 1,
-    backgroundColor: '#E5E7EB',
+    backgroundColor: "#E5E7EB",
     marginVertical: 4,
   },
 
@@ -486,17 +308,17 @@ const styles = StyleSheet.create({
   },
   sectionLabel: {
     fontSize: 11,
-    fontWeight: '700',
-    color: '#9CA3AF',
+    fontWeight: "700",
+    color: "#9CA3AF",
     letterSpacing: 1.2,
     marginBottom: 8,
     marginLeft: 4,
   },
   card: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     borderRadius: 16,
     padding: 16,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.04,
     shadowRadius: 8,
@@ -505,128 +327,128 @@ const styles = StyleSheet.create({
   bodyText: {
     fontSize: 14,
     lineHeight: 22,
-    color: '#374151',
+    color: "#374151",
   },
 
   /* ---------- COMMITMENTS ---------- */
   commitmentRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingVertical: 12,
   },
   commitmentBorder: {
     borderBottomWidth: 1,
-    borderBottomColor: '#F3F4F6',
+    borderBottomColor: "#F3F4F6",
   },
   commitmentIcon: {
     width: 34,
     height: 34,
     borderRadius: 10,
-    backgroundColor: '#EFF6FF',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#EFF6FF",
+    justifyContent: "center",
+    alignItems: "center",
     marginRight: 12,
   },
   commitmentText: {
     flex: 1,
     fontSize: 14,
-    color: '#374151',
-    fontWeight: '500',
+    color: "#374151",
+    fontWeight: "500",
   },
 
   /* ---------- DEVELOPER CARD ---------- */
   devCard: {
-    backgroundColor: '#1E3A8A',
+    backgroundColor: "#1E3A8A",
     borderRadius: 20,
     padding: 20,
-    overflow: 'hidden',
-    shadowColor: '#1E3A8A',
+    overflow: "hidden",
+    shadowColor: "#1E3A8A",
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.3,
     shadowRadius: 16,
     elevation: 8,
   },
   devGlow: {
-    position: 'absolute',
+    position: "absolute",
     width: 180,
     height: 180,
     borderRadius: 90,
-    backgroundColor: '#3B82F6',
+    backgroundColor: "#3B82F6",
     opacity: 0.25,
     top: -80,
     right: -60,
   },
   devTop: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 14,
   },
   devLogo: {
     width: 44,
     height: 44,
     borderRadius: 12,
-    backgroundColor: 'rgba(255,255,255,0.15)',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "rgba(255,255,255,0.15)",
+    justifyContent: "center",
+    alignItems: "center",
     marginRight: 12,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.2)',
+    borderColor: "rgba(255,255,255,0.2)",
   },
   devName: {
     fontSize: 17,
-    fontWeight: '700',
-    color: '#FFFFFF',
+    fontWeight: "700",
+    color: "#FFFFFF",
     letterSpacing: -0.2,
   },
   devSub: {
     fontSize: 12,
-    color: '#BFDBFE',
+    color: "#BFDBFE",
     marginTop: 1,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   devDescription: {
     fontSize: 13,
     lineHeight: 19,
-    color: '#DBEAFE',
+    color: "#DBEAFE",
     marginBottom: 16,
   },
   devContact: {
     marginBottom: 16,
   },
   devContactRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingVertical: 6,
   },
   devContactText: {
     fontSize: 13,
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     marginLeft: 8,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   devButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FFFFFF',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#FFFFFF",
     borderRadius: 12,
     paddingVertical: 12,
   },
   devButtonText: {
     fontSize: 14,
-    fontWeight: '700',
-    color: '#1E3A8A',
+    fontWeight: "700",
+    color: "#1E3A8A",
     marginRight: 6,
   },
 
   /* ---------- SUPPORT ---------- */
   supportCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
     borderRadius: 16,
     padding: 14,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.04,
     shadowRadius: 8,
@@ -636,25 +458,25 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 12,
-    backgroundColor: '#EFF6FF',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#EFF6FF",
+    justifyContent: "center",
+    alignItems: "center",
     marginRight: 12,
   },
   supportTitle: {
     fontSize: 14,
-    fontWeight: '600',
-    color: '#111827',
+    fontWeight: "600",
+    color: "#111827",
   },
   supportEmail: {
     fontSize: 12,
-    color: '#6B7280',
+    color: "#6B7280",
     marginTop: 2,
   },
 
   /* ---------- FOOTER ---------- */
   footer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 32,
     paddingHorizontal: 24,
   },
@@ -662,19 +484,19 @@ const styles = StyleSheet.create({
     width: 40,
     height: 3,
     borderRadius: 2,
-    backgroundColor: '#E5E7EB',
+    backgroundColor: "#E5E7EB",
     marginBottom: 16,
   },
   footerText: {
     fontSize: 12,
-    color: '#6B7280',
-    fontWeight: '600',
+    color: "#6B7280",
+    fontWeight: "600",
   },
   footerSub: {
     fontSize: 11,
-    color: '#9CA3AF',
+    color: "#9CA3AF",
     marginTop: 4,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });
 

@@ -1,0 +1,39 @@
+{
+  "data": {
+    "title": "أركان الإسلام",
+    "title_english": "Islam karyam",
+    "title_malayalam": "ഇസ്ലാം കാര്യം",
+    "islam": [
+      {
+        "id": 1,
+        "arabic_title": "أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللهِ",
+        "enlish_title": "I bear witness that there is no God but Allah, and Muhammad is His messenger",
+        "malayalam_title": "“അല്ലാഹു അല്ലാതെ ഇലാഹില്ലെന്നും മുഹമ്മദ് നബി (സ) അല്ലാഹുവിന്റെ പ്രവാചകനാണെന്നും ഹൃദയത്തിൽ വിശ്വസിച്ച് നാവ് കൊണ്ട് വെളിവാക്കിപ്പറയുക” ."
+      },
+      {
+        "id": 2,
+        "arabic_title": "الصلاة / إقام الصلاة",
+        "enlish_title": "Prayer (Salah)",
+        "malayalam_title": "അഞ്ച് നേരത്തെ നിസ്കാരം മുറപ്രകാരം നിലനിർത്തുക ."
+      },
+      {
+        "id": 3,
+        "arabic_title": " الزكاة / إيتاء الزكاة",
+        "enlish_title": "Almsgiving (Zakat)",
+        "malayalam_title": "സകാത്ത് നൽകുക ."
+      },
+      {
+        "id": 4,
+        "arabic_title": "الصوم / صوم رمضان",
+        "enlish_title": "Fasting (Sawm)",
+        "malayalam_title": "റമദാനിൽ വ്രതമനുഷ്ഠിക്കുക ."
+      },
+      {
+        "id": 5,
+        "arabic_title": "الحج / حج البيت لمن استطاع إليه سبيلً",
+        "enlish_title": "Pilgrimage (Hajj)",
+        "malayalam_title": "കഴിവുള്ളവൻ ഹജ്ജ് ചെയ്യുക ."
+      }
+    ]
+  }
+}

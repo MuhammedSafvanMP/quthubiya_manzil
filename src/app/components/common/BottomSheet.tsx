@@ -1,21 +1,13 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 
-import BottomSheet, {
-  BottomSheetView,
-} from "@expo/ui/community/bottom-sheet";
+import BottomSheet, { BottomSheetView } from "@expo/ui/community/bottom-sheet";
 
-import {
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-} from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 
 import { Check, X } from "lucide-react-native";
 
-import { useDrawer } from "../../lib/context/global";
-import { Reciter } from "../../constants/reciters";
+import { Reciter } from "../../../constants/reciters";
+import { useDrawer } from "../../../lib/context/global";
 
 type Props = {
   headingText: string;
@@ -71,9 +63,7 @@ export default function BottomSheetComponent({
         <BottomSheetView style={styles.sheetContent}>
           {/* Header */}
           <View style={styles.header}>
-            <Text style={styles.heading}>
-              {headingText}
-            </Text>
+            <Text style={styles.heading}>{headingText}</Text>
 
             <Pressable
               style={styles.closeButton}
@@ -81,11 +71,7 @@ export default function BottomSheetComponent({
               accessibilityRole="button"
               accessibilityLabel="Close bottom sheet"
             >
-              <X
-                size={24}
-                color="#000000"
-                strokeWidth={2.2}
-              />
+              <X size={24} color="#000000" strokeWidth={2.2} />
             </Pressable>
           </View>
 
@@ -98,8 +84,7 @@ export default function BottomSheetComponent({
             keyboardShouldPersistTaps="handled"
             extraData={selectedReciter?.id}
             renderItem={({ item }) => {
-              const isSelected =
-                selectedReciter?.id === item.id;
+              const isSelected = selectedReciter?.id === item.id;
 
               return (
                 <Pressable
@@ -144,11 +129,7 @@ export default function BottomSheetComponent({
                   </View>
 
                   {isSelected && (
-                    <Check
-                      size={21}
-                      color="#168568"
-                      strokeWidth={2.5}
-                    />
+                    <Check size={21} color="#168568" strokeWidth={2.5} />
                   )}
                 </Pressable>
               );
@@ -166,7 +147,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 22,
     paddingTop: 12,
     paddingBottom: 20,
-  
   },
 
   header: {
@@ -263,4 +243,3 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
 });
-

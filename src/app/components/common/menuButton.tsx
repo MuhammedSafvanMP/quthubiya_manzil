@@ -1,5 +1,4 @@
 import { router } from "expo-router";
-import React from "react";
 import {
   Image,
   ImageSourcePropType,
@@ -15,28 +14,43 @@ type MenuButtonProps = {
   label: string;
 };
 
-export const MenuButton = ({ icon, label }: MenuButtonProps) => {
+export default function MenuButton({ icon, label }: MenuButtonProps) {
   const handlePress = () => {
     if (label === "Quran") {
-      router.push("../components/screen/quran/quran");
+      router.push("/components/screen/quran/surah/quran");
     }
-    if(label === "Asmaul Husna") {
+    if (label === "Asmaul Husna") {
       router.push("../components/screen/asmaulhusna/asmaulhusnAllah");
     }
-    if(label === "Asmaul Nabi"){
-       router.push("../components/screen/asmaulhusna/asmaulNabiya");
+    if (label === "Asmaul Nabi") {
+      router.push("../components/screen/asmaulhusna/asmaulNabiya");
     }
-    if(label === "Dikr") {
-      router.push("/components/screen/qibla/qibla")
+    if (label === "Qibla Finder") {
+      router.push("../components/screen/qibla/qibla");
     }
-    if(label === "Shahada") {
-      router.push("/components/screen/shahada/shahada")
+    if (label === "Shahada") {
+      router.push("../components/screen/shahada/shahada");
     }
-    if(label === "Swalath"){
-      router.push("/components/screen/counter/counter")
+    if (label === "Counter") {
+      router.push("../components/screen/counter/counter");
     }
-    if(label === "Prayer Time") {
-      router.push("/components/screen/prayer/prayer");
+    if (label === "Prayer Time") {
+      router.push("../components/screen/prayer/prayer");
+    }
+    if (label === "Meelad Nabi") {
+      router.push("../components/screen/meelad/meelads");
+    }
+    if (label === "Niskaram") {
+      router.push("../components/screen/niskaram/niskaram");
+    }
+    if (label === "Iman karyam") {
+      router.push("../components/screen/iman/iman");
+    }
+    if (label === "Islam karyam") {
+      router.push("../components/screen/islam/islam");
+    }
+    if (label === "Majlisunoor") {
+      router.push("../components/screen/majlisnoor/majlisnoor");
     }
   };
 
@@ -61,7 +75,7 @@ export const MenuButton = ({ icon, label }: MenuButtonProps) => {
       <Text style={styles.menuLabel}>{label}</Text>
     </View>
   );
-};
+}
 
 const ICON_SIZE = PixelRatio.roundToNearestPixel(32);
 
