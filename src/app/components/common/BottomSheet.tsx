@@ -2,18 +2,31 @@ import { useRef } from "react";
 
 import BottomSheet, { BottomSheetView } from "@expo/ui/community/bottom-sheet";
 
-import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 import { Check, X } from "lucide-react-native";
 
+import { Ionicons } from "@expo/vector-icons";
 import { Reciter } from "../../../constants/reciters";
 import { useDrawer } from "../../../lib/context/global";
 
 type Props = {
   headingText: string;
-  setSelectedReciter: (reciter: Reciter) => void;
-  reciters: Reciter[];
-  selectedReciter: Reciter;
+  setSelectedReciter?: any;
+  reciters?: Reciter[];
+  selectedReciter?: Reciter;
+  isCounterBottomsheet?: boolean;
+  setTargetModalVisible?: any;
+  selectTarget?: any;
+  target?: any;
+  TARGET_OPTIONS?: any;
 };
 
 export default function BottomSheetComponent({
@@ -21,6 +34,11 @@ export default function BottomSheetComponent({
   setSelectedReciter,
   reciters,
   selectedReciter,
+  isCounterBottomsheet = false,
+  setTargetModalVisible,
+  selectTarget,
+  target,
+  TARGET_OPTIONS,
 }: Props) {
   const { sheetRef, setDropDownShow } = useDrawer();
 
@@ -75,66 +93,157 @@ export default function BottomSheetComponent({
             </Pressable>
           </View>
 
-          {/* Reciters list */}
-          <FlatList
-            data={reciters}
-            keyExtractor={(item) => String(item.id)}
-            style={styles.list}
-            showsVerticalScrollIndicator={false}
-            keyboardShouldPersistTaps="handled"
-            extraData={selectedReciter?.id}
-            renderItem={({ item }) => {
-              const isSelected = selectedReciter?.id === item.id;
+          {!isCounterBottomsheet ? (
+            <>
+              {/* Reciters list */}
+              <FlatList
+                data={reciters}
+                keyExtractor={(item) => String(item.id)}
+                style={styles.list}
+                showsVerticalScrollIndicator={false}
+                keyboardShouldPersistTaps="handled"
+                extraData={selectedReciter?.id}
+                renderItem={({ item }) => {
+                  const isSelected = selectedReciter?.id === item.id;
 
-              return (
-                <Pressable
-                  style={({ pressed }) => [
-                    styles.reciterItem,
-                    isSelected && styles.selectedItem,
-                    pressed && styles.pressedItem,
-                  ]}
-                  onPress={() => handleSelectReciter(item)}
-                  accessibilityRole="button"
-                  accessibilityLabel={`Select ${item.name}`}
-                  accessibilityState={{
-                    selected: isSelected,
-                  }}
-                >
-                  <View style={styles.reciterInfo}>
-                    <View
-                      style={[
-                        styles.reciterIcon,
-                        isSelected && styles.selectedIcon,
+                  return (
+                    <Pressable
+                      style={({ pressed }) => [
+                        styles.reciterItem,
+                        isSelected && styles.selectedItem,
+                        pressed && styles.pressedItem,
                       ]}
+                      onPress={() => handleSelectReciter(item)}
+                      accessibilityRole="button"
+                      accessibilityLabel={`Select ${item.name}`}
+                      accessibilityState={{
+                        selected: isSelected,
+                      }}
+                    >
+                      <View style={styles.reciterInfo}>
+                        <View
+                          style={[
+                            styles.reciterIcon,
+                            isSelected && styles.selectedIcon,
+                          ]}
+                        >
+                          <Text
+                            style={[
+                              styles.reciterInitial,
+                              isSelected && styles.selectedInitial,
+                            ]}
+                          >
+                            {item.name.charAt(0)}
+                          </Text>
+                        </View>
+
+                        <Text
+                          style={[
+                            styles.reciterName,
+                            isSelected && styles.selectedName,
+                          ]}
+                          numberOfLines={2}
+                        >
+                          {item.name}
+                        </Text>
+                      </View>
+
+                      {isSelected && (
+                        <Check size={21} color="#168568" strokeWidth={2.5} />
+                      )}
+                    </Pressable>
+                  );
+                }}
+              />
+            </>
+          ) : (
+            <>
+              {/* <Pressable
+                style={styles.modalBackdrop}
+                onPress={() => setTargetModalVisible(false)}
+              >
+                <Pressable style={styles.modalSheet} onPress={() => {}}>
+                  <View style={styles.modalHandle} />
+
+                  <ScrollView
+                    style={styles.modalList}
+                    showsVerticalScrollIndicator={false}
+                  >
+                    {TARGET_OPTIONS.map((value: any) => {
+                      const selected = value === target;
+                      return (
+                        <Pressable
+                          key={value}
+                          onPress={() => selectTarget(value)}
+                          style={({ pressed }) => [
+                            styles.targetOption,
+                            selected && styles.targetOptionSelected,
+                            pressed && styles.pressed,
+                          ]}
+                          accessibilityRole="button"
+                          accessibilityState={{ selected }}
+                        >
+                          <Text
+                            style={[
+                              styles.targetOptionText,
+                              selected && styles.targetOptionTextSelected,
+                            ]}
+                          >
+                            {value}
+                          </Text>
+
+                          {selected && (
+                            <Ionicons
+                              name="checkmark"
+                              size={20}
+                              color="#FFFFFF"
+                            />
+                          )}
+                        </Pressable>
+                      );
+                    })}
+                  </ScrollView>
+                </Pressable>
+              </Pressable> */}
+
+              <ScrollView
+                style={styles.list}
+                contentContainerStyle={styles.listContent}
+                showsVerticalScrollIndicator={false}
+                keyboardShouldPersistTaps="handled"
+              >
+                {TARGET_OPTIONS.map((value: any) => {
+                  const selected = value === target;
+                  return (
+                    <Pressable
+                      key={value}
+                      onPress={() => selectTarget(value)}
+                      style={({ pressed }) => [
+                        styles.targetOption,
+                        selected && styles.targetOptionSelected,
+                        pressed && styles.pressed,
+                      ]}
+                      accessibilityRole="button"
+                      accessibilityState={{ selected }}
                     >
                       <Text
                         style={[
-                          styles.reciterInitial,
-                          isSelected && styles.selectedInitial,
+                          styles.targetOptionText,
+                          selected && styles.targetOptionTextSelected,
                         ]}
                       >
-                        {item.name.charAt(0)}
+                        {value}
                       </Text>
-                    </View>
 
-                    <Text
-                      style={[
-                        styles.reciterName,
-                        isSelected && styles.selectedName,
-                      ]}
-                      numberOfLines={2}
-                    >
-                      {item.name}
-                    </Text>
-                  </View>
-
-                  {isSelected && (
-                    <Check size={21} color="#168568" strokeWidth={2.5} />
-                  )}
-                </Pressable>
-              );
-            }}
-          />
+                      {selected && (
+                        <Ionicons name="checkmark" size={20} color="#FFFFFF" />
+                      )}
+                    </Pressable>
+                  );
+                })}
+              </ScrollView>
+            </>
+          )}
         </BottomSheetView>
       </BottomSheet>
     </View>
@@ -241,5 +350,42 @@ const styles = StyleSheet.create({
   selectedName: {
     color: "#168568",
     fontWeight: "700",
+  },
+
+  listContent: {
+    paddingBottom: 12,
+  },
+
+  targetOption: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingVertical: 15,
+    paddingHorizontal: 16,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: "#E5E7EB", // match reciter cards for consistency
+    backgroundColor: "#F9FAFB",
+    marginBottom: 9,
+  },
+
+  targetOptionSelected: {
+    backgroundColor: "#080808",
+    borderColor: "#080808",
+  },
+
+  targetOptionText: {
+    fontSize: 16,
+    fontWeight: "700",
+    color: "#111111",
+  },
+
+  targetOptionTextSelected: {
+    color: "#FFFFFF",
+  },
+
+  pressed: {
+    opacity: 0.65,
+    transform: [{ scale: 0.98 }], // 0.96 is too aggressive
   },
 });

@@ -1,4 +1,3 @@
-
 import { NativeTabs } from "expo-router/unstable-native-tabs";
 
 export default function TabLayout() {
@@ -17,6 +16,12 @@ export default function TabLayout() {
       <NativeTabs.Trigger name="index">
         <NativeTabs.Trigger.Label hidden />
         <NativeTabs.Trigger.Icon sf="house" md="home" />
+      </NativeTabs.Trigger>
+
+      {/* Audio */}
+      <NativeTabs.Trigger name="quran">
+        <NativeTabs.Trigger.Label hidden />
+        <NativeTabs.Trigger.Icon sf="book" md="book" />
       </NativeTabs.Trigger>
 
       {/* Audio */}

@@ -12,6 +12,7 @@ import {
   View,
 } from "react-native";
 
+import { Pause, Play } from "lucide-react-native";
 import ENDPOINTS from "../../../constants/api";
 import { useDrawer } from "../../../lib/context/global";
 
@@ -254,8 +255,10 @@ export default function SurahBottomPlayer({
         >
           {isLoading ? (
             <ActivityIndicator color="#FFFFFF" size="small" />
+          ) : status.playing ? (
+            <Pause color="#FFFFFF" size={24} />
           ) : (
-            <Text style={styles.playIcon}>{status.playing ? "Ⅱ" : "▶"}</Text>
+            <Play color="#FFFFFF" size={24} />
           )}
         </Pressable>
 

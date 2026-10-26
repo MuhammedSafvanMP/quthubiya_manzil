@@ -1,17 +1,17 @@
+import { useDrawer } from "@/lib/context/global";
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import {
   Alert,
-  Modal,
   Pressable,
-  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
-  View,
+  View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AppBar from "../../common/AppBar";
+import BottomSheetComponent from "../../common/BottomSheet";
 
 const DEFAULT_TARGET = 33;
 const TARGET_OPTIONS = [33, 100, 313, 500, 1000];
@@ -20,6 +20,7 @@ export default function CounterScreen() {
   const [count, setCount] = useState(0);
   const [target, setTarget] = useState(DEFAULT_TARGET);
   const [targetModalVisible, setTargetModalVisible] = useState(false);
+  const { openSheet } = useDrawer();
 
   const progress = Math.min(count / target, 1);
 
@@ -66,7 +67,7 @@ export default function CounterScreen() {
 
           <Pressable
             style={styles.headerIcon}
-            onPress={openTargetModal}
+            onPress={() => openSheet()}
             accessibilityRole="button"
             accessibilityLabel="Change target"
           >
@@ -224,7 +225,7 @@ export default function CounterScreen() {
       </View>
 
       {/* Target Selection Modal */}
-      <Modal
+      {/* <Modal
         visible={targetModalVisible}
         transparent
         animationType="fade"
@@ -288,7 +289,16 @@ export default function CounterScreen() {
             </Pressable>
           </Pressable>
         </Pressable>
-      </Modal>
+      </Modal> */}
+
+      <BottomSheetComponent
+        headingText={"Choose Target"}
+        isCounterBottomsheet={true}
+        TARGET_OPTIONS={TARGET_OPTIONS}
+        selectTarget={selectTarget}
+        setTargetModalVisible={setTargetModalVisible}
+        target={target}
+      />
     </SafeAreaView>
   );
 }

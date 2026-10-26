@@ -15,42 +15,46 @@ type MenuButtonProps = {
 };
 
 export default function MenuButton({ icon, label }: MenuButtonProps) {
+  const LARGE_ICON_LABELS = [
+    "Iman karyam",
+    "Islam karyam",
+    "Majlisunoor",
+    "Nombu",
+  ];
+
+  const ICON_SIZE = PixelRatio.roundToNearestPixel(
+    LARGE_ICON_LABELS.includes(label) ? 60 : 32,
+  );
+
   const handlePress = () => {
     if (label === "Quran") {
       router.push("/components/screen/quran/surah/quran");
-    }
-    if (label === "Asmaul Husna") {
+    } else if (label === "Asmaul Husna") {
       router.push("../components/screen/asmaulhusna/asmaulhusnAllah");
-    }
-    if (label === "Asmaul Nabi") {
+    } else if (label === "Asmaul Nabi") {
       router.push("../components/screen/asmaulhusna/asmaulNabiya");
-    }
-    if (label === "Qibla Finder") {
+    } else if (label === "Qibla Finder") {
       router.push("../components/screen/qibla/qibla");
-    }
-    if (label === "Shahada") {
+    } else if (label === "Shahada") {
       router.push("../components/screen/shahada/shahada");
-    }
-    if (label === "Counter") {
+    } else if (label === "Counter") {
       router.push("../components/screen/counter/counter");
-    }
-    if (label === "Prayer Time") {
+    } else if (label === "Prayer Time") {
       router.push("../components/screen/prayer/prayer");
-    }
-    if (label === "Meelad Nabi") {
+    } else if (label === "Meelad Nabi") {
       router.push("../components/screen/meelad/meelads");
-    }
-    if (label === "Niskaram") {
+    } else if (label === "Niskaram") {
       router.push("../components/screen/niskaram/niskaram");
-    }
-    if (label === "Iman karyam") {
+    } else if (label === "Iman karyam") {
       router.push("../components/screen/iman/iman");
-    }
-    if (label === "Islam karyam") {
+    } else if (label === "Islam karyam") {
       router.push("../components/screen/islam/islam");
-    }
-    if (label === "Majlisunoor") {
+    } else if (label === "Majlisunoor") {
       router.push("../components/screen/majlisnoor/majlisnoor");
+    } else if (label === "Calendar") {
+      router.push("../components/screen/calendar/calendar");
+    } else if (label === "Nombu") {
+      router.push("../components/screen/nombu/nombu");
     }
   };
 
@@ -63,7 +67,12 @@ export default function MenuButton({ icon, label }: MenuButtonProps) {
       >
         <Image
           source={icon}
-          style={styles.menuImage}
+          style={{
+            width: ICON_SIZE,
+            height: ICON_SIZE,
+            maxWidth: ICON_SIZE,
+            maxHeight: ICON_SIZE,
+          }}
           resizeMode="contain"
           fadeDuration={0}
           tintColor="#FFFFFF"
@@ -77,8 +86,6 @@ export default function MenuButton({ icon, label }: MenuButtonProps) {
   );
 }
 
-const ICON_SIZE = PixelRatio.roundToNearestPixel(32);
-
 const styles = StyleSheet.create({
   menuButtonWrapper: {
     width: "22%",
@@ -91,21 +98,10 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     backgroundColor: "#1A1A1A",
     borderRadius: 16,
-
     alignItems: "center",
     justifyContent: "center",
-
     marginBottom: 8,
     overflow: "hidden",
-  },
-
-  menuImage: {
-    width: ICON_SIZE,
-    height: ICON_SIZE,
-
-    // Prevent unwanted stretching
-    maxWidth: ICON_SIZE,
-    maxHeight: ICON_SIZE,
   },
 
   menuLabel: {

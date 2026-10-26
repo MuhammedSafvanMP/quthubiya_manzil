@@ -27,7 +27,9 @@ const ReminderCard = ({
     style={[styles.reminderCard, { width }]}
   >
     <TouchableOpacity
-      onPress={() => router.push(`../../components/screen/quran/surah/${id}`)}
+      onPress={() =>
+        router.push(`../../components/screen/quran/surah/page/${id}`)
+      }
     >
       <View style={styles.arabicOverlay}>
         <Text style={styles.arabicOverlayText}>{arabicText}</Text>
@@ -45,7 +47,9 @@ const ReminderCard = ({
 
       <TouchableOpacity
         style={styles.playButtonSmall}
-        onPress={() => router.push(`../../components/screen/quran/audio/${id}`)}
+        onPress={() =>
+          router.push(`../../components/screen/quran/audio/page/${id}`)
+        }
       >
         <Ionicons
           name="play"

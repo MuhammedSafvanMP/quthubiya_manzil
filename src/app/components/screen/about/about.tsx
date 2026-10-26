@@ -170,9 +170,7 @@ const AboutScreen = () => {
             </View>
             <View style={{ flex: 1 }}>
               <Text style={styles.supportTitle}>Contact Support</Text>
-              <Text style={styles.supportEmail}>
-                support@quthubiymanzil.com
-              </Text>
+              <Text style={styles.supportEmail}>zorrowtech@gmail.com</Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
           </TouchableOpacity>
@@ -181,9 +179,7 @@ const AboutScreen = () => {
         {/* ===== FOOTER ===== */}
         <View style={styles.footer}>
           <View style={styles.footerLine} />
-          <Text style={styles.footerText}>
-            © {new Date().getFullYear()} Quthubiy Manzil
-          </Text>
+          <Text style={styles.footerText}>© 2026 Quthubiy Manzil</Text>
           <Text style={styles.footerSub}>
             A product of Zorrow Tech IT Solutions Pvt Ltd
           </Text>

@@ -8,6 +8,7 @@
     "scheme": "quthubiyamanzil",
     "userInterfaceStyle": "automatic",
     "ios": {
+      "supportsTablet": true,
       "icon": "./assets/splash-logo.png",
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "We need your location to calculate the Qibla direction.",

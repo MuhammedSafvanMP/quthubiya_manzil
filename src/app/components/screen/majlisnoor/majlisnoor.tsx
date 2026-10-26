@@ -8,17 +8,45 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import majlisNoor from "../../../../constants/majlisnoor.json";
 import AppBar from "../../common/AppBar";
 
-const TextSection = ({ title, text, isHeader }: any) => (
-  <View style={styles.sectionContainer}>
-    {title ? <Text style={styles.sectionTitle}>{title}</Text> : null}
-    {text ? (
-      <Text style={[styles.arabicText, isHeader && styles.headerText]}>
-        {text}
+/* ==========================================================
+   Reusable Section Card
+   ========================================================== */
+type TextSectionProps = {
+  title?: string;
+  text?: string;
+  isHeader?: boolean;
+};
+
+const TextSection = ({ title, text, isHeader }: TextSectionProps) => {
+  if (!title && !text) return null;
+  return (
+    <View style={styles.sectionContainer}>
+      {title ? <Text style={styles.sectionTitle}>{title}</Text> : null}
+      {text ? (
+        <Text style={[styles.arabicText, isHeader && styles.headerText]}>
+          {text}
+        </Text>
+      ) : null}
+    </View>
+  );
+};
+
+/* ==========================================================
+   Shahada / Divider block (used inside text_columns)
+   ========================================================== */
+const ShahadaBlock = ({ lines }: { lines: string[] }) => (
+  <View style={styles.shahadaDividerContainer}>
+    {lines.map((line, i) => (
+      <Text key={`sh-${i}`} style={styles.shahadaDividerText}>
+        {line}
       </Text>
-    ) : null}
+    ))}
   </View>
 );
 
+/* ==========================================================
+   Main App
+   ========================================================== */
 export default function App() {
   const [fontsLoaded] = useFonts({
     Amiri_400Regular,
@@ -27,95 +55,172 @@ export default function App() {
 
   if (!fontsLoaded) return null;
 
+  /* ---------- Typed access to JSON ---------- */
   const d = majlisNoor.data;
-  const fatiha = majlisNoor.surah_al_fatiha;
-  const ikhlas = majlisNoor.surah_al_ikhlas;
-  const falaq = majlisNoor.surah_al_falaq;
-  const nas = majlisNoor.surah_an_nas;
-  const yaSin = majlisNoor.surah_ya_sin;
-  const yaSinContinued = majlisNoor.surah_ya_sin_continued;
-  const closingDua = majlisNoor.closing_dua;
-  const colosingDuaHeading = majlisNoor.close_dua_heading;
 
-  const textColumns = d?.text_columns ?? [];
-  const totalColumns = textColumns.length;
+  // Surah cards
+  const fatiha = (majlisNoor as any).surah_al_fatiha;
+  const ikhlas = (majlisNoor as any).surah_al_ikhlas;
+  const falaq = (majlisNoor as any).surah_al_falaq;
+  const nas = (majlisNoor as any).surah_an_nas;
+  const yaSin = (majlisNoor as any).surah_ya_sin;
+  const yaSinContinued = (majlisNoor as any).surah_ya_sin_continued;
+  const closingDuaHeading = (majlisNoor as any).close_dua_heading;
+  const closingDua = (majlisNoor as any).closing_dua;
 
+  /* ---------- text_columns ---------- */
+  const textColumns: any[] = d?.text_columns ?? [];
+
+  /* ==========================================================
+     Render
+     ========================================================== */
   return (
     <SafeAreaView style={styles.container}>
       <AppBar title="Majlisunoor" />
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <TextSection title={fatiha.title} text={fatiha.text} />
-        <TextSection title={ikhlas.basmala} text={ikhlas.text} isHeader />
 
-        <TextSection
-          title={falaq.basmala}
-          text={falaq.verses.join(" ")}
-          isHeader
-        />
-        <TextSection title={nas.basmala} text={nas.verses.join(" ")} isHeader />
+      <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* ---------- 1. Surah Al-Fatiha ---------- */}
+        {fatiha ? (
+          <TextSection title={fatiha.title} text={fatiha.text} />
+        ) : null}
 
-        <TextSection text={d.dua.text} title={d.dua_heading} isHeader />
-        <Text style={styles.mainHeader}>{d.header}</Text>
+        {/* ---------- 2. Surah Al-Ikhlas ---------- */}
+        {ikhlas ? (
+          <TextSection title={ikhlas.basmala} text={ikhlas.text} isHeader />
+        ) : null}
 
-        <View style={styles.shahadaContainer}>
-          {d.shahada.map((line, index) => (
-            <Text key={`shahada-${index}`} style={styles.shahadaText}>
-              {line}
-            </Text>
-          ))}
-        </View>
+        {/* ---------- 3. Surah Al-Falaq ---------- */}
+        {falaq ? (
+          <TextSection
+            title={falaq.basmala}
+            text={falaq.verses.join(" ")}
+            isHeader
+          />
+        ) : null}
 
-        <View style={styles.twoColumnContainer}>
-          {textColumns.map((item: any, index) => (
-            <View key={`baith-${index}`} style={styles.baithRow}>
-              {item?.line_1 ? (
-                <Text style={[styles.verseText, styles.line1]}>
-                  {item?.line_1}
-                </Text>
-              ) : null}
-              {item?.line_2 ? (
-                <Text style={[styles.verseText, styles.line2]}>
-                  {item.line_2}
-                </Text>
-              ) : null}
-              {(index + 1) % 12 === 0 && index !== totalColumns - 1 && (
-                <View style={styles.sectionDivider} />
-              )}
-            </View>
-          ))}
-        </View>
+        {/* ---------- 4. Surah An-Nas ---------- */}
+        {nas ? (
+          <TextSection
+            title={nas.basmala}
+            text={nas.verses.join(" ")}
+            isHeader
+          />
+        ) : null}
 
-        <TextSection title={fatiha.title} text={fatiha.text} />
-        <TextSection title={ikhlas.basmala} text={ikhlas.text} isHeader />
+        {/* ---------- 5. Dua ---------- */}
+        {d?.dua ? (
+          <TextSection title={d.dua_heading} text={d.dua.text} isHeader />
+        ) : null}
 
-        <TextSection
-          title={falaq.basmala}
-          text={falaq.verses.join(" ")}
-          isHeader
-        />
-        <TextSection title={nas.basmala} text={nas.verses.join(" ")} isHeader />
+        {/* ---------- 6. Main header ---------- */}
+        {d?.header ? <Text style={styles.mainHeader}>{d.header}</Text> : null}
 
-        <TextSection
-          title={yaSin.basmala}
-          text={yaSin.verses.join(" ")}
-          isHeader
-        />
+        {/* ---------- 7. Top shahada ---------- */}
+        {Array.isArray(d?.shahada) && d.shahada.length > 0 ? (
+          <View style={styles.shahadaContainer}>
+            {d.shahada.map((line: string, index: number) => (
+              <Text key={`shahada-${index}`} style={styles.shahadaText}>
+                {line}
+              </Text>
+            ))}
+          </View>
+        ) : null}
 
-        <TextSection text={yaSinContinued.verses.join(" ")} />
+        {/* ---------- 8. Text columns (poem + embedded shahada dividers) ---------- */}
+        {textColumns.length > 0 ? (
+          <View style={styles.twoColumnContainer}>
+            {textColumns.map((item: any, index: number) => {
+              // Shahada divider block
+              if (Array.isArray(item?.shahada)) {
+                return (
+                  <ShahadaBlock key={`div-${index}`} lines={item.shahada} />
+                );
+              }
+              // Regular baith row
+              return (
+                <View key={`baith-${index}`} style={styles.baithRow}>
+                  {item?.line_1 ? (
+                    <Text style={[styles.verseText, styles.line1]}>
+                      {item.line_1}
+                    </Text>
+                  ) : null}
+                  {item?.line_2 ? (
+                    <Text style={[styles.verseText, styles.line2]}>
+                      {item.line_2}
+                    </Text>
+                  ) : null}
+                </View>
+              );
+            })}
+          </View>
+        ) : null}
 
-        <TextSection
-          text={closingDua.text}
-          title={colosingDuaHeading}
-          isHeader
-        />
+        {/* ---------- 1. Surah Al-Fatiha ---------- */}
+        {fatiha ? (
+          <TextSection title={fatiha.title} text={fatiha.text} />
+        ) : null}
+
+        {/* ---------- 2. Surah Al-Ikhlas ---------- */}
+        {ikhlas ? (
+          <TextSection title={ikhlas.basmala} text={ikhlas.text} isHeader />
+        ) : null}
+
+        {/* ---------- 3. Surah Al-Falaq ---------- */}
+        {falaq ? (
+          <TextSection
+            title={falaq.basmala}
+            text={falaq.verses.join(" ")}
+            isHeader
+          />
+        ) : null}
+
+        {/* ---------- 4. Surah An-Nas ---------- */}
+        {nas ? (
+          <TextSection
+            title={nas.basmala}
+            text={nas.verses.join(" ")}
+            isHeader
+          />
+        ) : null}
+
+        {/* ---------- 9. Surah Ya Sin (part 1) ---------- */}
+        {yaSin ? (
+          <TextSection
+            title={yaSin.basmala}
+            text={yaSin.verses.join(" ")}
+            isHeader
+          />
+        ) : null}
+
+        {/* ---------- 10. Surah Ya Sin (continued) ---------- */}
+        {yaSinContinued?.verses ? (
+          <TextSection text={yaSinContinued.verses.join(" ")} />
+        ) : null}
+
+        {/* ---------- 11. Closing dua ---------- */}
+        {closingDua ? (
+          <TextSection
+            title={closingDuaHeading}
+            text={closingDua.text}
+            isHeader
+          />
+        ) : null}
       </ScrollView>
     </SafeAreaView>
   );
 }
 
+/* ==========================================================
+   Styles
+   ========================================================== */
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#FFF8F0" },
   scrollContent: { padding: 20, paddingBottom: 50 },
+
+  /* --- Main header --- */
   mainHeader: {
     fontFamily: "Amiri_700Bold",
     fontSize: 32,
@@ -123,6 +228,8 @@ const styles = StyleSheet.create({
     color: "#8B0000",
     marginVertical: 20,
   },
+
+  /* --- Top shahada card --- */
   shahadaContainer: {
     alignItems: "center",
     marginBottom: 30,
@@ -137,18 +244,39 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginVertical: 2,
   },
-  // ✅ FIXED: no longer row-reverse — vertical stack of baithRows
+
+  /* --- Shahada divider (inside poem) --- */
+  shahadaDividerContainer: {
+    alignItems: "center",
+    marginVertical: 18,
+    paddingVertical: 14,
+    paddingHorizontal: 10,
+    backgroundColor: "#FFF1E6",
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#E8C4A0",
+  },
+  shahadaDividerText: {
+    fontFamily: "Amiri_700Bold",
+    fontSize: 22,
+    color: "#8B0000",
+    textAlign: "center",
+    marginVertical: 2,
+  },
+
+  /* --- Poem container --- */
   twoColumnContainer: {
     marginBottom: 40,
     borderBottomWidth: 1,
     borderColor: "#ddd",
     paddingBottom: 20,
   },
-  // ✅ FIXED: each baithRow stacks its two lines vertically
   baithRow: {
     width: "100%",
     marginBottom: 8,
   },
+
+  /* --- Section card --- */
   sectionContainer: {
     marginVertical: 15,
     padding: 15,
@@ -175,6 +303,8 @@ const styles = StyleSheet.create({
     lineHeight: 40,
   },
   headerText: { textAlign: "center", color: "#00008B" },
+
+  /* --- Poem verse lines --- */
   verseText: {
     fontFamily: "Amiri_400Regular",
     fontSize: 18,
@@ -191,12 +321,5 @@ const styles = StyleSheet.create({
     textAlign: "left",
     paddingLeft: 10,
     paddingRight: 30,
-  },
-  sectionDivider: {
-    width: "80%",
-    height: 2,
-    backgroundColor: "#000",
-    marginVertical: 12,
-    alignSelf: "center",
   },
 });
