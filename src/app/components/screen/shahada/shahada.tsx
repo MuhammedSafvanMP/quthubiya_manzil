@@ -1,15 +1,14 @@
-import React from "react";
+import { Ionicons } from "@expo/vector-icons";
 import {
   ScrollView,
-  View,
-  Text,
-  StyleSheet,
-  StatusBar,
-  TouchableOpacity,
   Share,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
+import HomeBannerAd from "../../ads/HomeBannerAd";
 import AppBar from "../../common/AppBar";
 
 export default function ShahadaScreen() {
@@ -34,11 +33,8 @@ export default function ShahadaScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-        <AppBar title="Shahada" />
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor="#F5F7F2"
-      />
+      <AppBar title="Shahada" />
+      <StatusBar barStyle="dark-content" backgroundColor="#F5F7F2" />
 
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -47,13 +43,9 @@ export default function ShahadaScreen() {
         {/* Header */}
         <View style={styles.header}>
           <View>
-            <Text style={styles.headerSubtitle}>
-              ISLAMIC KNOWLEDGE
-            </Text>
+            <Text style={styles.headerSubtitle}>ISLAMIC KNOWLEDGE</Text>
 
-            <Text style={styles.headerTitle}>
-              Shahada
-            </Text>
+            <Text style={styles.headerTitle}>Shahada</Text>
 
             <Text style={styles.headerDescription}>
               The Declaration of Faith
@@ -61,11 +53,7 @@ export default function ShahadaScreen() {
           </View>
 
           <View style={styles.headerIcon}>
-            <Ionicons
-              name="moon"
-              size={27}
-              color="#FFFFFF"
-            />
+            <Ionicons name="moon" size={27} color="#FFFFFF" />
           </View>
         </View>
 
@@ -75,15 +63,9 @@ export default function ShahadaScreen() {
           <View style={styles.decorativeCircleTwo} />
 
           <View style={styles.bismillahBadge}>
-            <Ionicons
-              name="sparkles-outline"
-              size={15}
-              color="#D9C18B"
-            />
+            <Ionicons name="sparkles-outline" size={15} color="#D9C18B" />
 
-            <Text style={styles.bismillahBadgeText}>
-              DECLARATION OF FAITH
-            </Text>
+            <Text style={styles.bismillahBadgeText}>DECLARATION OF FAITH</Text>
           </View>
 
           <View style={styles.divider}>
@@ -92,9 +74,7 @@ export default function ShahadaScreen() {
             <View style={styles.dividerLine} />
           </View>
 
-          <Text style={styles.arabicText}>
-            {arabicText}
-          </Text>
+          <Text style={styles.arabicText}>{arabicText}</Text>
 
           <View style={styles.divider}>
             <View style={styles.dividerLine} />
@@ -102,101 +82,68 @@ export default function ShahadaScreen() {
             <View style={styles.dividerLine} />
           </View>
 
-          <Text style={styles.arabicCaption}>
-            الشَّهَادَةُ
-          </Text>
+          <Text style={styles.arabicCaption}>الشَّهَادَةُ</Text>
 
-          <Text style={styles.arabicTranslation}>
-            Ash-Shahada
-          </Text>
+          <Text style={styles.arabicTranslation}>Ash-Shahada</Text>
         </View>
 
         {/* English Meaning */}
         <View style={styles.meaningCard}>
           <View style={styles.sectionHeader}>
             <View style={styles.sectionIcon}>
-              <Ionicons
-                name="book-outline"
-                size={20}
-                color="#176B52"
-              />
+              <Ionicons name="book-outline" size={20} color="#176B52" />
             </View>
 
             <View>
-              <Text style={styles.sectionTitle}>
-                English Meaning
-              </Text>
+              <Text style={styles.sectionTitle}>English Meaning</Text>
 
-              <Text style={styles.sectionSubtitle}>
-                Translation
-              </Text>
+              <Text style={styles.sectionSubtitle}>Translation</Text>
             </View>
           </View>
 
           <View style={styles.meaningDivider} />
 
-          <Text style={styles.englishText}>
-            {englishMeaning}
-          </Text>
+          <Text style={styles.englishText}>{englishMeaning}</Text>
         </View>
 
         {/* Malayalam Meaning */}
         <View style={styles.meaningCard}>
           <View style={styles.sectionHeader}>
             <View style={styles.sectionIcon}>
-              <Ionicons
-                name="language-outline"
-                size={20}
-                color="#176B52"
-              />
+              <Ionicons name="language-outline" size={20} color="#176B52" />
             </View>
 
             <View>
-              <Text style={styles.sectionTitle}>
-                Malayalam Meaning
-              </Text>
+              <Text style={styles.sectionTitle}>Malayalam Meaning</Text>
 
-              <Text style={styles.sectionSubtitle}>
-                മലയാളം അർത്ഥം
-              </Text>
+              <Text style={styles.sectionSubtitle}>മലയാളം അർത്ഥം</Text>
             </View>
           </View>
 
           <View style={styles.meaningDivider} />
 
-          <Text style={styles.malayalamText}>
-            {malayalamMeaning}
-          </Text>
+          <Text style={styles.malayalamText}>{malayalamMeaning}</Text>
         </View>
 
         {/* Reminder */}
         <View style={styles.reminderCard}>
           <View style={styles.reminderIcon}>
-            <Ionicons
-              name="heart"
-              size={19}
-              color="#176B52"
-            />
+            <Ionicons name="heart" size={19} color="#176B52" />
           </View>
 
           <View style={styles.reminderContent}>
-            <Text style={styles.reminderTitle}>
-              A Reminder of Faith
-            </Text>
+            <Text style={styles.reminderTitle}>A Reminder of Faith</Text>
 
             <Text style={styles.reminderText}>
-              The Shahada expresses belief in the oneness
-              of Allah and the prophethood of Muhammad ﷺ.
+              The Shahada expresses belief in the oneness of Allah and the
+              prophethood of Muhammad ﷺ.
             </Text>
           </View>
         </View>
 
-      
-
-        <Text style={styles.footer}>
-          QUTHUBIYA MANZIL
-        </Text>
+        <Text style={styles.footer}>QUTHUBIYA MANZIL</Text>
       </ScrollView>
+      <HomeBannerAd />
     </SafeAreaView>
   );
 }

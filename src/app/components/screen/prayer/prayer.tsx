@@ -1424,6 +1424,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import HomeBannerAd from "../../ads/HomeBannerAd";
 import AppBar from "../../common/AppBar";
 
 Notifications.setNotificationHandler({
@@ -1946,6 +1947,8 @@ export default function PrayerScreen() {
 
       <ScrollView
         contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
         refreshControl={
           <RefreshControl
             refreshing={refreshing}
@@ -1987,6 +1990,7 @@ export default function PrayerScreen() {
               horizontal
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={styles.chips}
+              showsVerticalScrollIndicator={false}
             >
               {Object.keys(LOCATIONS).map((state) => (
                 <Pressable
@@ -2165,6 +2169,7 @@ export default function PrayerScreen() {
           timetables may differ. Confirm the times with your local mosque.
         </Text>
       </ScrollView>
+      <HomeBannerAd />
     </SafeAreaView>
   );
 }

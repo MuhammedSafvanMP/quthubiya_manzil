@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
@@ -12,6 +12,10 @@ import {
 import { Reciter, RECITERS } from "../../../../../../constants/reciters";
 import { SurahDetail } from "../../../../../../services/quranApi";
 
+import {
+  preloadInterstitial,
+  showInterstitial,
+} from "@/app/components/ads/InterstitialAdManager";
 import { SafeAreaView } from "react-native-safe-area-context";
 import quranData from "../../../../../../constants/quran.json";
 import { useDrawer } from "../../../../../../lib/context/global";
@@ -113,6 +117,25 @@ export default function SurahAudioDetails() {
   const handleReciterChange = (reciter: Reciter) => {
     setSelectedReciter(reciter);
   };
+
+  /// ads
+
+  const hasShownAd = useRef(false);
+
+  useEffect(() => {
+    // Preload the next interstitial ad.
+    preloadInterstitial();
+
+    // Show the ad once when this screen opens, if it's ready.
+    if (!hasShownAd.current) {
+      hasShownAd.current = true;
+      showInterstitial();
+    }
+
+    return () => {
+      hasShownAd.current = false;
+    };
+  }, []);
 
   if (loading) {
     return (

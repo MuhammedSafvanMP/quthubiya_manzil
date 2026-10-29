@@ -12,6 +12,7 @@ import { router } from "expo-router";
 import { BookOpen, Play } from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import quranData from "../../constants/quran.json";
+import HomeBannerAd from "../components/ads/HomeBannerAd";
 import SearchBar from "../components/common/searchBar";
 
 type Ayah = {
@@ -166,6 +167,7 @@ export default function Quran() {
           }
         />
       </View>
+      <HomeBannerAd />
     </SafeAreaView>
   );
 }

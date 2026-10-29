@@ -13,6 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { menu, menuIcons } from "../../constants/menu";
 import quran from "../../constants/quran.json";
+import HomeBannerAd from "../components/ads/HomeBannerAd";
 import MenuButton from "../components/common/menuButton";
 import ReminderCard from "../components/common/remainderCard";
 
@@ -142,6 +143,7 @@ export default function Index() {
           ))}
         </View>
       </ScrollView>
+      <HomeBannerAd />
     </SafeAreaView>
   );
 }

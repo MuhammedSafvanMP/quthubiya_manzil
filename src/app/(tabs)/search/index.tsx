@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import HomeBannerAd from "@/app/components/ads/HomeBannerAd";
 import { menu, menuIcons } from "../../../constants/menu";
 import AppBar from "../../components/common/AppBar";
 import MenuButton from "../../components/common/menuButton";
@@ -107,6 +108,10 @@ export default function SearchIndex() {
           onChangeText={handleNativeSearchChange}
         />
       )}
+
+      <View style={styles.ads}>
+        <HomeBannerAd />
+      </View>
     </SafeAreaView>
   );
 }
@@ -162,5 +167,8 @@ const styles = StyleSheet.create({
     marginTop: 40,
     fontSize: 15,
     color: "#737373",
+  },
+  ads: {
+    marginBottom: 80,
   },
 });

@@ -1,13 +1,14 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
-    ActivityIndicator,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import HomeBannerAd from "../../ads/HomeBannerAd";
 import AppBar from "../../common/AppBar";
 
 const API_BASE = "https://api.aladhan.com/v1";
@@ -695,6 +696,7 @@ export default function CalendarScreen() {
           </Text>
         </View>
       </ScrollView>
+      <HomeBannerAd />
     </SafeAreaView>
   );
 }

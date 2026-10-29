@@ -1,0 +1,175 @@
+{
+    "data": [
+
+
+        {
+            "id": 1,
+            "name": "Swalath",
+            "malayalam": "സ്വലാത്ത്",
+            "music": "തിരു ഹളറത്തിലേക്ക് 1000 സ്വലാത്ത്",
+                      "url": "../../assets/mp3/swalath.mp3"
+        },
+          {
+            "id": 2,
+            "name": "Astaghfirullah Al Azeem",
+            "malayalam": "അസ്താഗ്ഫിറുള്ള അൽ അസീം",
+            "music": "Astaghfirullah Al Azeem 33 Times",
+            "url": "../../assets/mp3/astagfirullah.mp3"
+        },
+          {
+            "id": 3,
+            "name": "Lailaha illa anta subhanaka inni kuntu minazalimin",
+            "malayalam": "ലൈലാഹ ഇല്ല അന്ത സുഭാനക ഇനി കുന്തു മിനസാലിമിൻ",
+            "music": "Lailaha illa anta subhanaka inni kuntu minazalimin. 100",
+             "url": "../../assets/mp3/lailaha_illa.mp3"
+        },
+           {
+            "id": 4,
+            "name": "La Hawla Wala Quwwata Illa Billah",
+            "malayalam": "ലാ ഹവ്ല വാല കുവാത ഇല്ല ബില്ലാഹ്",
+            "music": "La Hawla Wala Quwwata Illa Billah  Dhikr for Strength",
+                       "url": "../../assets/mp3/la_Hawla.mp3"
+        },
+
+           {
+            "id": 5,
+            "name": "ASMA UL NABI",
+            "malayalam": "അസ്മാഉൽ നബി",
+            "music": "La Hawla Wala Quwwata Illa Billah  Dhikr for Strength",
+                       "url": "../../assets/mp3/asma_ul_nabi.mp3"
+        },
+
+         {
+            "id": 6,
+            "name": "Asmaul husna",
+            "malayalam": "അസ്മാഉൽ ഹുസ്ന",
+            "music": "Asmaul husna 99 Names of Allah ",
+                       "url": "../../assets/mp3/asma_ul_husna.mp3"
+        },
+
+
+
+
+        
+
+         {
+            "id": 7,
+            "name": "Hasbunallahu wa Ni'mal Wakeel ",
+            "malayalam": "ഹസ്ബുനല്ലാഹു വാ നിമൽ വകീൽ",
+            "music": "Hasbunallahu wa Ni'mal Wakeel 313 times",
+                       "url": "../../assets/mp3/hasbunallhu.mp3"
+        },
+
+           {
+            "id": 8,
+            "name": "Adhkar  Dhikr",
+            "malayalam": "അദ്കാർ ദിക്റുകൾ ",
+            "music": "4 Important Adhkar  Dhikr For Immediate Help From Allah  Subhanallah, Hasbunallah, Daily Dua",
+                       "url": "../../assets/mp3/adhkar_Dhikr.mp3"
+        },
+
+           {
+            "id": 9,
+            "name": "Hasbunallahu wa Ni'mal Wakeel ",
+            "malayalam": "ഹസ്ബുനല്ലാഹു വ നി'മൽ വകീൽ",
+            "music": " swalathul fathimiya1000 allahumma swalli ala noori",
+                       "url": "../../assets/mp3/swalathul.mp3"
+        },
+
+          {
+            "id": 10,
+            "name": "Swalathul Fathih",
+            "malayalam": "സ്വലാത്തുൽ ഫാത്തിഹ്",
+            "music": "Shamsudheen Kappu | Firdhous Kaliyaroad",
+                                    "url": "../../assets/mp3/swalathul_fathih.mp3"
+
+        },
+
+
+        {
+            "id": 11,
+            "name": "Ashraqa Baith",
+            "music": "Khaja Husain Darimi Padinjarathara",
+            "malayalam": "അഷ്റാഖ ബൈത്ത്",
+            "url": "../../assets/mp3/ashraqa_Baith.mp3"
+
+        },
+          {
+            "id": 12,
+            "name": "Majlis Noor",
+            "music": "Khaja Husain Darimi Padinjarathara",
+            "malayalam": "മജ്ലിസ് നൂർ",
+             "url": "../../assets/mp3/majlisnoor.mp3"
+
+
+        },
+          {
+            "id": 13,
+            "name": "Ya Akrama Baith",
+            "music": "Khaja Husain Darimi Padinjarathara",
+            "malayalam": "യാ അക്രമാ ബൈത്ത്",
+                        "url": "../../assets/mp3/ya_Akrama_Baith.mp3"
+
+
+        },
+      {
+            "id": 14,
+            "name": "Salam Baith",
+            "music": "Alibava Karakunnu",
+            "malayalam": "സലാം ബൈത്ത്",
+                        "url": "../../assets/mp3/salam_baith.mp3"
+
+        },{
+            "id": 15,
+            "name": "Aadi Avval Baith",
+            "malayalam":"ആദി അവ്വൽ ബൈത്ത്",
+            "music": "ISHQE RASOOL",
+                        "url": "../../assets/mp3/aadi_Avval_Baith.mp3"
+
+        },{
+            "id": 16,
+            "name": "Nechikkat Maala",
+            "malayalam": "നെച്ചിക്കാട്ട് മാല",
+               "music": "Alibava Abuthahir",
+                                    "url": "../../assets/mp3/nechikkat_maala.mp3"
+
+        },
+          {
+            "id": 17,
+            "name": "NAFEESATH MALA",
+            "malayalam": "നഫീസത്ത് മാല",
+            "music": "JAFAR VALLAPPUZHA ",
+                       "url": "../../assets/mp3/nafeesath.mp3"
+        },
+        {
+            "id": 18,
+            "name": "Rifaee Maala",
+            "malayalam": "രിഫാഈ മാല",
+            "music": "Firdhous Kaliyaroad",
+                                    "url": "../../assets/mp3/rifaee_Mala.mp3"
+
+        },
+
+         {
+            "id": 19,
+            "name": "Muhyudheen maala",
+            "malayalam": "മുഹ്‌യുദ്ധീൻ മാല",
+            "music": "Alibava Karakkunnu",
+                                    "url": "../../assets/mp3/muhaydheen.mp3"
+
+        },
+         
+
+      
+        
+          {
+            "id": 20,
+            "name": "Manqoose",
+            "malayalam": "മൻഖൂസ് മൗലിദ്",
+                      "url": "../../assets/mp3/manqoose.mp3"
+        }
+          
+
+
+    ]
+}

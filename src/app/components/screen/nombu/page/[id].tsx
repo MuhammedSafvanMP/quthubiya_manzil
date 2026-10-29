@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import HomeBannerAd from "@/app/components/ads/HomeBannerAd";
 import nombuData from "../../../../../constants/nombu.json";
 import AppBar from "../../../common/AppBar";
 
@@ -427,6 +428,7 @@ export default function NombuDetailPage() {
 
         <View style={{ height: 40 }} />
       </ScrollView>
+      <HomeBannerAd />
     </SafeAreaView>
   );
 }

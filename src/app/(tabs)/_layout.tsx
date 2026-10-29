@@ -21,7 +21,7 @@ export default function TabLayout() {
       {/* Audio */}
       <NativeTabs.Trigger name="quran">
         <NativeTabs.Trigger.Label hidden />
-        <NativeTabs.Trigger.Icon sf="book" md="book" />
+        <NativeTabs.Trigger.Icon sf="book" md="auto_stories" />
       </NativeTabs.Trigger>
 
       {/* Audio */}

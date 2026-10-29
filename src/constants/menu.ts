@@ -13,6 +13,7 @@ export const menuIcons: Record<string, any> = {
   calendar: require("../../assets/images/icons/calendar.png"),
   nombu: require("../../assets/images/icons/nombu.png"),
   hajju: require("../../assets/images/icons/kaaba.png"),
+  swalath: require("../../assets/images/icons/swalath.png"),
 };
 
 export const menu = [
@@ -30,4 +31,5 @@ export const menu = [
   { id: 13, icon: "islam", label: "Islam karyam" },
   { id: 14, icon: "nombu", label: "Nombu" },
   { id: 15, icon: "hajju", label: "Hajju & Umra" },
+  { id: 16, icon: "swalath", label: "Swalath" },
 ];

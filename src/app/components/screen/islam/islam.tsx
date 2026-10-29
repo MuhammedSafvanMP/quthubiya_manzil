@@ -1,6 +1,7 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import islamData from "../../../../constants/islam.json";
+import HomeBannerAd from "../../ads/HomeBannerAd";
 import AppBar from "../../common/AppBar";
 
 export default function IslamScreen() {
@@ -26,6 +27,7 @@ export default function IslamScreen() {
           </View>
         ))}
       </ScrollView>
+      <HomeBannerAd />
     </SafeAreaView>
   );
 }

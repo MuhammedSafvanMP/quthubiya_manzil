@@ -1,28 +1,27 @@
+import { useDrawer } from "@/lib/context/global";
+import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { ChevronLeft } from "lucide-react-native";
 import React from "react";
-import {
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 interface AppBarProps {
   title: string;
   showBack?: boolean;
   rightComponent?: React.ReactNode;
+  showSettingsIcon?: boolean;
 }
 
 export default function AppBar({
   title,
   showBack = true,
   rightComponent,
+  showSettingsIcon = false,
 }: AppBarProps) {
+  const { openSheet } = useDrawer();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-
         {/* Left */}
         <View style={styles.leftContainer}>
           {showBack && (
@@ -31,34 +30,33 @@ export default function AppBar({
               style={styles.backButton}
               hitSlop={10}
             >
-              <ChevronLeft
-                size={28}
-                color="#111827"
-                strokeWidth={2.2}
-              />
+              <ChevronLeft size={28} color="#111827" strokeWidth={2.2} />
             </Pressable>
           )}
         </View>
 
         {/* Center */}
-        <View
-          pointerEvents="none"
-          style={styles.centerContainer}
-        >
-          <Text
-            numberOfLines={1}
-            ellipsizeMode="tail"
-            style={styles.title}
-          >
+        <View pointerEvents="none" style={styles.centerContainer}>
+          <Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}>
             {title}
           </Text>
         </View>
 
         {/* Right */}
-        <View style={styles.rightContainer}>
-          {rightComponent}
-        </View>
+        <View style={styles.rightContainer}>{rightComponent}</View>
 
+        {showSettingsIcon && (
+          <View style={styles.headerSettings}>
+            <Pressable
+              style={styles.headerIcon}
+              onPress={() => openSheet()}
+              accessibilityRole="button"
+              accessibilityLabel="Change target"
+            >
+              <Ionicons name="settings-outline" size={23} color="#111111" />
+            </Pressable>
+          </View>
+        )}
       </View>
     </View>
   );
@@ -120,5 +118,27 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     justifyContent: "center",
     zIndex: 10,
+  },
+  headerSettings: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+
+  heading: {
+    fontSize: 25,
+    fontWeight: "800",
+    color: "#111111",
+    letterSpacing: 0.3,
+  },
+  headerIcon: {
+    width: 45,
+    height: 45,
+    borderWidth: 1,
+    borderColor: "#E5E5E5",
+    borderRadius: 14,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

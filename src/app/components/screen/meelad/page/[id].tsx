@@ -11,6 +11,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 // IMPORTANT: Adjust this path to match where your JSON file is located relative to this component
+import HomeBannerAd from "@/app/components/ads/HomeBannerAd";
 import meeladData from "../../../../../constants/meelad_nabi.json";
 
 // ---------- Type Definitions ----------
@@ -250,7 +251,11 @@ const MeeladDetails = () => {
         </View>
       </View>
 
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContainer}
+      >
         {meelad.subtext && (
           <Text style={styles.subtext}>{meelad?.subtext}</Text>
         )}
@@ -263,6 +268,7 @@ const MeeladDetails = () => {
               : null}
         </View>
       </ScrollView>
+      <HomeBannerAd />
     </SafeAreaView>
   );
 };

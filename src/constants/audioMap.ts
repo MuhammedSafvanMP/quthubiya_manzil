@@ -1,0 +1,23 @@
+// src/app/constants/audioMap.ts
+export const audioMap: Record<string, any> = {
+  "swalath.mp3": require("../../assets/mp3/swalath.mp3"),
+  "astagfirullah.mp3": require("../../assets/mp3/astagfirullah.mp3"),
+  "lailaha_illa.mp3": require("../../assets/mp3/lailaha_illa.mp3"),
+  "la_Hawla.mp3": require("../../assets/mp3/la_Hawla.mp3"),
+  "asma_ul_nabi.mp3": require("../../assets/mp3/asma_ul_nabi.mp3"),
+  "asma_ul_husna.mp3": require("../../assets/mp3/asma_ul_husna.mp3"),
+  "nafeesath.mp3": require("../../assets/mp3/nafeesath.mp3"),
+  "hasbunallhu.mp3": require("../../assets/mp3/hasbunallhu.mp3"),
+  "adhkar_Dhikr.mp3": require("../../assets/mp3/adhkar_Dhikr.mp3"),
+  "swalathul.mp3": require("../../assets/mp3/swalathul.mp3"),
+  "swalathul_fathih.mp3": require("../../assets/mp3/swalathul_fathih.mp3"),
+  "ashraqa_Baith.mp3": require("../../assets/mp3/ashraqa_Baith.mp3"),
+  "majlisnoor.mp3": require("../../assets/mp3/majlisnoor.mp3"),
+  "ya_Akrama_Baith.mp3": require("../../assets/mp3/ya_Akrama_Baith.mp3"),
+  "salam_baith.mp3": require("../../assets/mp3/salam_baith.mp3"),
+  "aadi_Avval_Baith.mp3": require("../../assets/mp3/aadi_Avval_Baith.mp3"),
+  "nechikkat_maala.mp3": require("../../assets/mp3/nechikkat_maala.mp3"),
+  "rifaee_Mala.mp3": require("../../assets/mp3/rifaee_Mala.mp3"),
+  "muhaydheen.mp3": require("../../assets/mp3/muhaydheen.mp3"),
+  "manqoose.mp3": require("../../assets/mp3/manqoose.mp3"),
+};

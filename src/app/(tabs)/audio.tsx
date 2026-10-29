@@ -1,81 +1,69 @@
 import { useEffect, useMemo, useState } from "react";
 import {
-    ActivityIndicator,
-    FlatList,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 import { router } from "expo-router";
-import { BookOpen, Play } from "lucide-react-native";
+import { Play } from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import quranData from "../../constants/quran.json";
+import audioData from "../../constants/audio.json";
+import HomeBannerAd from "../components/ads/HomeBannerAd";
 import SearchBar from "../components/common/searchBar";
 
-type Ayah = {
-  number: number;
-  text: string;
-  numberInSurah: number;
-  juz: number;
-  manzil: number;
-  page: number;
-  ruku: number;
-  hizbQuarter: number;
-  sajda: boolean | object;
-};
-
-type Surah = {
-  number: number;
-  name: string;
-  englishName: string;
-  englishNameTranslation: string;
-  revelationType: string;
-  ayahs: Ayah[];
-};
+interface AudioItem {
+  id?: number;
+  name?: string;
+  malayalam?: string;
+  music?: string;
+  url?: string;
+}
 
 export default function Audio() {
-  const [surahs, setSurahs] = useState<Surah[]>([]);
+  const [audios, setAudios] = useState<AudioItem[]>([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    loadSurahs();
+    loadAudios();
   }, []);
 
-  const loadSurahs = () => {
+  const loadAudios = () => {
     try {
       setLoading(true);
       setError(null);
-      setSurahs(quranData.data.surahs);
+      setAudios(audioData?.data);
     } catch (err) {
-      console.error("Quran loading error:", err);
-      setError("Failed to load Surahs");
+      console.error("Audio loading error:", err);
+      setError("Failed to load audio");
     } finally {
       setLoading(false);
     }
   };
 
-  const filteredSurahs = useMemo(() => {
+  const filteredAudios = useMemo(() => {
     const query = search.trim().toLowerCase();
-    if (!query) return surahs;
+    if (!query) return audios;
 
-    return surahs.filter(
-      (surah) =>
-        surah.number.toString().includes(query) ||
-        surah.name.toLowerCase().includes(query) ||
-        surah.englishName.toLowerCase().includes(query) ||
-        surah.englishNameTranslation.toLowerCase().includes(query),
+    return audios.filter(
+      (item) =>
+        item?.id?.toString().includes(query) ||
+        item?.name?.toLowerCase().includes(query) ||
+        item?.malayalam?.toLowerCase().includes(query) ||
+        (item?.music && item?.music?.toLowerCase().includes(query)),
     );
-  }, [search, surahs]);
+  }, [search, audios]);
 
   if (loading) {
     return (
       <View style={styles.center}>
         <ActivityIndicator size="large" />
-        <Text style={styles.loadingText}>Loading Quran...</Text>
+        <Text style={styles.loadingText}>Loading Audio...</Text>
       </View>
     );
   }
@@ -95,62 +83,56 @@ export default function Audio() {
 
         {search.length > 0 && (
           <Text style={styles.resultText}>
-            {filteredSurahs.length} Surah
-            {filteredSurahs.length !== 1 ? "s" : ""} found
+            {filteredAudios.length} Audio
+            {filteredAudios.length !== 1 ? "s" : ""} found
           </Text>
         )}
 
         <FlatList
-          data={filteredSurahs}
-          keyExtractor={(item) => item.number.toString()}
+          data={filteredAudios}
+          keyExtractor={(item, index) => `${item.id}-${index}`}
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={
-            filteredSurahs.length === 0 ? styles.emptyList : undefined
+            filteredAudios.length === 0 ? styles.emptyList : undefined
           }
           renderItem={({ item }) => (
-            <View style={styles.surah}>
-              <View style={styles.surahRow}>
-                {/* Left: number + Arabic name */}
+            <View style={styles.audioCard}>
+              <View style={styles.audioRow}>
+                {/* Left: number + names */}
                 <View style={styles.leftSection}>
                   <View style={styles.number}>
-                    <Text style={styles.numberText}>{item.number}</Text>
+                    <Text style={styles.numberText}>{item.id}</Text>
                   </View>
-                  <Text style={styles.arabicName} numberOfLines={1}>
-                    {item.name}
-                  </Text>
+                  <View style={styles.nameContainer}>
+                    <Text style={styles.audioName} numberOfLines={1}>
+                      {item.name}
+                    </Text>
+                    <Text style={styles.malayalamName} numberOfLines={1}>
+                      {item.malayalam}
+                    </Text>
+                    {item.music ? (
+                      <Text style={styles.musicInfo} numberOfLines={1}>
+                        {item.music}
+                      </Text>
+                    ) : null}
+                  </View>
                 </View>
 
-                {/* Right: Read + Play buttons */}
+                {/* Right: Play button */}
                 <View style={styles.actions}>
-                  <TouchableOpacity
-                    activeOpacity={0.7}
-                    style={[styles.actionBtn, styles.readBtn]}
-                    onPress={() =>
-                      router.push(
-                        `../../components/screen/quran/surah/page/${item.number}`,
-                      )
-                    }
-                  >
-                    <BookOpen color="#ffffff" size={18} />
-                    <Text style={[styles.actionText, styles.readText]}>
-                      Read
-                    </Text>
-                  </TouchableOpacity>
-
                   <TouchableOpacity
                     activeOpacity={0.7}
                     style={[styles.actionBtn, styles.playBtn]}
                     onPress={() =>
-                      router.push(
-                        `../../components/screen/quran/audio/page/${item.number}`,
-                      )
+                      router.push({
+                        pathname: "../../components/screen/audio/page/[id]",
+                        params: { id: item?.id?.toString() },
+                      })
                     }
                   >
                     <Play color="#ffffff" size={18} />
-                    <Text style={[styles.actionText, styles.playText]}>
-                      Play
-                    </Text>
+                    <Text style={styles.playText}>Play</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -158,14 +140,15 @@ export default function Audio() {
           )}
           ListEmptyComponent={
             <View style={styles.emptyContainer}>
-              <Text style={styles.emptyTitle}>No Surah found</Text>
+              <Text style={styles.emptyTitle}>No Audio found</Text>
               <Text style={styles.emptyText}>
-                Try searching another Surah name or number.
+                Try searching another name or number.
               </Text>
             </View>
           }
         />
       </View>
+      <HomeBannerAd />
     </SafeAreaView>
   );
 }
@@ -187,12 +170,12 @@ const styles = StyleSheet.create({
     marginLeft: 4,
   },
 
-  surah: {
+  audioCard: {
     paddingVertical: 14,
     borderBottomWidth: 1,
     borderBottomColor: "#E5E7EB",
   },
-  surahRow: {
+  audioRow: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -202,8 +185,8 @@ const styles = StyleSheet.create({
   leftSection: {
     flexDirection: "row",
     alignItems: "center",
-    flex: 1, // ✅ take remaining space
-    marginRight: 16, // ✅ prevent overlap with buttons
+    flex: 1,
+    marginRight: 12,
   },
   number: {
     width: 40,
@@ -214,18 +197,30 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   numberText: { fontSize: 14, fontWeight: "600", color: "#fff" },
-  arabicName: {
+
+  nameContainer: {
     flex: 1,
-    fontSize: 20,
-    color: "#111827",
     marginLeft: 12,
-    textAlign: "right",
+  },
+  audioName: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: "#111827",
+  },
+  malayalamName: {
+    fontSize: 14,
+    color: "#374151",
+    marginTop: 2,
+  },
+  musicInfo: {
+    fontSize: 11,
+    color: "#6B7280",
+    marginTop: 2,
   },
 
   actions: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
   },
 
   actionBtn: {
@@ -233,52 +228,22 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 4,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 20, // ✅ pill shape
-    borderWidth: 1.5, // ✅ visible border
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 20,
+    borderWidth: 1.5,
   },
 
-  // Read button — blue
-  readBtn: {
-    borderColor: "#000000",
-    backgroundColor: "#000000", // light blue fill
-  },
-
-  readText: {
-    color: "#ffffff",
-  },
-
-  // Play button — green
   playBtn: {
     borderColor: "#000000",
-    backgroundColor: "#000000", // light green fill
+    backgroundColor: "#000000",
   },
 
   playText: {
     color: "#ffffff",
-  },
-
-  actionText: {
     fontSize: 13,
     fontWeight: "600",
   },
-
-  // actions: {
-  //   flexDirection: "row",
-  //   alignItems: "center",
-  //   gap: 16,
-  // },
-  // actionBtn: {
-  //   flexDirection: "row",
-  //   alignItems: "center",
-  //   gap: 4, // ✅ small space between icon and label
-  // },
-  // actionText: {
-  //   fontSize: 13,
-  //   color: "#111827",
-  //   fontWeight: "500",
-  // },
 
   emptyList: { flexGrow: 1 },
   emptyContainer: {

@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
   Pressable,
@@ -10,6 +10,10 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import {
+  preloadInterstitial,
+  showInterstitial,
+} from "@/app/components/ads/InterstitialAdManager";
 import quranData from "../../../../../../constants/quran.json";
 
 type Ayah = {
@@ -71,6 +75,25 @@ export default function SurahDetails() {
   const handleClose = () => {
     router.back();
   };
+
+  // ads
+
+  const hasShownAd = useRef(false);
+
+  useEffect(() => {
+    // Preload the next interstitial ad.
+    preloadInterstitial();
+
+    // Show the ad once when this screen opens, if it's ready.
+    if (!hasShownAd.current) {
+      hasShownAd.current = true;
+      showInterstitial();
+    }
+
+    return () => {
+      hasShownAd.current = false;
+    };
+  }, []);
 
   if (loading) {
     return (
