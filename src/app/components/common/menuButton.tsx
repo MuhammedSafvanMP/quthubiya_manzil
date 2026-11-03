@@ -59,6 +59,8 @@ export default function MenuButton({ icon, label }: MenuButtonProps) {
       router.push("../components/screen/swalath/swalath");
     } else if (label === "Hajju & Umra") {
       router.push("../components/screen/umra");
+    } else if (label === "Asmaul Badru") {
+      router.push("../components/screen/asmaulhusna/asmaulbadru");
     }
   };
 

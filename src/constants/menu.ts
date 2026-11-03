@@ -14,11 +14,13 @@ export const menuIcons: Record<string, any> = {
   nombu: require("../../assets/images/icons/nombu.png"),
   // hajju: require("../../assets/images/icons/kaaba.png"),
   swalath: require("../../assets/images/icons/swalath.png"),
+  badru: require("../../assets/images/icons/swalath.png"),
 };
 
 export const menu = [
   { id: 1, icon: "allah", label: "Asmaul Husna" },
   { id: 2, icon: "nabi", label: "Asmaul Nabi" },
+  { id: 3, icon: "badru", label: "Asmaul Badru" },
   { id: 4, icon: "prayer", label: "Prayer Time" },
   { id: 5, icon: "masjid", label: "Niskaram" },
   { id: 6, icon: "counter", label: "Counter" },
