@@ -88,7 +88,6 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import QiblaCompass from "react-native-qibla-compass";
 import { SafeAreaView } from "react-native-safe-area-context";
-import HomeBannerAd from "../../ads/HomeBannerAd";
 import AppBar from "../../common/AppBar";
 
 export default function QiblaScreen() {
@@ -126,7 +125,6 @@ export default function QiblaScreen() {
           </View>
         </View>
       </ScrollView>
-      <HomeBannerAd />
     </SafeAreaView>
   );
 }

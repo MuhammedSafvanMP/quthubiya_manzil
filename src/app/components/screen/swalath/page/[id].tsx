@@ -1,12 +1,12 @@
 import { router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import {
-    ActivityIndicator,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -199,11 +199,6 @@ export default function NiskaramDetailScreen() {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        {/* Header card */}
-        <View style={styles.headerCard}>
-          <Text style={styles.headerTitle}>{item.title}</Text>
-        </View>
-
         {/* Blocks */}
         {blocks.map((b, i) => {
           if (b.type === "heading") {
@@ -247,20 +242,6 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingHorizontal: 20,
     paddingBottom: 40,
-  },
-
-  headerCard: {
-    backgroundColor: "#166534",
-    borderRadius: 16,
-    padding: 18,
-    marginVertical: 12,
-  },
-
-  headerTitle: {
-    color: "#FFFFFF",
-    fontSize: 18,
-    fontWeight: "700",
-    textAlign: "center",
   },
 
   sectionHeading: {

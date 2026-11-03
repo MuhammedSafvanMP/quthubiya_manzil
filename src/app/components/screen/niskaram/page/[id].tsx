@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import HomeBannerAd from "@/app/components/ads/HomeBannerAd";
 import niskaramData from "../../../../../constants/niskaram.json";
 import AppBar from "../../../common/AppBar";
 
@@ -356,7 +355,6 @@ export default function NiskaramDetailPage() {
 
         <View style={{ height: 40 }} />
       </ScrollView>
-      <HomeBannerAd />
     </SafeAreaView>
   );
 }

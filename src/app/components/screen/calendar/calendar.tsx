@@ -1,1138 +1,436 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  ActivityIndicator,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useState } from "react";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { HCalendar } from "react-native-hijiri-calendar";
 import { SafeAreaView } from "react-native-safe-area-context";
-import HomeBannerAd from "../../ads/HomeBannerAd";
 import AppBar from "../../common/AppBar";
 
-const API_BASE = "https://api.aladhan.com/v1";
+type SelectedDate = {
+  hijri: string;
+  gregorian: string;
+  events: string[];
+};
 
-const GREEN = "#14532D";
-const DARK_GREEN = "#0B3824";
-const LIGHT_GREEN = "#E8F3E9";
-const GOLD = "#D4AF37";
-const BACKGROUND = "#F7F8F2";
-const TEXT = "#183326";
-const MUTED = "#738176";
-
-const GREGORIAN_MONTHS = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+const HIJRI_MONTHS = [
+  "Muharram",
+  "Safar",
+  "Rabi al-Awwal",
+  "Rabi al-Thani",
+  "Jumada al-Ula",
+  "Jumada al-Akhirah",
+  "Rajab",
+  "Sha'ban",
+  "Ramadan",
+  "Shawwal",
+  "Dhu al-Qi'dah",
+  "Dhu al-Hijjah",
 ];
 
-const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-type ApiDay = {
-  gregorian?: {
-    date?: string;
-    day?: string;
-    month?: { number?: number; en?: string };
-    year?: string;
-  };
-  hijri?: {
-    date?: string;
-    day?: string;
-    year?: string;
-    month?: {
-      number?: number;
-      en?: string;
-      ar?: string;
-    };
-  };
-  // Some API responses may wrap the date information.
-  date?: {
-    gregorian?: {
-      date?: string;
-      day?: string;
-      month?: { number?: number; en?: string };
-      year?: string;
-    };
-    hijri?: {
-      date?: string;
-      day?: string;
-      year?: string;
-      month?: {
-        number?: number;
-        en?: string;
-        ar?: string;
-      };
-    };
-  };
+// Commonly observed Islamic dates.
+// Some observances differ between Muslim communities.
+const ISLAMIC_EVENTS: Record<string, string[]> = {
+  "1/1": ["Islamic New Year"],
+  "10/1": ["Day of Ashura"],
+  "12/3": ["Mawlid an-Nabi (commonly observed)"],
+  "27/7": ["Isra and Mi'raj (commonly observed)"],
+  "15/8": ["Mid-Sha'ban (where observed)"],
+  "1/10": ["Eid al-Fitr"],
+  "9/12": ["Day of Arafah"],
+  "10/12": ["Eid al-Adha"],
 };
 
-type HijriDate = {
-  day: number;
-  month: number;
-  year: number;
-  monthName: string;
-  arabicMonthName: string;
-};
+function getIslamicEvents(day: number, month: number): string[] {
+  const events = [...(ISLAMIC_EVENTS[`${day}/${month}`] ?? [])];
 
-type CalendarDay = {
-  date: Date;
-  hijri: HijriDate | null;
-  festivals: Festival[];
-};
+  if (month === 9) {
+    if (day === 1) {
+      events.push("Beginning of Ramadan");
+    } else {
+      events.push("Ramadan");
+    }
 
-type Festival = {
-  id: string;
-  name: string;
-  arabicName: string;
-  description: string;
-  hijriMonth: number;
-  hijriDay: number;
-};
-
-type YearFestival = {
-  date: Date;
-  hijri: HijriDate;
-  festival: Festival;
-};
-
-const FESTIVALS: Festival[] = [
-  {
-    id: "islamic-new-year",
-    name: "Islamic New Year",
-    arabicName: "رأس السنة الهجرية",
-    description: "Beginning of the new Hijri year.",
-    hijriMonth: 1,
-    hijriDay: 1,
-  },
-  {
-    id: "ashura",
-    name: "Day of Ashura",
-    arabicName: "عاشوراء",
-    description: "The tenth day of Muharram.",
-    hijriMonth: 1,
-    hijriDay: 10,
-  },
-  {
-    id: "mawlid",
-    name: "Mawlid an-Nabi",
-    arabicName: "المولد النبوي",
-    description: "The traditionally observed birthday of Prophet Muhammad ﷺ.",
-    hijriMonth: 3,
-    hijriDay: 12,
-  },
-  {
-    id: "isra-miraj",
-    name: "Isra and Mi'raj",
-    arabicName: "الإسراء والمعراج",
-    description: "Traditionally observed on the 27th of Rajab.",
-    hijriMonth: 7,
-    hijriDay: 27,
-  },
-  {
-    id: "mid-shaban",
-    name: "Mid-Sha'ban",
-    arabicName: "ليلة النصف من شعبان",
-    description: "The middle night of Sha'ban.",
-    hijriMonth: 8,
-    hijriDay: 15,
-  },
-  {
-    id: "ramadan",
-    name: "First Day of Ramadan",
-    arabicName: "رمضان",
-    description: "Expected beginning of the fasting month.",
-    hijriMonth: 9,
-    hijriDay: 1,
-  },
-  {
-    id: "laylat-al-qadr",
-    name: "27th Night of Ramadan",
-    arabicName: "ليلة القدر",
-    description:
-      "The 27th night is widely observed as Laylat al-Qadr; its exact night is not universally fixed.",
-    hijriMonth: 9,
-    hijriDay: 27,
-  },
-  {
-    id: "eid-fitr",
-    name: "Eid al-Fitr",
-    arabicName: "عيد الفطر",
-    description: "Festival marking the end of Ramadan.",
-    hijriMonth: 10,
-    hijriDay: 1,
-  },
-  {
-    id: "arafah",
-    name: "Day of Arafah",
-    arabicName: "يوم عرفة",
-    description: "The ninth day of Dhul Hijjah.",
-    hijriMonth: 12,
-    hijriDay: 9,
-  },
-  {
-    id: "eid-adha",
-    name: "Eid al-Adha",
-    arabicName: "عيد الأضحى",
-    description: "The Festival of Sacrifice.",
-    hijriMonth: 12,
-    hijriDay: 10,
-  },
-];
-
-function getHijriData(item: ApiDay) {
-  return {
-    gregorian: item.gregorian ?? item.date?.gregorian,
-    hijri: item.hijri ?? item.date?.hijri,
-  };
-}
-
-function parseGregorianDate(value?: string): Date | null {
-  if (!value) return null;
-
-  const parts = value.split("-").map(Number);
-
-  if (parts.length !== 3 || parts.some(Number.isNaN)) {
-    return null;
+    if (day === 27) {
+      events.push("Laylat al-Qadr (commonly observed)");
+    }
   }
 
-  // AlAdhan calendar dates are normally DD-MM-YYYY.
-  const [day, month, year] = parts;
-
-  if (year < 1 || month < 1 || month > 12 || day < 1 || day > 31) {
-    return null;
+  if (month === 10 && day >= 2 && day <= 7) {
+    events.push("Six voluntary fasts of Shawwal");
   }
 
-  const result = new Date(year, month - 1, day);
+  return events;
+}
 
-  if (
-    result.getFullYear() !== year ||
-    result.getMonth() !== month - 1 ||
-    result.getDate() !== day
-  ) {
+/**
+ * Finds the Gregorian date matching the selected Hijri date.
+ * Uses the Umm al-Qura calendar supported by Intl.
+ */
+function getGregorianDate(
+  hijriDay: number,
+  hijriMonth: number,
+  hijriYear: number,
+): Date | null {
+  try {
+    const formatter = new Intl.DateTimeFormat(
+      "en-u-ca-islamic-umalqura-nu-latn",
+      {
+        day: "numeric",
+        month: "numeric",
+        year: "numeric",
+        timeZone: "UTC",
+      },
+    );
+
+    // Approximate Gregorian year corresponding to the Hijri year.
+    const approximateYear = Math.floor(hijriYear * 0.970224 + 621.5774);
+
+    // Search nearby Gregorian years to find the exact date.
+    const start = Date.UTC(approximateYear - 1, 0, 1);
+    const end = Date.UTC(approximateYear + 2, 0, 1);
+
+    for (let timestamp = start; timestamp < end; timestamp += 86400000) {
+      const date = new Date(timestamp);
+
+      const parts = formatter.formatToParts(date);
+
+      const values: Record<string, number> = {};
+
+      for (const part of parts) {
+        if (
+          part.type === "day" ||
+          part.type === "month" ||
+          part.type === "year"
+        ) {
+          values[part.type] = Number(part.value);
+        }
+      }
+
+      if (
+        values.day === hijriDay &&
+        values.month === hijriMonth &&
+        values.year === hijriYear
+      ) {
+        return date;
+      }
+    }
+
+    return null;
+  } catch (error) {
+    console.warn("Hijri date conversion failed:", error);
     return null;
   }
-
-  result.setHours(0, 0, 0, 0);
-  return result;
 }
 
-function parseHijri(item: ApiDay): HijriDate | null {
-  const { hijri } = getHijriData(item);
-
-  if (!hijri) return null;
-
-  const day = Number(hijri.day ?? hijri.date?.split("-")[0]);
-  const month = Number(hijri.month?.number);
-  const year = Number(hijri.year);
-
-  if (
-    !Number.isFinite(day) ||
-    !Number.isFinite(month) ||
-    !Number.isFinite(year) ||
-    day < 1 ||
-    month < 1 ||
-    month > 12 ||
-    year < 1
-  ) {
-    return null;
+function formatGregorianDate(date: Date | null): string {
+  if (!date) {
+    return "Gregorian date unavailable on this device";
   }
 
-  return {
-    day,
-    month,
-    year,
-    monthName: hijri.month?.en ?? "Hijri month",
-    arabicMonthName: hijri.month?.ar ?? "",
-  };
-}
-
-function getFestivalsForHijri(hijri: HijriDate | null): Festival[] {
-  if (!hijri) return [];
-
-  return FESTIVALS.filter(
-    (festival) =>
-      festival.hijriMonth === hijri.month && festival.hijriDay === hijri.day,
-  );
-}
-
-function formatDate(date: Date): string {
-  return date.toLocaleDateString("en-IN", {
+  return new Intl.DateTimeFormat("en-GB", {
     day: "numeric",
-    month: "short",
+    month: "long",
     year: "numeric",
-  });
-}
-
-function getDateKey(date: Date): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-
-  return `${year}-${month}-${day}`;
-}
-
-async function fetchCalendarMonth(
-  month: number,
-  year: number,
-): Promise<ApiDay[]> {
-  const response = await fetch(`${API_BASE}/gToHCalendar/${month}/${year}`);
-
-  if (!response.ok) {
-    throw new Error(`Unable to load calendar for ${month}/${year}.`);
-  }
-
-  const json = await response.json();
-
-  if (json.code !== 200 || !Array.isArray(json.data)) {
-    throw new Error("The calendar service returned invalid data.");
-  }
-
-  return json.data as ApiDay[];
+    timeZone: "UTC",
+  }).format(date);
 }
 
 export default function CalendarScreen() {
-  const [visibleMonth, setVisibleMonth] = useState(
-    () => new Date(new Date().getFullYear(), new Date().getMonth(), 1),
-  );
+  const [selectedDate, setSelectedDate] = useState<SelectedDate | null>(null);
 
-  const [calendarDays, setCalendarDays] = useState<CalendarDay[]>([]);
-  const [yearFestivals, setYearFestivals] = useState<YearFestival[]>([]);
-  const [loadingCalendar, setLoadingCalendar] = useState(true);
-  const [loadingFestivals, setLoadingFestivals] = useState(true);
-  const [calendarError, setCalendarError] = useState("");
-  const [festivalError, setFestivalError] = useState("");
+  const handleDaySelect = (day: string) => {
+    // HCalendar returns Hijri dates in D/M/YYYY format.
+    const [dayText, monthText, yearText] = day.split("/");
 
-  const selectedYear = visibleMonth.getFullYear();
-  const selectedMonth = visibleMonth.getMonth();
+    const hijriDay = Number(dayText);
+    const hijriMonth = Number(monthText);
+    const hijriYear = Number(yearText);
 
-  const loadCalendar = useCallback(async () => {
-    setLoadingCalendar(true);
-    setCalendarError("");
-
-    try {
-      const apiDays = await fetchCalendarMonth(selectedMonth + 1, selectedYear);
-
-      const parsedDays: CalendarDay[] = apiDays
-        .map((item) => {
-          const { gregorian } = getHijriData(item);
-          const date = parseGregorianDate(gregorian?.date);
-          const hijri = parseHijri(item);
-
-          if (!date) return null;
-
-          return {
-            date,
-            hijri,
-            festivals: getFestivalsForHijri(hijri),
-          };
-        })
-        .filter((day): day is CalendarDay => day !== null);
-
-      if (parsedDays.length === 0) {
-        throw new Error("No calendar dates were returned.");
-      }
-
-      setCalendarDays(parsedDays);
-    } catch (error) {
-      setCalendarDays([]);
-      setCalendarError(
-        error instanceof Error
-          ? error.message
-          : "Could not load the calendar. Please try again.",
-      );
-    } finally {
-      setLoadingCalendar(false);
-    }
-  }, [selectedMonth, selectedYear]);
-
-  const loadYearFestivals = useCallback(async () => {
-    setLoadingFestivals(true);
-    setFestivalError("");
-
-    try {
-      // Fetch every Gregorian month in the selected year.
-      const monthResults = await Promise.all(
-        Array.from({ length: 12 }, (_, index) =>
-          fetchCalendarMonth(index + 1, selectedYear),
-        ),
-      );
-
-      const foundFestivals: YearFestival[] = [];
-
-      monthResults.forEach((monthDays) => {
-        monthDays.forEach((item) => {
-          const { gregorian } = getHijriData(item);
-          const date = parseGregorianDate(gregorian?.date);
-          const hijri = parseHijri(item);
-
-          if (!date || !hijri) return;
-          if (date.getFullYear() !== selectedYear) return;
-
-          const matchingFestivals = getFestivalsForHijri(hijri);
-
-          matchingFestivals.forEach((festival) => {
-            foundFestivals.push({
-              date,
-              hijri,
-              festival,
-            });
-          });
-        });
-      });
-
-      foundFestivals.sort((a, b) => a.date.getTime() - b.date.getTime());
-
-      setYearFestivals(foundFestivals);
-    } catch (error) {
-      setYearFestivals([]);
-      setFestivalError(
-        error instanceof Error
-          ? error.message
-          : "Could not load the yearly festival list.",
-      );
-    } finally {
-      setLoadingFestivals(false);
-    }
-  }, [selectedYear]);
-
-  useEffect(() => {
-    loadCalendar();
-  }, [loadCalendar]);
-
-  useEffect(() => {
-    loadYearFestivals();
-  }, [loadYearFestivals]);
-
-  const calendarGrid = useMemo(() => {
-    const firstDayOfWeek = new Date(selectedYear, selectedMonth, 1).getDay();
-
-    const daysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate();
-
-    const grid: (CalendarDay | null)[] = Array(firstDayOfWeek).fill(null);
-
-    for (let dayNumber = 1; dayNumber <= daysInMonth; dayNumber++) {
-      const foundDay = calendarDays.find(
-        (item) => item.date.getDate() === dayNumber,
-      );
-
-      grid.push(
-        foundDay ?? {
-          date: new Date(selectedYear, selectedMonth, dayNumber),
-          hijri: null,
-          festivals: [],
-        },
-      );
+    if (
+      !Number.isInteger(hijriDay) ||
+      !Number.isInteger(hijriMonth) ||
+      !Number.isInteger(hijriYear) ||
+      hijriDay < 1 ||
+      hijriMonth < 1 ||
+      hijriMonth > 12
+    ) {
+      console.warn("Unexpected Hijri date from calendar:", day);
+      return;
     }
 
-    // Complete the final week for a consistent calendar layout.
-    while (grid.length % 7 !== 0) {
-      grid.push(null);
-    }
+    const gregorianDate = getGregorianDate(hijriDay, hijriMonth, hijriYear);
 
-    return grid;
-  }, [calendarDays, selectedMonth, selectedYear]);
-
-  const changeMonth = (amount: number) => {
-    setVisibleMonth(new Date(selectedYear, selectedMonth + amount, 1));
-  };
-
-  const goToToday = () => {
-    const today = new Date();
-    setVisibleMonth(new Date(today.getFullYear(), today.getMonth(), 1));
+    setSelectedDate({
+      hijri: `${hijriDay} ${HIJRI_MONTHS[hijriMonth - 1]} ${hijriYear} AH`,
+      gregorian: formatGregorianDate(gregorianDate),
+      events: getIslamicEvents(hijriDay, hijriMonth),
+    });
   };
 
   return (
-    <SafeAreaView style={styles.safeArea} edges={["top"]}>
-      <AppBar title="Calendar" />
+    <SafeAreaView style={styles.container}>
+      <AppBar title="Islamic Calendar" />
       <ScrollView
-        style={styles.container}
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
       >
-        {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.headerTitle}>Islamic Calendar</Text>
-          <Text style={styles.headerSubtitle}>
-            Your guide to Hijri dates and Islamic occasions
-          </Text>
-        </View>
+          <MaterialCommunityIcons
+            name="calendar-month"
+            size={30}
+            color="#176B52"
+          />
 
-        {/* Month selector */}
-        <View style={styles.monthSelector}>
-          <TouchableOpacity
-            accessibilityLabel="Previous month"
-            onPress={() => changeMonth(-1)}
-            style={styles.arrowButton}
-          >
-            <Text style={styles.arrowText}>‹</Text>
-          </TouchableOpacity>
-
-          <View style={styles.monthTitleContainer}>
-            <Text style={styles.monthTitle}>
-              {GREGORIAN_MONTHS[selectedMonth]}
-            </Text>
-            <Text style={styles.monthYear}>{selectedYear}</Text>
+          <View style={styles.headerText}>
+            <Text style={styles.title}>Islamic Calendar</Text>
+            <Text style={styles.subtitle}>Hijri dates and Islamic events</Text>
           </View>
-
-          <TouchableOpacity
-            accessibilityLabel="Next month"
-            onPress={() => changeMonth(1)}
-            style={styles.arrowButton}
-          >
-            <Text style={styles.arrowText}>›</Text>
-          </TouchableOpacity>
         </View>
 
-        <TouchableOpacity onPress={goToToday} style={styles.todayButton}>
-          <Text style={styles.todayButtonText}>Go to current month</Text>
-        </TouchableOpacity>
-
-        {/* Calendar */}
         <View style={styles.calendarCard}>
-          <View style={styles.weekHeader}>
-            {WEEKDAYS.map((weekday) => (
-              <View key={weekday} style={styles.weekdayCell}>
-                <Text style={styles.weekdayText}>{weekday}</Text>
-              </View>
-            ))}
-          </View>
+          <HCalendar
+            calendarType="hijiri"
+            onDaySelect={(day) => {
+              handleDaySelect(day);
+            }}
+            containerStyle={styles.calendar}
+            selectedDates={
+              selectedDate
+                ? [
+                    {
+                      from: (() => {
+                        const [day, month, year] =
+                          selectedDate.hijri.replace(" AH", "").split(" ")
+                            .length === 3
+                            ? selectedDate.hijri.replace(" AH", "").split(" ")
+                            : [];
 
-          {loadingCalendar ? (
-            <View style={styles.loadingContainer}>
-              <ActivityIndicator size="large" color={GREEN} />
-              <Text style={styles.loadingText}>Loading Hijri calendar...</Text>
-            </View>
-          ) : calendarError ? (
-            <View style={styles.errorContainer}>
-              <Text style={styles.errorText}>{calendarError}</Text>
-              <TouchableOpacity
-                style={styles.retryButton}
-                onPress={loadCalendar}
-              >
-                <Text style={styles.retryButtonText}>Try again</Text>
-              </TouchableOpacity>
-            </View>
-          ) : (
-            <View style={styles.calendarGrid}>
-              {calendarGrid.map((day, index) => {
-                if (!day) {
-                  return <View key={`empty-${index}`} style={styles.dayCell} />;
-                }
+                        const monthNumber = HIJRI_MONTHS.indexOf(month) + 1;
 
-                const isToday = getDateKey(day.date) === getDateKey(new Date());
+                        return `${year}/${monthNumber}/${day}`;
+                      })(),
+                      to: (() => {
+                        const [day, month, year] = selectedDate.hijri
+                          .replace(" AH", "")
+                          .split(" ");
 
-                const hasFestival = day.festivals.length > 0;
+                        const monthNumber = HIJRI_MONTHS.indexOf(month) + 1;
 
-                return (
-                  <View key={getDateKey(day.date)} style={styles.dayCell}>
-                    <View
-                      style={[
-                        styles.dayCircle,
-                        isToday && styles.todayCircle,
-                        hasFestival && styles.festivalCircle,
-                      ]}
-                    >
-                      <Text
-                        style={[
-                          styles.gregorianDay,
-                          isToday && styles.todayDayText,
-                          hasFestival && styles.festivalDayText,
-                        ]}
-                      >
-                        {day.date.getDate()}
-                      </Text>
-                    </View>
-
-                    <Text
-                      style={[
-                        styles.hijriDay,
-                        hasFestival && styles.hijriFestivalText,
-                      ]}
-                    >
-                      {day.hijri?.day ?? "—"}
-                    </Text>
-
-                    {hasFestival && <View style={styles.festivalDot} />}
-                  </View>
-                );
-              })}
-            </View>
-          )}
-
-          <View style={styles.legend}>
-            <View style={styles.legendItem}>
-              <View style={styles.todayLegendDot} />
-              <Text style={styles.legendText}>Today</Text>
-            </View>
-
-            <View style={styles.legendItem}>
-              <View style={styles.festivalLegendDot} />
-              <Text style={styles.legendText}>Islamic occasion</Text>
-            </View>
-          </View>
+                        return `${year}/${monthNumber}/${day}`;
+                      })(),
+                      style: {
+                        borderColor: "#176B52",
+                      },
+                    },
+                  ]
+                : []
+            }
+          />
         </View>
 
-        {/* Selected month Hijri information */}
-        {!loadingCalendar && !calendarError && calendarDays.length > 0 && (
-          <View style={styles.hijriSummary}>
-            <Text style={styles.hijriSummaryTitle}>
-              Hijri Calendar Information
-            </Text>
+        {selectedDate ? (
+          <View style={styles.detailsCard}>
+            <View style={styles.detailsHeader}>
+              <MaterialCommunityIcons
+                name="calendar-check"
+                size={24}
+                color="#176B52"
+              />
 
-            <Text style={styles.hijriSummaryText}>
-              Dates are converted using the AlAdhan calendar service. Local moon
-              sightings may cause differences of one day or more.
-            </Text>
-          </View>
-        )}
+              <Text style={styles.detailsTitle}>Selected Date</Text>
+            </View>
 
-        {/* Yearly festival list */}
-        <View style={styles.sectionHeader}>
-          <View style={styles.sectionHeadingGroup}>
-            <Text style={styles.sectionTitle}>Islamic Festivals</Text>
-            <Text style={styles.sectionSubtitle}>
-              All listed occasions in {selectedYear}
-            </Text>
-          </View>
+            <Text style={styles.hijriDate}>{selectedDate.hijri}</Text>
 
-          <View style={styles.yearBadge}>
-            <Text style={styles.yearBadgeText}>{selectedYear}</Text>
-          </View>
-        </View>
+            <View style={styles.divider} />
 
-        {loadingFestivals ? (
-          <View style={styles.festivalLoading}>
-            <ActivityIndicator size="small" color={GREEN} />
-            <Text style={styles.loadingText}>
-              Loading festivals for {selectedYear}...
-            </Text>
-          </View>
-        ) : festivalError ? (
-          <View style={styles.errorCard}>
-            <Text style={styles.errorText}>{festivalError}</Text>
-            <TouchableOpacity
-              style={styles.retryButton}
-              onPress={loadYearFestivals}
-            >
-              <Text style={styles.retryButtonText}>Try again</Text>
-            </TouchableOpacity>
-          </View>
-        ) : yearFestivals.length === 0 ? (
-          <View style={styles.emptyCard}>
-            <Text style={styles.emptyTitle}>No festival dates available</Text>
-            <Text style={styles.emptyText}>
-              The calendar service did not return festival dates for this year.
-              Please try again later.
-            </Text>
+            <Text style={styles.label}>Gregorian Date</Text>
+            <Text style={styles.gregorianDate}>{selectedDate.gregorian}</Text>
+
+            <View style={styles.divider} />
+
+            <Text style={styles.label}>Islamic Events</Text>
+
+            {selectedDate.events.length > 0 ? (
+              selectedDate.events.map((event, index) => (
+                <View key={`${event}-${index}`} style={styles.eventRow}>
+                  <MaterialCommunityIcons
+                    name="star-four-points"
+                    size={18}
+                    color="#176B52"
+                  />
+
+                  <Text style={styles.eventText}>{event}</Text>
+                </View>
+              ))
+            ) : (
+              <Text style={styles.noEvent}>
+                No special Islamic event listed for this date.
+              </Text>
+            )}
           </View>
         ) : (
-          <View style={styles.festivalList}>
-            {yearFestivals.map((item, index) => (
-              <View
-                key={`${item.festival.id}-${getDateKey(item.date)}`}
-                style={styles.festivalCard}
-              >
-                <View style={styles.festivalDateBox}>
-                  <Text style={styles.festivalDateDay}>
-                    {item.date.getDate()}
-                  </Text>
-                  <Text style={styles.festivalDateMonth}>
-                    {item.date.toLocaleDateString("en-IN", {
-                      month: "short",
-                    })}
-                  </Text>
-                </View>
+          <View style={styles.hintCard}>
+            <MaterialCommunityIcons
+              name="gesture-tap"
+              size={26}
+              color="#176B52"
+            />
 
-                <View style={styles.festivalDetails}>
-                  <Text style={styles.festivalName}>{item.festival.name}</Text>
-
-                  <Text style={styles.festivalArabic}>
-                    {item.festival.arabicName}
-                  </Text>
-
-                  <Text style={styles.festivalDescription}>
-                    {item.festival.description}
-                  </Text>
-
-                  <Text style={styles.festivalHijri}>
-                    {item.hijri.day} {item.hijri.monthName} {item.hijri.year} AH
-                  </Text>
-                </View>
-
-                <View style={styles.festivalNumber}>
-                  <Text style={styles.festivalNumberText}>
-                    {String(index + 1).padStart(2, "0")}
-                  </Text>
-                </View>
-              </View>
-            ))}
+            <Text style={styles.hintText}>
+              Tap any Hijri date to see its Gregorian date and Islamic events.
+            </Text>
           </View>
         )}
 
-        <View style={styles.disclaimer}>
-          <Text style={styles.disclaimerTitle}>Please note</Text>
-          <Text style={styles.disclaimerText}>
-            Festival dates are calendar estimates. In Kerala, actual observance
-            dates may differ according to local moon sighting and religious
-            announcements. The 27th night of Ramadan is a commonly observed
-            night for Laylat al-Qadr; its exact date is not certain.
-          </Text>
-        </View>
-
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>Quthubiya Manzil</Text>
-          <Text style={styles.footerSubtext}>
-            May Allah bless your days with barakah
-          </Text>
-        </View>
+        <Text style={styles.note}>
+          Islamic event dates are based on common Hijri calendar conventions.
+          Some observances may differ between communities.
+        </Text>
       </ScrollView>
-      <HomeBannerAd />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: BACKGROUND,
-  },
   container: {
     flex: 1,
-    backgroundColor: BACKGROUND,
+    backgroundColor: "#F7F8F6",
   },
+
   content: {
-    paddingHorizontal: 16,
+    padding: 16,
     paddingBottom: 32,
   },
+
   header: {
-    alignItems: "center",
-    paddingTop: 20,
-    paddingBottom: 22,
-  },
-  headerIcon: {
-    width: 54,
-    height: 54,
-    borderRadius: 27,
-    backgroundColor: GREEN,
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 12,
-    borderWidth: 2,
-    borderColor: GOLD,
-  },
-  headerIconText: {
-    fontSize: 29,
-    color: "#FFFFFF",
-  },
-  headerTitle: {
-    fontSize: 25,
-    fontWeight: "800",
-    color: DARK_GREEN,
-    textAlign: "center",
-  },
-  headerSubtitle: {
-    fontSize: 13,
-    color: MUTED,
-    textAlign: "center",
-    marginTop: 6,
-    lineHeight: 19,
-  },
-  monthSelector: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
-    backgroundColor: GREEN,
-    borderRadius: 18,
-    paddingHorizontal: 12,
-    paddingVertical: 12,
+    marginBottom: 20,
+    gap: 12,
   },
-  arrowButton: {
-    width: 42,
-    height: 42,
-    borderRadius: 13,
-    backgroundColor: "rgba(255,255,255,0.13)",
-    alignItems: "center",
-    justifyContent: "center",
+
+  headerText: {
+    flex: 1,
   },
-  arrowText: {
-    fontSize: 32,
-    color: "#FFFFFF",
-    lineHeight: 36,
-  },
-  monthTitleContainer: {
-    alignItems: "center",
-  },
-  monthTitle: {
-    fontSize: 20,
-    fontWeight: "800",
-    color: "#FFFFFF",
-  },
-  monthYear: {
-    fontSize: 13,
-    color: "#D8E7D9",
-    marginTop: 3,
-  },
-  todayButton: {
-    alignSelf: "center",
-    marginTop: 12,
-    marginBottom: 16,
-    paddingHorizontal: 16,
-    paddingVertical: 9,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: "#C5D9C6",
-    backgroundColor: "#FFFFFF",
-  },
-  todayButtonText: {
-    color: GREEN,
-    fontSize: 12,
+
+  title: {
+    fontSize: 24,
     fontWeight: "700",
+    color: "#183D30",
   },
+
+  subtitle: {
+    fontSize: 14,
+    color: "#727A75",
+    marginTop: 4,
+  },
+
   calendarCard: {
     backgroundColor: "#FFFFFF",
     borderRadius: 20,
-    paddingHorizontal: 8,
-    paddingTop: 15,
-    paddingBottom: 14,
-    borderWidth: 1,
-    borderColor: "#E8EDE4",
+    padding: 8,
     elevation: 2,
-    shadowColor: "#183326",
-    shadowOffset: { width: 0, height: 2 },
+    shadowColor: "#000",
     shadowOpacity: 0.05,
-    shadowRadius: 5,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 3 },
   },
-  weekHeader: {
-    flexDirection: "row",
-    marginBottom: 9,
+
+  calendar: {
+    width: "100%",
   },
-  weekdayCell: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 8,
-  },
-  weekdayText: {
-    color: MUTED,
-    fontSize: 11,
-    fontWeight: "700",
-  },
-  calendarGrid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  dayCell: {
-    width: `${100 / 7}%`,
-    minHeight: 64,
-    alignItems: "center",
-    paddingTop: 4,
-  },
-  dayCircle: {
-    width: 34,
-    height: 34,
-    borderRadius: 17,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  gregorianDay: {
-    fontSize: 14,
-    color: TEXT,
-    fontWeight: "600",
-  },
-  todayCircle: {
-    backgroundColor: GREEN,
-  },
-  todayDayText: {
-    color: "#FFFFFF",
-    fontWeight: "800",
-  },
-  festivalCircle: {
-    borderWidth: 1.5,
-    borderColor: GOLD,
-  },
-  festivalDayText: {
-    color: DARK_GREEN,
-    fontWeight: "800",
-  },
-  hijriDay: {
-    marginTop: 2,
-    fontSize: 10,
-    color: MUTED,
-  },
-  hijriFestivalText: {
-    color: GREEN,
-    fontWeight: "800",
-  },
-  festivalDot: {
-    width: 4,
-    height: 4,
-    borderRadius: 2,
-    backgroundColor: GOLD,
-    marginTop: 2,
-  },
-  legend: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 22,
-    paddingTop: 12,
-    marginTop: 6,
-    borderTopWidth: 1,
-    borderTopColor: "#EDF0E9",
-  },
-  legendItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-  },
-  todayLegendDot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: GREEN,
-  },
-  festivalLegendDot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: GOLD,
-  },
-  legendText: {
-    fontSize: 11,
-    color: MUTED,
-  },
-  loadingContainer: {
-    minHeight: 250,
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 12,
-  },
-  loadingText: {
-    fontSize: 12,
-    color: MUTED,
-    textAlign: "center",
-  },
-  errorContainer: {
-    minHeight: 180,
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 16,
-    gap: 12,
-  },
-  errorText: {
-    fontSize: 13,
-    color: "#A43E32",
-    textAlign: "center",
-    lineHeight: 19,
-  },
-  retryButton: {
-    backgroundColor: GREEN,
-    borderRadius: 10,
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    alignSelf: "center",
-  },
-  retryButtonText: {
-    color: "#FFFFFF",
-    fontSize: 12,
-    fontWeight: "700",
-  },
-  hijriSummary: {
-    backgroundColor: LIGHT_GREEN,
-    borderRadius: 14,
-    padding: 14,
-    marginTop: 14,
-    borderLeftWidth: 3,
-    borderLeftColor: GREEN,
-  },
-  hijriSummaryTitle: {
-    color: DARK_GREEN,
-    fontSize: 13,
-    fontWeight: "800",
-    marginBottom: 5,
-  },
-  hijriSummaryText: {
-    color: "#506858",
-    fontSize: 12,
-    lineHeight: 18,
-  },
-  sectionHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginTop: 27,
-    marginBottom: 14,
-  },
-  sectionHeadingGroup: {
-    flex: 1,
-  },
-  sectionTitle: {
-    fontSize: 21,
-    fontWeight: "800",
-    color: DARK_GREEN,
-  },
-  sectionSubtitle: {
-    fontSize: 12,
-    color: MUTED,
-    marginTop: 4,
-  },
-  yearBadge: {
-    backgroundColor: LIGHT_GREEN,
-    paddingHorizontal: 12,
-    paddingVertical: 7,
+
+  detailsCard: {
+    marginTop: 20,
+    padding: 20,
     borderRadius: 20,
-    borderWidth: 1,
-    borderColor: "#CFE0CD",
-  },
-  yearBadgeText: {
-    color: GREEN,
-    fontSize: 12,
-    fontWeight: "800",
-  },
-  festivalLoading: {
     backgroundColor: "#FFFFFF",
-    borderRadius: 14,
-    padding: 22,
+    elevation: 2,
+    shadowColor: "#000",
+    shadowOpacity: 0.04,
+    shadowRadius: 6,
+    shadowOffset: { width: 0, height: 2 },
+  },
+
+  detailsHeader: {
+    flexDirection: "row",
     alignItems: "center",
     gap: 10,
+    marginBottom: 16,
   },
-  festivalList: {
-    gap: 11,
+
+  detailsTitle: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#183D30",
   },
-  festivalCard: {
+
+  hijriDate: {
+    fontSize: 22,
+    fontWeight: "700",
+    color: "#176B52",
+  },
+
+  divider: {
+    height: 1,
+    backgroundColor: "#E8ECE9",
+    marginVertical: 16,
+  },
+
+  label: {
+    fontSize: 13,
+    color: "#747C77",
+    marginBottom: 6,
+  },
+
+  gregorianDate: {
+    fontSize: 17,
+    fontWeight: "600",
+    color: "#252925",
+  },
+
+  eventRow: {
     flexDirection: "row",
-    alignItems: "flex-start",
-    backgroundColor: "#FFFFFF",
-    borderRadius: 16,
-    padding: 12,
-    borderWidth: 1,
-    borderColor: "#E7EDE4",
-    gap: 11,
-  },
-  festivalDateBox: {
-    width: 54,
-    minHeight: 59,
-    borderRadius: 12,
-    backgroundColor: LIGHT_GREEN,
     alignItems: "center",
-    justifyContent: "center",
-    borderWidth: 1,
-    borderColor: "#D4E3D1",
+    gap: 10,
+    marginTop: 12,
   },
-  festivalDateDay: {
-    fontSize: 21,
-    color: GREEN,
-    fontWeight: "800",
-  },
-  festivalDateMonth: {
-    fontSize: 11,
-    color: GREEN,
-    fontWeight: "700",
-    marginTop: 1,
-  },
-  festivalDetails: {
+
+  eventText: {
     flex: 1,
-    paddingTop: 2,
+    fontSize: 15,
+    lineHeight: 22,
+    color: "#263B30",
   },
-  festivalName: {
+
+  noEvent: {
     fontSize: 14,
-    color: DARK_GREEN,
-    fontWeight: "800",
-    lineHeight: 20,
+    lineHeight: 21,
+    color: "#747C77",
   },
-  festivalArabic: {
-    fontSize: 14,
-    color: GREEN,
-    marginTop: 3,
-  },
-  festivalDescription: {
-    fontSize: 11,
-    color: MUTED,
-    lineHeight: 16,
-    marginTop: 5,
-  },
-  festivalHijri: {
-    fontSize: 10,
-    color: GREEN,
-    fontWeight: "700",
-    marginTop: 7,
-  },
-  festivalNumber: {
-    paddingTop: 4,
-  },
-  festivalNumberText: {
-    color: "#B5C1B4",
-    fontSize: 10,
-    fontWeight: "800",
-  },
-  errorCard: {
-    backgroundColor: "#FFFFFF",
-    borderRadius: 14,
-    padding: 18,
+
+  hintCard: {
+    marginTop: 20,
+    padding: 20,
+    borderRadius: 16,
+    backgroundColor: "#EAF3EE",
+    flexDirection: "row",
+    alignItems: "center",
     gap: 12,
-    borderWidth: 1,
-    borderColor: "#F0D7D3",
   },
-  emptyCard: {
-    backgroundColor: "#FFFFFF",
-    borderRadius: 14,
-    padding: 18,
-    borderWidth: 1,
-    borderColor: "#E7EDE4",
-  },
-  emptyTitle: {
+
+  hintText: {
+    flex: 1,
     fontSize: 14,
-    fontWeight: "800",
-    color: DARK_GREEN,
+    lineHeight: 21,
+    color: "#285640",
   },
-  emptyText: {
+
+  note: {
+    marginTop: 16,
     fontSize: 12,
     lineHeight: 18,
-    color: MUTED,
-    marginTop: 6,
-  },
-  disclaimer: {
-    backgroundColor: "#FFF9E8",
-    borderWidth: 1,
-    borderColor: "#F0E2B5",
-    borderRadius: 14,
-    padding: 14,
-    marginTop: 20,
-  },
-  disclaimerTitle: {
-    color: "#795E15",
-    fontSize: 12,
-    fontWeight: "800",
-    marginBottom: 5,
-  },
-  disclaimerText: {
-    color: "#776B4C",
-    fontSize: 11,
-    lineHeight: 17,
-  },
-  footer: {
-    alignItems: "center",
-    paddingTop: 25,
-    paddingBottom: 10,
-  },
-  footerText: {
-    color: GREEN,
-    fontSize: 13,
-    fontWeight: "800",
-  },
-  footerSubtext: {
-    color: MUTED,
-    fontSize: 11,
-    marginTop: 5,
+    color: "#858B87",
+    textAlign: "center",
   },
 });

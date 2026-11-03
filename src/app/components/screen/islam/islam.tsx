@@ -1,14 +1,17 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import islamData from "../../../../constants/islam.json";
-import HomeBannerAd from "../../ads/HomeBannerAd";
 import AppBar from "../../common/AppBar";
 
 export default function IslamScreen() {
   return (
     <SafeAreaView>
       <AppBar title={islamData.data.title_english} />
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView
+        contentContainerStyle={styles.container}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+      >
         <Text style={styles.headerArabic}>{islamData.data.title}</Text>
 
         <Text style={styles.headerMalayalam}>
@@ -27,7 +30,6 @@ export default function IslamScreen() {
           </View>
         ))}
       </ScrollView>
-      <HomeBannerAd />
     </SafeAreaView>
   );
 }

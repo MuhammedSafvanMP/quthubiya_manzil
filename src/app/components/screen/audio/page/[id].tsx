@@ -1,36 +1,35 @@
 import { useEffect, useRef, useState } from "react";
 import {
-    ActivityIndicator,
-    Dimensions,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  Dimensions,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 import Slider from "@react-native-community/slider";
 import {
-    setAudioModeAsync,
-    useAudioPlayer,
-    useAudioPlayerStatus,
+  setAudioModeAsync,
+  useAudioPlayer,
+  useAudioPlayerStatus,
 } from "expo-audio";
 import { router, useLocalSearchParams } from "expo-router";
 import {
-    ChevronLeft,
-    Music,
-    Pause,
-    Play,
-    RotateCcw,
-    RotateCw,
+  ChevronLeft,
+  Music,
+  Pause,
+  Play,
+  RotateCcw,
+  RotateCw,
 } from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import HomeBannerAd from "@/app/components/ads/HomeBannerAd";
 import audioData from "../../../../../constants/audio.json";
 import { audioMap } from "../../../../../constants/audioMap";
 import {
-    preloadInterstitial,
-    showInterstitial,
+  preloadInterstitial,
+  showInterstitial,
 } from "../../../../components/ads/InterstitialAdManager";
 
 const { width } = Dimensions.get("window");
@@ -193,7 +192,7 @@ export default function AudioPlayer() {
             style={styles.headerBack}
             onPress={() => router.back()}
           >
-            <ChevronLeft color="#111827" size={28} />
+            <ChevronLeft color="#A96738" size={28} />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Now Playing</Text>
           <View style={{ width: 28 }} />
@@ -230,9 +229,9 @@ export default function AudioPlayer() {
             value={Math.min(position, duration || 1)}
             onSlidingComplete={onSliderChange}
             disabled={!status.isLoaded || duration <= 0}
-            minimumTrackTintColor="#1DB954"
+            minimumTrackTintColor="#A96738"
             maximumTrackTintColor="#D1D5DB"
-            thumbTintColor="#1DB954"
+            thumbTintColor="#A96738"
           />
           <View style={styles.timeRow}>
             <Text style={styles.timeText}>{formatTime(position)}</Text>
@@ -247,7 +246,7 @@ export default function AudioPlayer() {
             onPress={() => seekBy(-10)}
             disabled={!status.isLoaded || duration <= 0}
           >
-            <RotateCcw color="#111827" size={28} />
+            <RotateCcw color="#A96738" size={28} />
             <Text style={styles.sideBtnText}>10s</Text>
           </TouchableOpacity>
 
@@ -257,11 +256,11 @@ export default function AudioPlayer() {
             disabled={Boolean(loadError)}
           >
             {isLoading ? (
-              <ActivityIndicator color="#000" />
+              <ActivityIndicator color="#ffffff" />
             ) : isPlaying ? (
-              <Pause color="#000" size={34} fill="#000" />
+              <Pause color="#ffffff" size={34} fill="#A96738" />
             ) : (
-              <Play color="#000" size={34} fill="#000" />
+              <Play color="#ffffff" size={34} fill="#A96738" />
             )}
           </TouchableOpacity>
 
@@ -270,20 +269,19 @@ export default function AudioPlayer() {
             onPress={() => seekBy(10)}
             disabled={!status.isLoaded || duration <= 0}
           >
-            <RotateCw color="#111827" size={28} />
+            <RotateCw color="#A96738" size={28} />
             <Text style={styles.sideBtnText}>10s</Text>
           </TouchableOpacity>
         </View>
 
         {loadError ? <Text style={styles.errorText}>{loadError}</Text> : null}
       </View>
-      <HomeBannerAd />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: "#FAFAFA" },
+  safeArea: { flex: 1, backgroundColor: "#FFF8E6" },
   container: { flex: 1, paddingHorizontal: 24 },
   center: { flex: 1, alignItems: "center", justifyContent: "center" },
   errorText: {
@@ -293,7 +291,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   backBtn: {
-    backgroundColor: "#111827",
+    backgroundColor: "#A96738",
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 20,
@@ -318,7 +316,7 @@ const styles = StyleSheet.create({
     width: width * 0.65,
     height: width * 0.65,
     borderRadius: 24,
-    backgroundColor: "#111827",
+    backgroundColor: "#A96738",
     alignItems: "center",
     justifyContent: "center",
     shadowColor: "#000",
@@ -367,10 +365,10 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 40,
-    backgroundColor: "#1DB954",
+    backgroundColor: "#A96738",
     alignItems: "center",
     justifyContent: "center",
-    shadowColor: "#1DB954",
+    shadowColor: "#A96738",
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.4,
     shadowRadius: 12,

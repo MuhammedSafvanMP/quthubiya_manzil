@@ -85,7 +85,7 @@ export default function NiskaramScreen() {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color="#166534" />
-        <Text style={styles.loadingText}>Loading Niskaram...</Text>
+        <Text style={styles.loadingText}>Loading Swalath...</Text>
       </View>
     );
   }
@@ -100,7 +100,7 @@ export default function NiskaramScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <AppBar title="Niskaram" showBack={true} />
+      <AppBar title="Swalath" showBack={true} />
 
       <View style={styles.container}>
         <SearchBar search={search} setSearch={setSearch} />

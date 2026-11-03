@@ -4,14 +4,12 @@ import { useState } from "react";
 import {
   Alert,
   Pressable,
-  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import HomeBannerAd from "../../ads/HomeBannerAd";
 import AppBar from "../../common/AppBar";
 import BottomSheetComponent from "../../common/BottomSheet";
 
@@ -60,166 +58,164 @@ export default function CounterScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <AppBar title="Zikr Counter" showSettingsIcon={true} />
-      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
+      <StatusBar barStyle="dark-content" />
 
-      <ScrollView
+      {/* <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
         bounces={true}
-      >
-        <View style={styles.container}>
-          {/* Header */}
+      > */}
+      <View style={styles.container}>
+        {/* Header */}
 
-          {/* Main Counter Card */}
-          <View style={styles.counterCard}>
-            <Text style={styles.cardLabel}>YOUR DAILY ZIKR</Text>
+        {/* Main Counter Card */}
+        <View style={styles.counterCard}>
+          <Text style={styles.cardLabel}>YOUR DAILY ZIKR</Text>
 
-            {/* Circular Counter */}
-            <View style={styles.circleOuter}>
-              <View style={styles.circleInner}>
-                <Text
-                  style={styles.countText}
-                  adjustsFontSizeToFit
-                  numberOfLines={1}
-                >
-                  {count}
-                </Text>
-
-                <View style={styles.countDivider} />
-
-                <Text style={styles.targetText}>of {target}</Text>
-              </View>
-            </View>
-
-            {/* Progress */}
-            <View style={styles.progressSection}>
-              <View style={styles.progressTrack}>
-                <View
-                  style={[styles.progressFill, { width: `${progress * 100}%` }]}
-                />
-              </View>
-
-              <Text style={styles.progressText}>
-                {Math.round(progress * 100)}% completed
+          {/* Circular Counter */}
+          <View style={styles.circleOuter}>
+            <View style={styles.circleInner}>
+              <Text
+                style={styles.countText}
+                adjustsFontSizeToFit
+                numberOfLines={1}
+              >
+                {count}
               </Text>
+
+              <View style={styles.countDivider} />
+
+              <Text style={styles.targetText}>of {target}</Text>
+            </View>
+          </View>
+
+          {/* Progress */}
+          <View style={styles.progressSection}>
+            <View style={styles.progressTrack}>
+              <View
+                style={[styles.progressFill, { width: `${progress * 100}%` }]}
+              />
             </View>
 
-            {/* Reset and +/- Controls */}
-            <View style={styles.controlsRow}>
-              <Pressable
-                onPress={resetCounter}
-                style={({ pressed }) => [
-                  styles.resetButton,
-                  pressed && styles.pressed,
-                ]}
-                accessibilityRole="button"
-              >
-                <Ionicons name="refresh-outline" size={18} color="#FFFFFF" />
-                <Text style={styles.resetText}>RESET</Text>
-              </Pressable>
+            <Text style={styles.progressText}>
+              {Math.round(progress * 100)}% completed
+            </Text>
+          </View>
 
-              <Pressable
-                onPress={decrement}
-                style={({ pressed }) => [
-                  styles.smallButton,
-                  pressed && styles.pressed,
-                ]}
-                accessibilityRole="button"
-                accessibilityLabel="Decrease count"
-              >
-                <Ionicons name="remove" size={25} color="#FFFFFF" />
-              </Pressable>
+          {/* Reset and +/- Controls */}
+          <View style={styles.controlsRow}>
+            <Pressable
+              onPress={resetCounter}
+              style={({ pressed }) => [
+                styles.resetButton,
+                pressed && styles.pressed,
+              ]}
+              accessibilityRole="button"
+            >
+              <Ionicons name="refresh-outline" size={18} color="#FFFFFF" />
+              <Text style={styles.resetText}>RESET</Text>
+            </Pressable>
 
-              <Pressable
-                onPress={increment}
-                style={({ pressed }) => [
-                  styles.smallButton,
-                  pressed && styles.pressed,
-                ]}
-                accessibilityRole="button"
-                accessibilityLabel="Increase count"
-              >
-                <Ionicons name="add" size={25} color="#FFFFFF" />
-              </Pressable>
-            </View>
+            <Pressable
+              onPress={decrement}
+              style={({ pressed }) => [
+                styles.smallButton,
+                pressed && styles.pressed,
+              ]}
+              accessibilityRole="button"
+              accessibilityLabel="Decrease count"
+            >
+              <Ionicons name="remove" size={25} color="#FFFFFF" />
+            </Pressable>
 
-            {/* Main Tap Button */}
             <Pressable
               onPress={increment}
               style={({ pressed }) => [
-                styles.tapButton,
-                pressed && styles.tapButtonPressed,
+                styles.smallButton,
+                pressed && styles.pressed,
               ]}
               accessibilityRole="button"
-              accessibilityLabel="Tap to count zikr"
+              accessibilityLabel="Increase count"
             >
-              <Ionicons name="finger-print-outline" size={23} color="#111111" />
-
-              <Text style={styles.tapButtonText}>
-                {count >= target ? "CONTINUE ZIKR" : "TAP TO COUNT"}
-              </Text>
+              <Ionicons name="add" size={25} color="#FFFFFF" />
             </Pressable>
-
-            {/* Target completed message */}
-            {count >= target && (
-              <View style={styles.completedBadge}>
-                <Ionicons name="checkmark-circle" size={18} color="#FFFFFF" />
-                <Text style={styles.completedText}>
-                  Target completed. MashaAllah!
-                </Text>
-              </View>
-            )}
           </View>
 
-          {/* Bottom Info Cards */}
-          <View style={styles.infoRow}>
-            <View style={styles.infoCard}>
-              <View style={styles.infoIcon}>
-                <Ionicons name="flag-outline" size={21} color="#111111" />
-              </View>
+          {/* Main Tap Button */}
+          <Pressable
+            onPress={increment}
+            style={({ pressed }) => [
+              styles.tapButton,
+              pressed && styles.tapButtonPressed,
+            ]}
+            accessibilityRole="button"
+            accessibilityLabel="Tap to count zikr"
+          >
+            <Ionicons name="finger-print-outline" size={23} color="#111111" />
 
-              <View style={styles.infoContent}>
-                <Text style={styles.infoLabel}>Target</Text>
-                <Text style={styles.infoValue}>{target} times</Text>
-              </View>
+            <Text style={styles.tapButtonText}>
+              {count >= target ? "CONTINUE ZIKR" : "TAP TO COUNT"}
+            </Text>
+          </Pressable>
 
-              <Pressable
-                onPress={openTargetModal}
-                style={styles.editButton}
-                accessibilityRole="button"
-                accessibilityLabel="Edit target"
-              >
-                <Ionicons name="pencil-outline" size={17} color="#111111" />
-              </Pressable>
+          {/* Target completed message */}
+          {count >= target && (
+            <View style={styles.completedBadge}>
+              <Ionicons name="checkmark-circle" size={18} color="#FFFFFF" />
+              <Text style={styles.completedText}>
+                Target completed. MashaAllah!
+              </Text>
+            </View>
+          )}
+        </View>
+
+        {/* Bottom Info Cards */}
+        <View style={styles.infoRow}>
+          <View style={styles.infoCard}>
+            <View style={styles.infoIcon}>
+              <Ionicons name="flag-outline" size={21} color="#111111" />
             </View>
 
-            <View style={styles.infoCard}>
-              <View style={styles.infoIcon}>
-                <Ionicons
-                  name="checkmark-done-outline"
-                  size={22}
-                  color="#111111"
-                />
-              </View>
-
-              <View style={styles.infoContent}>
-                <Text style={styles.infoLabel}>Completed</Text>
-                <Text style={styles.infoValue}>
-                  {Math.floor(count / target)} rounds
-                </Text>
-              </View>
+            <View style={styles.infoContent}>
+              <Text style={styles.infoLabel}>Target</Text>
+              <Text style={styles.infoValue}>{target} times</Text>
             </View>
+
+            <Pressable
+              onPress={openTargetModal}
+              style={styles.editButton}
+              accessibilityRole="button"
+              accessibilityLabel="Edit target"
+            ></Pressable>
           </View>
 
-          {/* Footer */}
-          <View style={styles.footer}>
-            <View style={styles.footerLine} />
-            <Text style={styles.footerText}>QUTHUBIYA MANZIL</Text>
-            <View style={styles.footerLine} />
+          <View style={styles.infoCard}>
+            <View style={styles.infoIcon}>
+              <Ionicons
+                name="checkmark-done-outline"
+                size={22}
+                color="#111111"
+              />
+            </View>
+
+            <View style={styles.infoContent}>
+              <Text style={styles.infoLabel}>Completed</Text>
+              <Text style={styles.infoValue}>
+                {Math.floor(count / target)} rounds
+              </Text>
+            </View>
           </View>
         </View>
-      </ScrollView>
+
+        {/* Footer */}
+        <View style={styles.footer}>
+          <View style={styles.footerLine} />
+          <Text style={styles.footerText}>QUTHUBIYA MANZIL</Text>
+          <View style={styles.footerLine} />
+        </View>
+      </View>
+      {/* </ScrollView> */}
 
       <BottomSheetComponent
         headingText={"Choose Target"}
@@ -229,7 +225,6 @@ export default function CounterScreen() {
         setTargetModalVisible={setTargetModalVisible}
         target={target}
       />
-      <HomeBannerAd />
     </SafeAreaView>
   );
 }

@@ -10,7 +10,6 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import HomeBannerAd from "../components/ads/HomeBannerAd";
 
 const SettingsScreen = ({ navigation }: any) => {
   const handleShare = async () => {
@@ -92,7 +91,6 @@ const SettingsScreen = ({ navigation }: any) => {
           </Text>
         </View>
       </ScrollView>
-      <HomeBannerAd />
     </SafeAreaView>
   );
 };

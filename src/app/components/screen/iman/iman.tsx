@@ -1,14 +1,17 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import imanData from "../../../../constants/iman.json";
-import HomeBannerAd from "../../ads/HomeBannerAd";
 import AppBar from "../../common/AppBar";
 
 export default function ImanScreen() {
   return (
     <SafeAreaView>
       <AppBar title={imanData.data.title_english} />
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView
+        contentContainerStyle={styles.container}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+      >
         <Text style={styles.headerArabic}>{imanData.data.title}</Text>
 
         <Text style={styles.headerMalayalam}>
@@ -27,7 +30,6 @@ export default function ImanScreen() {
           </View>
         ))}
       </ScrollView>
-      <HomeBannerAd />
     </SafeAreaView>
   );
 }

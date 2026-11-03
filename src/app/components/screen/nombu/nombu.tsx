@@ -60,7 +60,7 @@ export default function NombScreen() {
       setNombu(Array.isArray(nombuData) ? nombuData : []);
     } catch (err) {
       console.error("Nombu loading error:", err);
-      setError("Failed to load Niskaram");
+      setError("Failed to load Nombu");
     } finally {
       setLoading(false);
     }
@@ -88,7 +88,7 @@ export default function NombScreen() {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color="#166534" />
-        <Text style={styles.loadingText}>Loading Niskaram...</Text>
+        <Text style={styles.loadingText}>Loading Nombu...</Text>
       </View>
     );
   }
@@ -103,7 +103,7 @@ export default function NombScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <AppBar title="Niskaram" showBack={true} />
+      <AppBar title="Nombu" showBack={true} />
 
       <View style={styles.container}>
         <SearchBar search={search} setSearch={setSearch} />

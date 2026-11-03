@@ -40,7 +40,7 @@ export default function UmraSubListScreen() {
           data={filtered}
           keyExtractor={(item) => String(item.id)}
           contentContainerStyle={styles.listContent}
-          renderItem={({ item }) => {
+          renderItem={({ item, index }) => {
             const hasNested = (item.sub_list?.length ?? 0) > 0;
             const hasDesc = !!item.desc;
 
@@ -71,7 +71,9 @@ export default function UmraSubListScreen() {
                   }
                 }}
               >
-                <View style={styles.badge} />
+                    <View style={styles.number}>
+                                <Text style={styles.numberText}>{index + 1}</Text>
+                              </View>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.title}>{item.title}</Text>
                   {hasNested && (
@@ -102,13 +104,17 @@ const styles = StyleSheet.create({
     borderBottomColor: "#E5E7EB",
     gap: 12,
   },
-  badge: {
-    width: 6,
-    height: 28,
-    borderRadius: 3,
-    backgroundColor: "#000000",
-  },
+
   title: { fontSize: 15, fontWeight: "600", color: "#111827" },
   sub: { fontSize: 12, color: "#6B7280", marginTop: 2 },
   chevron: { fontSize: 26, color: "#9CA3AF" },
+    number: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: "#000000",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  numberText: { color: "#fff", fontWeight: "600", fontSize: 14 },
 });

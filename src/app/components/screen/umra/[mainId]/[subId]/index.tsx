@@ -34,7 +34,7 @@ export default function NestedListScreen() {
           data={sub.sub_list}
           keyExtractor={(item) => String(item.id)}
           contentContainerStyle={{ paddingBottom: 24 }}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             <TouchableOpacity
               activeOpacity={0.7}
               style={styles.row}
@@ -51,7 +51,11 @@ export default function NestedListScreen() {
                 })
               }
             >
-              <View style={styles.badge} />
+
+                  <View style={styles.number}>
+                                              <Text style={styles.numberText}>{index + 1}</Text>
+                                            </View>
+
               <Text style={styles.title}>{item.title}</Text>
               <Text style={styles.chevron}>›</Text>
             </TouchableOpacity>
@@ -73,7 +77,15 @@ const styles = StyleSheet.create({
     borderBottomColor: "#E5E7EB",
     gap: 12,
   },
-  badge: { width: 6, height: 28, borderRadius: 3, backgroundColor: "#166534" },
   title: { flex: 1, fontSize: 15, fontWeight: "600", color: "#111827" },
   chevron: { fontSize: 26, color: "#9CA3AF" },
+     number: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: "#000000",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  numberText: { color: "#fff", fontWeight: "600", fontSize: 14 },
 });

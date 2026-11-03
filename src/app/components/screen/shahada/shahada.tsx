@@ -5,10 +5,9 @@ import {
   StatusBar,
   StyleSheet,
   Text,
-  View
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import HomeBannerAd from "../../ads/HomeBannerAd";
 import AppBar from "../../common/AppBar";
 
 export default function ShahadaScreen() {
@@ -34,7 +33,7 @@ export default function ShahadaScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <AppBar title="Shahada" />
-      <StatusBar barStyle="dark-content" backgroundColor="#F5F7F2" />
+      <StatusBar barStyle="dark-content" />
 
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -143,7 +142,6 @@ export default function ShahadaScreen() {
 
         <Text style={styles.footer}>QUTHUBIYA MANZIL</Text>
       </ScrollView>
-      <HomeBannerAd />
     </SafeAreaView>
   );
 }
