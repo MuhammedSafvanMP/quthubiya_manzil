@@ -14,7 +14,7 @@ export const menuIcons: Record<string, any> = {
   nombu: require("../../assets/images/icons/nombu.png"),
   // hajju: require("../../assets/images/icons/kaaba.png"),
   swalath: require("../../assets/images/icons/swalath.png"),
-  badru: require("../../assets/images/icons/swalath.png"),
+  badru: require("../../assets/images/icons/badru.png"),
 };
 
 export const menu = [

@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import HomeBannerAd from "../../ads/HomeBannerAd";
 
 type AsmaulHusna = {
   id: number;
@@ -160,6 +161,9 @@ export default function Asmaulhusna({ title, data, subtitle, name }: { title: st
           columnWrapperStyle={styles.cardRow}
         />
       )}
+      <View style={styles.ads}>
+        <HomeBannerAd />
+      </View>
     </>
   );
 }
@@ -434,6 +438,14 @@ const styles = StyleSheet.create({
     lineHeight: 15,
     color: "#222222",
     textAlign: "center",
+  },
+    ads: {
+    width: "100%",
+    flexShrink: 0,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#FAFAFA",
+    marginBottom: 0,
   },
 });
 

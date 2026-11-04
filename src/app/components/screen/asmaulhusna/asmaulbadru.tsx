@@ -1,5 +1,4 @@
 import {
-    SafeAreaView,
     ScrollView,
     Share,
     StyleSheet,
@@ -8,6 +7,7 @@ import {
 } from "react-native";
 import jsonData from "../../../../constants/asmaul_badru.json";
 import AppBar from "../../common/AppBar";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function AsmaulBadru() {
   const handleShare = async () => {

@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
 
   menuLabel: {
     color: "#111827",
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: "500",
     textAlign: "center",
   },
