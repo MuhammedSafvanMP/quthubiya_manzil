@@ -13,7 +13,6 @@ import { BookOpen, Play } from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import quranData from "../../constants/quran.json";
-import HomeBannerAd from "../components/ads/HomeBannerAd";
 import SearchBar from "../components/common/searchBar";
 
 type Ayah = {
@@ -164,10 +163,7 @@ export default function Quran() {
         )}
       </View>
 
-      {/* BOTTOM ADVERTISEMENT */}
-      <View style={styles.adsContainer}>
-        <HomeBannerAd />
-      </View>
+   
     </SafeAreaView>
   );
 }
@@ -193,13 +189,7 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
   },
 
-  adsContainer: {
-    width: "100%",
-    flexShrink: 0,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#FFFFFF",
-  },
+
 
   center: {
     flex: 1,

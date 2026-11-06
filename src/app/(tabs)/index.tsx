@@ -13,9 +13,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { menu, menuIcons } from "../../constants/menu";
 import quran from "../../constants/quran.json";
-import HomeBannerAd from "../components/ads/HomeBannerAd";
 import MenuButton from "../components/common/menuButton";
 import ReminderCard from "../components/common/remainderCard";
+import { useEffect, useRef } from "react";
+import { preloadInterstitial, showInterstitial } from "../components/ads/InterstitialAdManager";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const CARD_WIDTH = (SCREEN_WIDTH - 32 - 12) / 2;
@@ -80,6 +81,26 @@ export default function Index() {
   const todayData = daysANDnumber.find((item) => item.day === today);
 
   const todaySurahs = getDaySurahs(todayData?.surah ?? []);
+
+
+    /// ads
+    
+      const hasShownAd = useRef(false);
+    
+      useEffect(() => {
+        // Preload the next interstitial ad.
+        preloadInterstitial();
+    
+        // Show the ad once when this screen opens, if it's ready.
+        if (!hasShownAd.current) {
+          hasShownAd.current = true;
+          showInterstitial();
+        }
+    
+        return () => {
+          hasShownAd.current = false;
+        };
+      }, []);
 
   return (
   <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
@@ -146,10 +167,6 @@ export default function Index() {
       </View>
     </ScrollView>
 
-    {/* Bottom Banner Advertisement */}
-    <View style={styles.ads}>
-      <HomeBannerAd />
-    </View>
   </SafeAreaView>
 );
 
@@ -223,10 +240,5 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
 
-  ads: {
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#FFFFFF",
-  },
+
 });

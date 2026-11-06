@@ -3,9 +3,31 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import asmaulHusnaNabi from "../../../../constants/asmaal_nabi_202_names.json";
 import AppBar from "../../common/AppBar";
 import Asmaulhusna from "./asmaulhusna";
-import HomeBannerAd from "../../ads/HomeBannerAd";
+import { useEffect, useRef } from "react";
+import { preloadInterstitial, showInterstitial } from "../../ads/InterstitialAdManager";
 
 export default function asmaulhusnAllah() {
+
+  /// ads
+  
+    const hasShownAd = useRef(false);
+  
+    useEffect(() => {
+      // Preload the next interstitial ad.
+      preloadInterstitial();
+  
+      // Show the ad once when this screen opens, if it's ready.
+      if (!hasShownAd.current) {
+        hasShownAd.current = true;
+        showInterstitial();
+      }
+  
+      return () => {
+        hasShownAd.current = false;
+      };
+    }, []);
+
+
   return (
     <SafeAreaView style={styles.container}>
       <AppBar title="Asmaul Nabi" />
@@ -15,9 +37,7 @@ export default function asmaulhusnAllah() {
         subtitle="201 Names of Nabi"
         name="Nabi"
       />
-        <View style={styles.ads}>
-        <HomeBannerAd />
-      </View>
+    
     </SafeAreaView>
   );
 }
@@ -26,12 +46,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-    ads: {
-    width: "100%",
-    flexShrink: 0,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#FAFAFA",
-    marginBottom: 0,
-  },
+
 });
